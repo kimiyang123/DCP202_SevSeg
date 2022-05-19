@@ -1,0 +1,23 @@
+{
+    "configurations": [
+        {
+            "name": "MDK",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "C:/Users/DELL/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.0/**",
+                "C:/Users/DELL/AppData/Local/Arm/Packs/ARM/CMSIS/5.8.0/CMSIS/Core/Include/**"
+            ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "STM32F10X_HD",
+                "USE_STDPERIPH_DRIVER"
+            ],
+            "compilerPath": "D:\\Program Files\\mingw64\\bin\\gcc.exe",
+            "cStandard": "gnu17",
+            "cppStandard": "gnu++14",
+            "intelliSenseMode": "windows-gcc-x64"
+        }
+    ],
+    "version": 4
+}

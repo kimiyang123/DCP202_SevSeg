@@ -92,8 +92,14 @@ uint8_t keyPad4x4_Scan(void)
 	return KeyVal;
 }
 
-uint8_t keyLast = 0; //保留前一次状态值
 
+uint8_t _keyEvent = 0;
+uint8_t getKeyLast(void)
+{
+	return _keyEvent;
+}
+
+uint8_t keyLast = 0; //保留前一次状态值
 uint8_t keyPad_Event(void)
 {
 	uint8_t keyEventVal = 0;
@@ -122,7 +128,7 @@ uint8_t keyPad_Event(void)
 	{
 		keyLast = 0;
 	}
-
+	_keyEvent = keyEventVal;	//保存到全局变量
 	return keyEventVal;
 }
 

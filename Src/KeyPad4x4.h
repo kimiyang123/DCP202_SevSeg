@@ -21,6 +21,7 @@
 	// 4x4按键扫描程序
 	uint8_t keyPad4x4_Scan(void);
 	uint8_t keyPad_Event(void);
+	uint8_t getKeyLast(void);
 
 
 	// 4位独立按键

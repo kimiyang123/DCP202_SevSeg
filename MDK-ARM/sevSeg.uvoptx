@@ -158,37 +158,32 @@
         <Ww>
           <count>0</count>
           <WinNumber>1</WinNumber>
-          <ItemText>timfunList</ItemText>
+          <ItemText>myPoint,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>1</count>
           <WinNumber>1</WinNumber>
-          <ItemText>SMG_BUFFER</ItemText>
+          <ItemText>pointStart,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>2</count>
           <WinNumber>1</WinNumber>
-          <ItemText>enterBuffer</ItemText>
+          <ItemText>pointEnd,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>3</count>
           <WinNumber>1</WinNumber>
-          <ItemText>myPoint,0x0A</ItemText>
+          <ItemText>funState</ItemText>
         </Ww>
         <Ww>
           <count>4</count>
           <WinNumber>1</WinNumber>
-          <ItemText>pointStart,0x0A</ItemText>
+          <ItemText>keyMapChar</ItemText>
         </Ww>
         <Ww>
           <count>5</count>
           <WinNumber>1</WinNumber>
-          <ItemText>pointEnd,0x0A</ItemText>
-        </Ww>
-        <Ww>
-          <count>6</count>
-          <WinNumber>1</WinNumber>
-          <ItemText>funState</ItemText>
+          <ItemText>entBuff</ItemText>
         </Ww>
       </WatchWindow1>
       <Tracepoint>

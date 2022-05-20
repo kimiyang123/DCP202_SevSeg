@@ -32,7 +32,7 @@ unsigned char State = 0, perState = 0xff;
 int main(void)
 {
 	SysTick_Config(72000);
-	
+
 	BSP_Configuration();
 	BSP_SMG_Init();
 	keyPad_Init();
@@ -48,32 +48,32 @@ int main(void)
 	Beep_On(100);
 	char *numStr;
 
+	uint8_t setflas = 0;
 	while (1)
 	{
-		app_setPoint();
-		if(keyPad_Event() == 16) break;
+		keyPad_Event();
+		switch (setflas)
+		{
+		case 0:
+			
+			if(0 == app_setArea() && getKeyLast() == 1) setflas = 1;
+			break;
+		case 1:
+			SMG_print("hello",0);
+
+			if(getKeyLast() == 1){
+				app_setArea_reset();
+				setflas = 0;
+			}
+			break;
+		
+		default:
+			break;
+		}
 	}
 	
 	Beep_On(3000);
 
-	while (1)
-	{
-		int i = 0;
-		// µ»¥˝ ‰»Î
-		numStr = ui_WaitEnter(0, 8,ENTER_TYPE_NUM);
-		if (numStr != NULL)
-		{
-			i = atoi(numStr);
-			SMG_ShowInt(i, 0, 8);
-
-			myPoint = ui_getEnterPoint(numStr);
-
-			delay_ticks(3000);
-		}
-		else{
-			 Beep_On(1300);
-		}
-	}
 
 	while (1)
 	{
@@ -89,27 +89,7 @@ int main(void)
 		}
 	}
 
-	while (1)
-	{
 
-		thisKey = keyPad_Event();
-		switch (State)
-		{
-		case 0:
-			if (perState != State)
-			{
-				SMG_CleanAll();
-				SMG_ShowInt(501, 5, 3);
-				perState = State;
-			}
-
-			break;
-
-		case 1:
-
-			break;
-		}
-	}
 
 	return 0;
 }

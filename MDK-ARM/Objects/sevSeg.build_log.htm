@@ -28,15 +28,15 @@ Project File Date:  05/20/2022
 *** Using Compiler 'V5.06 update 7 (build 960)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'Target 1'
 compiling main.c...
-..\Src\main.c(80): warning:  #128-D: loop is not reachable
-  	while (1)
-..\Src\main.c(116): warning:  #111-D: statement is unreachable
-  	return 0;
+..\Src\main.c(75): warning:  #111-D: statement is unreachable
+  	Beep_On(3000);
 ..\Src\main.c(43): warning:  #177-D: variable "flag"  was declared but never referenced
   	uint8_t flag = 0;
+..\Src\main.c(49): warning:  #177-D: variable "numStr"  was declared but never referenced
+  	char *numStr;
 ..\Src\main.c: 3 warnings, 0 errors
 linking...
-Program Size: Code=4608 RO-data=624 RW-data=104 ZI-data=1696  
+Program Size: Code=4676 RO-data=624 RW-data=104 ZI-data=1696  
 ".\Objects\sevSeg.axf" - 0 Error(s), 3 Warning(s).
 
 <h2>Software Packages used:</h2>
@@ -107,7 +107,7 @@ Package Vendor: Keil
    * Component: Keil::Device:StdPeriph Drivers:TIM:3.6.0
       Source file:   Device\StdPeriph_Driver\src\stm32f10x_tim.c
       Include file:  Device\StdPeriph_Driver\inc\stm32f10x_tim.h
-Build Time Elapsed:  00:00:00
+Build Time Elapsed:  00:00:01
 </pre>
 </body>
 </html>

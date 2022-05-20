@@ -157,18 +157,18 @@
         <Bp>
           <Number>0</Number>
           <Type>0</Type>
-          <LineNumber>59</LineNumber>
+          <LineNumber>75</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>0</Address>
+          <Address>134221182</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>0</BreakIfRCount>
-          <Filename>..\Src\main.c</Filename>
+          <BreakIfRCount>1</BreakIfRCount>
+          <Filename>..\Src\appSMG_UI.c</Filename>
           <ExecCommand></ExecCommand>
-          <Expression></Expression>
+          <Expression>\\sevSeg\../Src/appSMG_UI.c\75</Expression>
         </Bp>
       </Breakpoint>
       <WatchWindow1>
@@ -181,6 +181,11 @@
           <count>1</count>
           <WinNumber>1</WinNumber>
           <ItemText>SMG_BUFFER</ItemText>
+        </Ww>
+        <Ww>
+          <count>2</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>enterBuffer</ItemText>
         </Ww>
       </WatchWindow1>
       <Tracepoint>
@@ -309,6 +314,18 @@
       <bDave2>0</bDave2>
       <PathWithFileName>..\Src\TimAndPWM.c</PathWithFileName>
       <FilenameWithoutPath>TimAndPWM.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>1</GroupNumber>
+      <FileNumber>7</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\Src\appSMG_UI.c</PathWithFileName>
+      <FilenameWithoutPath>appSMG_UI.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>

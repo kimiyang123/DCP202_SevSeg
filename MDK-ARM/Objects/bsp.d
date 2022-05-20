@@ -1,5 +1,6 @@
 .\objects\bsp.o: ..\Src\BSP.c
 .\objects\bsp.o: ..\Src\BSP.h
+.\objects\bsp.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\bsp.o: C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\Include\stm32f10x.h
 .\objects\bsp.o: C:\Users\DELL\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include\core_cm3.h
 .\objects\bsp.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h

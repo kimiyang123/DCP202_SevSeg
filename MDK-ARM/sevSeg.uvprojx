@@ -411,6 +411,11 @@
               <FileType>1</FileType>
               <FilePath>..\Src\TimAndPWM.c</FilePath>
             </File>
+            <File>
+              <FileName>appSMG_UI.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\appSMG_UI.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

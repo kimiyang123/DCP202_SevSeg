@@ -11,7 +11,6 @@
 
 int num;
 
-
 void fundemo(void)
 {
 	static uint16_t i = 0;
@@ -37,18 +36,34 @@ int main(void)
 	BSP_Configuration();
 	BSP_SMG_Init();
 	keyPad_Init();
+	keyIndepend_Init();
 
 	TIM2_Init();
-	keyIndepend_Init();
 
 	uint8_t flag = 0;
 	uint16_t thisKey = 0;
-	// SMG_Refresh() 加入定时器任务
-	tim2_addTask(SMG_Refresh,3,NULL);
 
-	tim2_addTask((tim_Period_Fun)SMG_RotateShift,1000,0);
-	Beep_On(400);
-	
+	tim2_addTask(SMG_Refresh, 3, NULL);
+	// tim2_addTask((tim_Period_Fun)SMG_RotateShift,1000,0);
+	Beep_On(100);
+	// SMG_print("h-l>o F",1);
+	// uiTest
+	char *numStr;
+	while (1)
+	{
+		int i = 0;
+		numStr = ui_WaitEnter(0, 100);
+		if (numStr != NULL)
+		{
+			i = atoi(numStr);
+			SMG_ShowInt(i, 0, 8);
+			delay_ticks(3000);
+		}
+		else{
+			 Beep_On(1300);
+		}
+	}
+
 	while (1)
 	{
 		thisKey = keyPad_Event();
@@ -65,6 +80,7 @@ int main(void)
 
 	while (1)
 	{
+
 		thisKey = keyPad_Event();
 		switch (State)
 		{
@@ -72,11 +88,10 @@ int main(void)
 			if (perState != State)
 			{
 				SMG_Clear();
-				SMG_ShowInt(501,5,3);
+				SMG_ShowInt(501, 5, 3);
 				perState = State;
-				
 			}
-	
+
 			break;
 
 		case 1:

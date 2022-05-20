@@ -3,6 +3,8 @@
 
 	#include <stdio.h>
 
+	#include "appSMG_UI.h"
+
 	// 类Arduino的常用操作宏
 	#define PI 			3.1415926535897932384626433832795
 	#define HALF_PI 	1.5707963267948966192313216916398

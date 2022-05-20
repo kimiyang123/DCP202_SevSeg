@@ -4,6 +4,18 @@
         "BSP.H": "cpp",
         "stm32f10x.h": "c",
         "timandpwm.h": "c",
-        "main.h": "c"
+        "main.h": "c",
+        "appsmg_ui.h": "c",
+        "string.h": "c",
+        "bsp_sevseg.h": "c"
+    },
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/Thumbs.db": true,
+        "MDK-ARM":false
     }
 }

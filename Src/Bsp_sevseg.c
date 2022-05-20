@@ -1,6 +1,27 @@
 #include "Bsp_sevseg.h"
 
 
+typedef struct
+{
+	char Letter;			//字符字母
+	uint8_t SevSEG_Code;	//字母的数码管编码
+} LetterSev_def;
+
+LetterSev_def LetterTab[] = {
+	{'A',	0x88},
+	{'S',	0x92 & 0x7F},
+	{'H',	0x89},
+	{'L',	0xC7},
+	{'N',	0xc8},
+	{'U',	0xc1},
+	{'P',	0x8c},
+	{'O',	0xa3},
+	{'-',	0xbf},
+	{' ',	0xff},
+	{'>',	~0x01},  // _
+	{'F',	0x8E}
+};
+
 uint8_t Sev_Tab[] = {
 			0xC0,0xF9,0xA4,0xB0,0x99,0x92,0x82,0xf8,
 			0x80,0x90,0x88,0x83,0xc6,0xa1,0x86,0x8e,
@@ -120,6 +141,44 @@ void SMG_ShowInt(uint32_t showNUM, uint8_t startPos, uint8_t showBit)
 }
 
 
+
+
+uint8_t LetterTab_find(char str)
+{
+	uint8_t i=0;
+	uint16_t tabLength;
+	tabLength = sizeof(LetterTab)/sizeof(LetterSev_def);
+	for ( i = 0; i < tabLength; i++)
+	{
+		if(LetterTab[i].Letter == str)
+		{
+			return LetterTab[i].SevSEG_Code;
+		}
+	}
+	// 未定义字符，显示'_'
+	return ~0x08;
+	
+}
+
+/**
+ * @description:	通过字符获取数码管显示段码 
+ * @param undefined
+ * @return {*}
+ */
+uint8_t _getSEG_byChar(char str)
+{
+	if(str >= '0' && str <= '9')
+	{
+		return Sev_Tab[ str - '0' ];
+	}
+	else
+	{
+		str = toupper(str);	//将字符统一转换为大写
+		return LetterTab_find(str);
+	}
+	
+}
+
 /**
  * @description: 以字符串形式显示数码管符号
  * @param str   字符串指针
@@ -129,15 +188,16 @@ void SMG_ShowInt(uint32_t showNUM, uint8_t startPos, uint8_t showBit)
 void SMG_print(char *str , uint8_t startPos)
 {
 	uint8_t i=0;
-	uint8_t strShowSize = 0;
-	strShowSize = SMG_ITEMS - startPos;
+	uint8_t strShowSize_MAX = 0;
+	strShowSize_MAX = SMG_ITEMS - startPos;
 
-	for ( i = 0; i < strShowSize; i++)
+	for ( i = 0; i < strShowSize_MAX; i++)
 	{
-		
+		if(*str == '\0') break;
+		SMG_BuffWrite( SMG_ITEMS - ( startPos+i ) - 1, _getSEG_byChar(*str));
+		str++;
 	}
 	
-
 }
 
 

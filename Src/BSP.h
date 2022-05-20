@@ -1,7 +1,7 @@
 #ifndef __SYS_BSP_H__
 #define __SYS_BSP_H__
 
-
+#include <stdio.h>
 #include "stm32f10x.h"   
 #include "stm32f10x_conf.h" 
 
@@ -19,6 +19,7 @@
 
 
 void delay_ticks(uint16_t dtime);
+uint32_t getSysTicks(void);
 
 void BSP_Configuration(void);
 

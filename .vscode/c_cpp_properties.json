@@ -3,7 +3,8 @@
         {
             "name": "MDK",
             "includePath": [
-                "${workspaceFolder}/**",
+                "${workspaceFolder}/Src/**",
+                "${workspaceFolder}/MDK-ARM/RTE/**",
                 "C:/Users/DELL/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.0/**",
                 "C:/Users/DELL/AppData/Local/Arm/Packs/ARM/CMSIS/5.8.0/CMSIS/Core/Include/**"
             ],

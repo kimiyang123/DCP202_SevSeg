@@ -1,3 +1,12 @@
+/*
+ * @Date: 2022-05-18 10:20:15
+ * @LastEditors: kimiyang
+ * @LastEditTime: 2022-05-19 22:30:23
+ * @FilePath: \DCP202_SevSeg\Src\BSP.c
+ * @Description: 
+ * 
+ */
+
 #include "BSP.h"
 
 // й╠жс╫зед
@@ -41,19 +50,18 @@ void delay_ticks(uint16_t dtime)
 
 
 
+
+
+extern void SMG_Refresh(void);
 /**
   * @brief  This function handles SysTick Handler.
   * @param  None
   * @retval : None
   */
-
-extern void SMG_Refresh(void);
-
 void SysTick_Handler(void)
 {
   sysTick_increase();
-	SMG_Refresh();
-	
+
 }
 
 

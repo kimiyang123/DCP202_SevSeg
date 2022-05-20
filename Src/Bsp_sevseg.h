@@ -13,8 +13,11 @@
 	
 	// 数码管初始化函数
 	void BSP_SMG_Init(void);
-	void SMG_Refresh(void);
 	
+	void SMG_Refresh(void);
+	void SMG_Clear(void);
+
+
 	void SMG_BuffWrite(uint8_t id,uint8_t buffd);
 	void SMG_ShowInt(uint32_t showNUM, uint8_t startPos, uint8_t showBit);
 

@@ -5,6 +5,7 @@ uint8_t Sev_Tab[] = {
 			0xC0,0xF9,0xA4,0xB0,0x99,0x92,0x82,0xf8,
 			0x80,0x90,0x88,0x83,0xc6,0xa1,0x86,0x8e,
 			0x89,0xc7,0xc8,0xc1,0x8c,0xa3,0xbf,0xff
+		//	 H	  L    N    U    P    o    -     
 };
 
 uint8_t  SMG_BUFFER[SMG_ITEMS];
@@ -79,9 +80,15 @@ void SMG_Refresh(void)
 
 }
 
+void SMG_Clear(void){
+	uint8_t i=0;
+	for(i=0;i<SMG_ITEMS;i++)
+	{
+		SMG_BUFFER[i] = 0xff;
+	}
+}
 
-
-// ---------------以下是相关显示方法-------------------------
+// ---------------以下是显示相关方法-------------------------
 void SMG_BuffWrite(uint8_t id,uint8_t buffd)
 {
 	if(id < SMG_ITEMS )		//编号id必须小于数码管数量
@@ -89,10 +96,6 @@ void SMG_BuffWrite(uint8_t id,uint8_t buffd)
 		SMG_BUFFER[id] = buffd;
 	}
 }
-
-
-
-
 
 
 
@@ -105,14 +108,37 @@ void SMG_BuffWrite(uint8_t id,uint8_t buffd)
 void SMG_ShowInt(uint32_t showNUM, uint8_t startPos, uint8_t showBit)
 {
 	uint8_t bit;
+	uint8_t endPos;
+	endPos = startPos + showBit;
+	if(endPos > 8 ) endPos = 8;				//限定结束位置
 
-	for(bit = startPos; bit < showBit; bit++)
+	for(bit = startPos; bit < endPos; bit++)
 	{
 		SMG_BUFFER[ bit ] = Sev_Tab[ showNUM % 10 ];
 		showNUM /= 10;
 	}
 }
 
+
+/**
+ * @description: 以字符串形式显示数码管符号
+ * @param str   字符串指针
+ * @param startPos  左侧开始的起始位置
+ * @return {*}
+ */
+void SMG_print(char *str , uint8_t startPos)
+{
+	uint8_t i=0;
+	uint8_t strShowSize = 0;
+	strShowSize = SMG_ITEMS - startPos;
+
+	for ( i = 0; i < strShowSize; i++)
+	{
+		
+	}
+	
+
+}
 
 
 

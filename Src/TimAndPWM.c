@@ -1,5 +1,11 @@
-
-
+/*
+ * @Date: 2022-05-18 19:57:20
+ * @LastEditors: kimiyang
+ * @LastEditTime: 2022-05-19 22:58:53
+ * @FilePath: \DCP202_SevSeg\Src\TimAndPWM.c
+ * @Description: 定时器和PMW功能初始化
+ * 
+ */
 #include "TimAndPWM.h"
 
 void TIM2_Init(void)
@@ -29,18 +35,29 @@ void TIM2_Init(void)
 }
 
 uint8_t tim2Fun_cnt = 0;
-timFunList_def timfunList[4];
+timFunList_def timTaskList[4];
 
-uint8_t tim2_addFun(tim_Period_Fun _fun, uint16_t period_t, void *parm)
+
+/**
+ * @description: 定时器2周期任务添加方法
+ * @param _fun
+ * @param period_t
+ * @param *parm
+ * @return {*}
+ */
+uint8_t tim2_addTask(tim_Period_Fun _fun, uint16_t period_t, void *parm)
 {
 	uint8_t i = 0;
+	// TODO >>>> 判断有可用列表空间后再运行
+	_fun(parm);
+
 	for (i = 0; i < 4; i++)
 	{
-		if (timfunList[i].tFun == 0)
+		if (timTaskList[i].tFun == 0)
 		{
-			timfunList[i].tFun = _fun;
-			timfunList[i].PeriodTick = period_t;
-			timfunList[i].param = parm;
+			timTaskList[i].tFun = _fun;
+			timTaskList[i].PeriodTick = period_t;
+			timTaskList[i].param = parm;
 			break;
 		}
 	}
@@ -48,15 +65,15 @@ uint8_t tim2_addFun(tim_Period_Fun _fun, uint16_t period_t, void *parm)
 	return i;
 }
 
-void tim2_delFun(tim_Period_Fun _fun)
+void tim2_delTask(tim_Period_Fun _fun)
 {
 	uint8_t i = 0;
 	for (i = 0; i < 4; i++)
 	{
-		if (timfunList[i].tFun == _fun)
+		if (timTaskList[i].tFun == _fun)
 		{
-			timfunList[i].tFun = 0;
-			timfunList[i].PeriodTick = 0;
+			timTaskList[i].tFun = 0;
+			timTaskList[i].PeriodTick = 0;
 			break;
 		}
 	}
@@ -79,11 +96,11 @@ void TIM2_IRQHandler(void)
 
 		for (i = 0; i < 4; i++)
 		{
-			if (timfunList[i].tFun != 0)
+			if (timTaskList[i].tFun != 0)
 			{
-				if ((tim2Cnt % timfunList[i].PeriodTick) == 0)
+				if ((tim2Cnt % timTaskList[i].PeriodTick) == 0)
 				{
-					timfunList[i].tFun(timfunList[i].param);
+					timTaskList[i].tFun(timTaskList[i].param);
 				}
 			}
 		}

@@ -3,6 +3,7 @@
         "stm32f10x_conf.h": "c",
         "BSP.H": "cpp",
         "stm32f10x.h": "c",
-        "timandpwm.h": "c"
+        "timandpwm.h": "c",
+        "main.h": "c"
     }
 }

@@ -323,7 +323,7 @@
             <wLevel>2</wLevel>
             <uThumb>0</uThumb>
             <uSurpInc>0</uSurpInc>
-            <uC99>1</uC99>
+            <uC99>0</uC99>
             <uGnu>1</uGnu>
             <useXO>0</useXO>
             <v6Lang>1</v6Lang>
@@ -407,14 +407,14 @@
               <FilePath>..\Src\KeyPad4x4.c</FilePath>
             </File>
             <File>
-              <FileName>TimAndPWM.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Src\TimAndPWM.c</FilePath>
-            </File>
-            <File>
               <FileName>appSMG_UI.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Src\appSMG_UI.c</FilePath>
+            </File>
+            <File>
+              <FileName>TimTask.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\TimTask.c</FilePath>
             </File>
           </Files>
         </Group>

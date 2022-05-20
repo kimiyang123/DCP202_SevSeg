@@ -27,13 +27,17 @@ Project File Date:  05/20/2022
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 7 (build 960)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'Target 1'
-compiling appSMG_UI.c...
-..\Src\appSMG_UI.c(44): warning:  #120-D: return value type does not match the function type
-      if(curId >= SMG_ITEMS) return 0;
-..\Src\appSMG_UI.c: 1 warning, 0 errors
+compiling main.c...
+..\Src\main.c(80): warning:  #128-D: loop is not reachable
+  	while (1)
+..\Src\main.c(116): warning:  #111-D: statement is unreachable
+  	return 0;
+..\Src\main.c(43): warning:  #177-D: variable "flag"  was declared but never referenced
+  	uint8_t flag = 0;
+..\Src\main.c: 3 warnings, 0 errors
 linking...
-Program Size: Code=3808 RO-data=624 RW-data=88 ZI-data=1696  
-".\Objects\sevSeg.axf" - 0 Error(s), 1 Warning(s).
+Program Size: Code=4608 RO-data=624 RW-data=104 ZI-data=1696  
+".\Objects\sevSeg.axf" - 0 Error(s), 3 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -103,7 +107,7 @@ Package Vendor: Keil
    * Component: Keil::Device:StdPeriph Drivers:TIM:3.6.0
       Source file:   Device\StdPeriph_Driver\src\stm32f10x_tim.c
       Include file:  Device\StdPeriph_Driver\inc\stm32f10x_tim.h
-Build Time Elapsed:  00:00:01
+Build Time Elapsed:  00:00:00
 </pre>
 </body>
 </html>

@@ -16,7 +16,8 @@
 	void BSP_SMG_Init(void);
 	
 	void SMG_Refresh(void);		// 中断里间隔调用
-	void SMG_Clear(void);
+	void SMG_CleanAll(void);
+	void SMG_CleanPos(uint8_t Spos,uint8_t len);
 
 	void SMG_BuffWrite(uint8_t id,uint8_t buffd);
 	void SMG_ShowInt(uint32_t showNUM, uint8_t startPos, uint8_t showBit);

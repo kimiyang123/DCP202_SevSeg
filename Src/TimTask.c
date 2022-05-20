@@ -1,12 +1,12 @@
 /*
  * @Date: 2022-05-18 19:57:20
  * @LastEditors: kimiyang
- * @LastEditTime: 2022-05-19 22:58:53
- * @FilePath: \DCP202_SevSeg\Src\TimAndPWM.c
+ * @LastEditTime: 2022-05-20 15:31:07
+ * @FilePath: \DCP202_SevSeg\Src\TimTask.c
  * @Description: 定时器和PMW功能初始化
  * 
  */
-#include "TimAndPWM.h"
+#include "TimTask.h"
 
 void TIM2_Init(void)
 {

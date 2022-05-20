@@ -13,6 +13,8 @@ LetterSev_def LetterTab[] = {
 	{'H',	0x89},
 	{'L',	0xC7},
 	{'N',	0xc8},
+	{'E',	0x86},
+	{'R',	~0x50},
 	{'U',	0xc1},
 	{'P',	0x8c},
 	{'O',	0xa3},
@@ -101,12 +103,25 @@ void SMG_Refresh(void)
 
 }
 
-void SMG_Clear(void){
+void SMG_CleanAll(void){
 	uint8_t i=0;
 	for(i=0;i<SMG_ITEMS;i++)
 	{
 		SMG_BUFFER[i] = 0xff;
 	}
+}
+
+void SMG_CleanPos(uint8_t Spos,uint8_t len)
+{
+	uint8_t i=0;
+	if(Spos > SMG_ITEMS -1) Spos = SMG_ITEMS -1;
+	if((len+Spos) > SMG_ITEMS) len = SMG_ITEMS - Spos;
+
+	for ( i = Spos; i < len; i++)
+	{
+		SMG_BUFFER[ SMG_ITEMS - i - 1] = 0xFF;
+	}
+	
 }
 
 // ---------------以下是显示相关方法-------------------------

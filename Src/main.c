@@ -7,7 +7,7 @@
 #include "bsp.h"
 #include "KeyPad4x4.h"
 
-#include "TimAndPwm.h"
+#include "TimTask.h"
 
 int num;
 
@@ -32,7 +32,7 @@ unsigned char State = 0, perState = 0xff;
 int main(void)
 {
 	SysTick_Config(72000);
-
+	
 	BSP_Configuration();
 	BSP_SMG_Init();
 	keyPad_Init();
@@ -46,17 +46,28 @@ int main(void)
 	tim2_addTask(SMG_Refresh, 3, NULL);
 	// tim2_addTask((tim_Period_Fun)SMG_RotateShift,1000,0);
 	Beep_On(100);
-	// SMG_print("h-l>o F",1);
-	// uiTest
 	char *numStr;
+
+	while (1)
+	{
+		app_setPoint();
+		if(keyPad_Event() == 16) break;
+	}
+	
+	Beep_On(3000);
+
 	while (1)
 	{
 		int i = 0;
-		numStr = ui_WaitEnter(0, 100);
+		// µ»¥˝ ‰»Î
+		numStr = ui_WaitEnter(0, 8,ENTER_TYPE_NUM);
 		if (numStr != NULL)
 		{
 			i = atoi(numStr);
 			SMG_ShowInt(i, 0, 8);
+
+			myPoint = ui_getEnterPoint(numStr);
+
 			delay_ticks(3000);
 		}
 		else{
@@ -87,7 +98,7 @@ int main(void)
 		case 0:
 			if (perState != State)
 			{
-				SMG_Clear();
+				SMG_CleanAll();
 				SMG_ShowInt(501, 5, 3);
 				perState = State;
 			}

@@ -41,7 +41,7 @@ uint8_t _keyMap2KeyID(uint8_t kMapStr)
 
 void setCursor(uint8_t curId)
 {
-    if(curId >= SMG_ITEMS) return 0;
+    if(curId >= SMG_ITEMS) return;
 
     SMG_BuffWrite( SMG_ITEMS - curId - 1, ~0x08 );
 }
@@ -68,14 +68,15 @@ void enterBuff_backspace()
  * @param undefined
  * @return {*}
  */
-char* ui_WaitEnter(uint8_t entPos, uint16_t wTimeMax)
+
+char* ui_WaitEnter(uint8_t entPos, uint8_t maxEnter, uint8_t EnterType)
 {
     uint8_t i=0,exit = 0;
     uint8_t keyMapChar;
     memset(enterBuffer,0,10);   // 清空输入缓存
 	enterId = 0;
     
-	SMG_Clear();
+	SMG_CleanPos(0,maxEnter);
     setCursor(entPos+i);
     do
     {
@@ -99,16 +100,27 @@ char* ui_WaitEnter(uint8_t entPos, uint16_t wTimeMax)
             break;
         
         default:    // 其它保存按键
-            if(i<8)
+            if(i<maxEnter)
             {
-                enterBuff_add(keyMapChar);
-                i++;
+                if(EnterType == ENTER_TYPE_NUM)
+                {
+                    if( isdigit(keyMapChar))
+                    {
+                        enterBuff_add(keyMapChar);
+                        i++;
+                    }
+                }
+                else if(EnterType == ENTER_TYPE_ALL)
+                {
+                    enterBuff_add(keyMapChar);
+                    i++;
+                }
             }
             break;
         }
         if(keyMapChar != 0)
         {
-            SMG_Clear();
+            SMG_CleanPos(0,maxEnter);
             SMG_print(&enterBuffer[0],entPos);
             setCursor(entPos+i);
             Beep_On(5);
@@ -127,8 +139,95 @@ char* ui_WaitEnter(uint8_t entPos, uint16_t wTimeMax)
 }
 
 
-void strtoNum(char *str)
+Point_struct_def myPoint;
+
+Point_struct_def ui_getEnterPoint(char *entstr)
 {
-    atoi(str);
+    Point_struct_def _Point;
+    char xPosStr[5];
+    char yPosStr[5];
+
+    if(entstr == NULL) return;
+
+    memcpy(xPosStr,entstr,4);
+    if(strlen(entstr) > 4)
+    {
+        memcpy(yPosStr,entstr+4,4);
+    }
+    _Point.xPos = atoi(xPosStr);
+    _Point.yPos = atoi(yPosStr);
+
+    return _Point;
 }
+
+
+ uint8_t funState = 0;
+// 设置矩形坐标
+Point_struct_def pointStart,pointEnd;
+void app_setPoint(void)
+{
+    char cmd[4];
+    char *pStr;
+    
+    switch (funState)
+    {
+     case 0: //主菜单
+        SMG_print("S00",0);
+        delay_ticks(1500);
+        pStr =  ui_WaitEnter(0,3,ENTER_TYPE_ALL);
+        if(pStr != NULL)
+        {
+            //拷贝前3个字符到cmd中
+            strncpy(cmd,pStr,3);
+            if( cmd[0] == 'S' && isdigit(cmd[1]) && isdigit(cmd[2]) )
+            {
+                // 获取命令数字
+                funState = atoi(&cmd[1]);
+            }
+            else
+            {
+                SMG_print("err",0);
+                Beep_On(200);
+                delay_ticks(1000);
+            }
+            SMG_CleanPos(0,3);
+            
+        }
+        break;
+
+     case 01:       //设置起点
+        SMG_ShowInt(pointStart.yPos,0,4);
+        SMG_ShowInt(pointStart.xPos,4,4);
+        delay_ticks(1500);
+        pStr = ui_WaitEnter(0,8,ENTER_TYPE_NUM);
+        if(pStr !=NULL)
+        {
+            pointStart = ui_getEnterPoint(pStr);
+        }
+
+        funState = 0;   //回到主菜单
+        SMG_CleanPos(0,8);
+        break;
+     case 02:       //设置终点
+        SMG_ShowInt(pointEnd.yPos,0,4);
+        SMG_ShowInt(pointEnd.xPos,4,4);
+        delay_ticks(1500);
+
+        pStr = ui_WaitEnter(0,8,ENTER_TYPE_NUM);
+        if(pStr !=NULL)
+        {
+            pointEnd = ui_getEnterPoint(pStr);
+        }
+
+        funState = 0;   //回到主菜单
+        SMG_CleanPos(0,8);
+        break;
+    
+    default:
+        funState = 0;
+        break;
+    }
+
+}
+
 

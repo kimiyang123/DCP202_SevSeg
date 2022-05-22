@@ -8,6 +8,7 @@
 #include "KeyPad4x4.h"
 
 #include "TimTask.h"
+#include "Motor_HPWM.h"
 
 int num;
 
@@ -38,7 +39,31 @@ int main(void)
 	keyPad_Init();
 	keyIndepend_Init();
 
-	TIM2_Init();
+	//TIM2_Init();
+
+	Motor_PortInit();
+
+	int pwmv = 0;
+	TIM1->CCR3 = 1;
+	TIM1->CCR2 = 100;
+	while (1);
+	{
+		if(pwmv ++ >= 100)
+		{
+			pwmv = 0;
+
+			// TIM_CCxCmd(TIM1,TIM_Channel_1,TIM_CCx_Disable);
+			// TIM_CCxNCmd(TIM1,TIM_Channel_1,TIM_CCxN_Disable);
+
+		}
+		TIM1->CCR2 = pwmv;
+		delay_ticks(100);
+
+		
+
+		/* code */
+	}
+	
 
 	uint8_t flag = 0;
 	uint16_t thisKey = 0;
@@ -48,14 +73,15 @@ int main(void)
 	Beep_On(100);
 	char *numStr;
 
-	uint8_t setflas = 0;
+	uint8_t setflas = 0,perSetflas;
 	while (1)
 	{
 		keyPad_Event();
 		switch (setflas)
 		{
 		case 0:
-			
+
+			SMG_print("S",0);
 			if(0 == app_setArea() && getKeyLast() == 1) setflas = 1;
 			break;
 		case 1:
@@ -63,9 +89,22 @@ int main(void)
 
 			if(getKeyLast() == 1){
 				app_setArea_reset();
-				setflas = 0;
+				setflas = 2;
+				SMG_CleanAll();
 			}
 			break;
+
+		case 2:
+			
+			SMG_print("F",0);
+			app_viewParam();
+
+			if(getKeyLast() == 1)
+			{
+				setflas = 0;
+				SMG_CleanAll();
+			}
+		break;
 		
 		default:
 			break;

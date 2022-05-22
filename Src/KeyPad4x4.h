@@ -3,6 +3,9 @@
 #define __KEYPAD_H__
 
 	#include "stm32f10x.h"
+	#include "BSP.h"
+
+	#define KEY_BEEP(iTime)		Beep_On(iTime)
 
 	#define KEY_NULL		0
 

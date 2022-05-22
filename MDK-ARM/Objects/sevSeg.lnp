@@ -5,6 +5,8 @@
 ".\objects\keypad4x4.o"
 ".\objects\appsmg_ui.o"
 ".\objects\timtask.o"
+".\objects\operatesetarea.o"
+".\objects\motor_hpwm.o"
 ".\objects\misc.o"
 ".\objects\stm32f10x_adc.o"
 ".\objects\stm32f10x_exti.o"

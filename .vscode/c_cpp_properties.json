@@ -10,7 +10,7 @@
             ],
             "defines": [
                 "_DEBUG",
-                "UNICODE",
+                "__CC_ARM",
                 "STM32F10X_HD",
                 "USE_STDPERIPH_DRIVER"
             ],

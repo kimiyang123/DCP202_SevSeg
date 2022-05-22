@@ -1,7 +1,7 @@
 /*
  * @Date: 2022-05-20 09:21:18
  * @LastEditors: kimiyang
- * @LastEditTime: 2022-05-20 23:54:58
+ * @LastEditTime: 2022-05-21 14:01:46
  * @FilePath: \DCP202_SevSeg\Src\appSMG_UI.h
  * @Description: 数码管用户操作人机接口界面程序
  * 
@@ -20,28 +20,23 @@
 #define  ENTER_TYPE_NUM     0x00
 #define  ENTER_TYPE_ALL     0x01
 
-/**
- * @description:等待输入字符 
- * @return {*}
- */
+
+
 char* ui_WaitEnter(uint8_t entPos, uint8_t maxEnter, uint8_t keyEvent,  uint8_t EnterType);
 // char* ui_WaitEnter(uint8_t entPos, uint8_t maxEnter, uint8_t EnterType);
 
+/**
+ * @description: 获取UI按键数据缓存区按键数量
+ * @return {*}
+ */
+uint8_t get_entBuff_length(void);
 
-typedef struct 
-{
-    uint16_t xPos;  //x坐标值
-    uint16_t yPos;  //y坐标值
-}Point_struct_def;
+/**
+ * @description: 清空按键缓冲区数据
+ * @return {*}
+ */
+void enterBuff_clean(void);
 
-extern Point_struct_def myPoint;
-
-Point_struct_def ui_getEnterPoint(char *entstr);
-
-
-
-uint8_t app_setArea(void);
-void app_setArea_reset(void);
 
 
 #endif

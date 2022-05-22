@@ -118,6 +118,7 @@ uint8_t keyPad_Event(void)
 		{
 			keyEventVal = temp;
 			keyLast = temp;
+			KEY_BEEP(1);
 		}
 		else
 		{ // 按键和前一次值相等

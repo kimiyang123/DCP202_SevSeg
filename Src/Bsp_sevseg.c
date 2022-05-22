@@ -137,10 +137,13 @@ void SMG_BuffWrite(uint8_t id,uint8_t buffd)
 
 
 // 数码管显示整型数据函数
-/*
-	showNum ：需要显示的整型数
-	
-*/
+/**
+ * @description: 数码管显示整数函数
+ * @param {uint32_t} showNUM: 需要显示的数据值
+ * @param {uint8_t} startPos: 个位数显示在哪个位置
+ * @param {uint8_t} showBit: 显示几位有效数字
+ * @return {*}
+ */
 void SMG_ShowInt(uint32_t showNUM, uint8_t startPos, uint8_t showBit)
 {
 	uint8_t bit;

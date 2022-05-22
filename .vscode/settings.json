@@ -7,7 +7,8 @@
         "main.h": "c",
         "appsmg_ui.h": "c",
         "string.h": "c",
-        "bsp_sevseg.h": "c"
+        "bsp_sevseg.h": "c",
+        "motor_hpwm.h": "c"
     },
     "files.exclude": {
         "**/.git": true,

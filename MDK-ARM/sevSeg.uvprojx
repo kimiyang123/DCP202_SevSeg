@@ -111,8 +111,8 @@
         <DllOption>
           <SimDllName>SARMCM3.DLL</SimDllName>
           <SimDllArguments> -REMAP</SimDllArguments>
-          <SimDlgDll>DCM.DLL</SimDlgDll>
-          <SimDlgDllArguments>-pCM3</SimDlgDllArguments>
+          <SimDlgDll>DARMSTM.DLL</SimDlgDll>
+          <SimDlgDllArguments>-pSTM32F103ZE</SimDlgDllArguments>
           <TargetDllName>SARMCM3.DLL</TargetDllName>
           <TargetDllArguments></TargetDllArguments>
           <TargetDlgDll>TCM.DLL</TargetDlgDll>
@@ -337,7 +337,7 @@
               <MiscControls></MiscControls>
               <Define>STM32F10X_HD,USE_STDPERIPH_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath></IncludePath>
+              <IncludePath>..\Src\Motors</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -415,6 +415,21 @@
               <FileName>TimTask.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Src\TimTask.c</FilePath>
+            </File>
+            <File>
+              <FileName>operateSetArea.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\operateSetArea.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Motors</GroupName>
+          <Files>
+            <File>
+              <FileName>Motor_HPWM.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\Motors\Motor_HPWM.c</FilePath>
             </File>
           </Files>
         </Group>

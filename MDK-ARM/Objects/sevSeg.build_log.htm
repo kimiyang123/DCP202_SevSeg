@@ -16,28 +16,32 @@ Linker/Locator:  ArmLink.exe V5.06 update 7 (build 960)
 Library Manager: ArmAr.exe V5.06 update 7 (build 960)
 Hex Converter:   FromElf.exe V5.06 update 7 (build 960)
 CPU DLL:         SARMCM3.DLL V5.35.0.2
-Dialog DLL:      DCM.DLL V1.17.3.0
+Dialog DLL:      DARMSTM.DLL V1.68.0.0
 Target DLL:      STLink\ST-LINKIII-KEIL_SWO.dll V3.0.9.0
 Dialog DLL:      TCM.DLL V1.53.0.0
  
 <h2>Project:</h2>
 F:\QSGX_Work\DCP202_SevSeg\MDK-ARM\sevSeg.uvprojx
-Project File Date:  05/20/2022
+Project File Date:  05/22/2022
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 7 (build 960)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'Target 1'
 compiling main.c...
-..\Src\main.c(75): warning:  #111-D: statement is unreachable
+..\Src\main.c(51): warning:  #111-D: statement is unreachable
+  		if(pwmv ++ >= 100)
+..\Src\main.c(114): warning:  #111-D: statement is unreachable
   	Beep_On(3000);
-..\Src\main.c(43): warning:  #177-D: variable "flag"  was declared but never referenced
+..\Src\main.c(68): warning:  #177-D: variable "flag"  was declared but never referenced
   	uint8_t flag = 0;
-..\Src\main.c(49): warning:  #177-D: variable "numStr"  was declared but never referenced
+..\Src\main.c(74): warning:  #177-D: variable "numStr"  was declared but never referenced
   	char *numStr;
-..\Src\main.c: 3 warnings, 0 errors
+..\Src\main.c(76): warning:  #177-D: variable "perSetflas"  was declared but never referenced
+  	uint8_t setflas = 0,perSetflas;
+..\Src\main.c: 5 warnings, 0 errors
 linking...
-Program Size: Code=4676 RO-data=624 RW-data=104 ZI-data=1696  
-".\Objects\sevSeg.axf" - 0 Error(s), 3 Warning(s).
+Program Size: Code=2756 RO-data=336 RW-data=84 ZI-data=1684  
+".\Objects\sevSeg.axf" - 0 Error(s), 5 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -72,33 +76,33 @@ Package Vendor: Keil
    * Component: ARM::CMSIS:CORE:5.5.0
 
    * Component: Keil::Device:Startup:1.0.0
-      Source file:   Device\Source\ARM\startup_stm32f10x_hd.s
+      Source file:   Device\Source\system_stm32f10x.c
       Include file:  RTE_Driver\Config\RTE_Device.h
       Source file:   Device\Source\ARM\STM32F1xx_OPT.s
-      Source file:   Device\Source\system_stm32f10x.c
+      Source file:   Device\Source\ARM\startup_stm32f10x_hd.s
 
    * Component: Keil::Device:StdPeriph Drivers:ADC:3.6.0
       Include file:  Device\StdPeriph_Driver\inc\stm32f10x_adc.h
       Source file:   Device\StdPeriph_Driver\src\stm32f10x_adc.c
 
    * Component: Keil::Device:StdPeriph Drivers:EXTI:3.6.0
-      Source file:   Device\StdPeriph_Driver\src\stm32f10x_exti.c
       Include file:  Device\StdPeriph_Driver\inc\stm32f10x_exti.h
+      Source file:   Device\StdPeriph_Driver\src\stm32f10x_exti.c
 
    * Component: Keil::Device:StdPeriph Drivers:Flash:3.6.0
       Include file:  Device\StdPeriph_Driver\inc\stm32f10x_flash.h
       Source file:   Device\StdPeriph_Driver\src\stm32f10x_flash.c
 
    * Component: Keil::Device:StdPeriph Drivers:Framework:3.6.0
+      Source file:   Device\StdPeriph_Driver\templates\stm32f10x_it.c
+      Include file:  Device\StdPeriph_Driver\inc\misc.h
       Source file:   Device\StdPeriph_Driver\src\misc.c
       Source file:   Device\StdPeriph_Driver\templates\stm32f10x_conf.h
-      Source file:   Device\StdPeriph_Driver\templates\stm32f10x_it.c
       Include file:  Device\StdPeriph_Driver\templates\stm32f10x_it.h
-      Include file:  Device\StdPeriph_Driver\inc\misc.h
 
    * Component: Keil::Device:StdPeriph Drivers:GPIO:3.6.0
-      Include file:  Device\StdPeriph_Driver\inc\stm32f10x_gpio.h
       Source file:   Device\StdPeriph_Driver\src\stm32f10x_gpio.c
+      Include file:  Device\StdPeriph_Driver\inc\stm32f10x_gpio.h
 
    * Component: Keil::Device:StdPeriph Drivers:RCC:3.6.0
       Include file:  Device\StdPeriph_Driver\inc\stm32f10x_rcc.h

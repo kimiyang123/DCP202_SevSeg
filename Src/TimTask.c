@@ -1,7 +1,7 @@
 /*
  * @Date: 2022-05-18 19:57:20
  * @LastEditors: kimiyang
- * @LastEditTime: 2022-05-20 15:31:07
+ * @LastEditTime: 2022-05-21 23:51:57
  * @FilePath: \DCP202_SevSeg\Src\TimTask.c
  * @Description: 定时器和PMW功能初始化
  * 
@@ -39,10 +39,10 @@ timFunList_def timTaskList[4];
 
 
 /**
- * @description: 定时器2周期任务添加方法
- * @param _fun
- * @param period_t
- * @param *parm
+ * @description: 
+ * @param undefined
+ * @param undefined
+ * @param undefined
  * @return {*}
  */
 uint8_t tim2_addTask(tim_Period_Fun _fun, uint16_t period_t, void *parm)

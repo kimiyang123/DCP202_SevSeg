@@ -1,7 +1,7 @@
 /*
  * @Date: 2022-05-18 10:20:15
  * @LastEditors: kimiyang
- * @LastEditTime: 2022-05-19 22:30:23
+ * @LastEditTime: 2022-05-22 19:31:59
  * @FilePath: \DCP202_SevSeg\Src\BSP.c
  * @Description: 
  * 
@@ -68,7 +68,14 @@ void SysTick_Handler(void)
 
 
 /************************************************/
-/*								GPIO                          */
+/*								GPIO     
+*/
+
+/**
+ * @brief : 开发板 板载资源配置，含GPIO systick初始化
+ * @description: 
+ * @return {*}
+ */
 void BSP_Configuration(void)
 {
 	GPIO_InitTypeDef GPIOInit;
@@ -88,10 +95,16 @@ void BSP_Configuration(void)
 	GPIO_Init(GPIOC,&GPIOInit);
 	GPIO_WriteBit(GPIOC,GPIOInit.GPIO_Pin,(BitAction)1);
 
+	SysTick_Config(72000);
 }
 
 
-
+/**
+ * @brief : 蜂鸣器发声
+ * @description: 
+ * @param onTime: (uint16_t)发声时间，单位ms
+ * @return {null}
+ */
 void Beep_On(uint16_t onTime)
 {
 	GPIO_WriteBit(GPIOC,GPIO_Pin_13,1);

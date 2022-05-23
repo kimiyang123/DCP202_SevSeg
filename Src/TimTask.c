@@ -1,14 +1,29 @@
 /*
  * @Date: 2022-05-18 19:57:20
  * @LastEditors: kimiyang
- * @LastEditTime: 2022-05-21 23:51:57
+ * @LastEditTime: 2022-05-22 21:19:29
  * @FilePath: \DCP202_SevSeg\Src\TimTask.c
  * @Description: 定时器和PMW功能初始化
  * 
  */
 #include "TimTask.h"
 
-void TIM2_Init(void)
+
+uint8_t taskReadyCnt = 0;	//定时任务就绪数量
+timFunList_def timTaskList[TIM_TASK_MAX];
+
+
+ uint8_t timTask_avaiable(void)
+ {
+	return TIM_TASK_MAX - taskReadyCnt;
+ }
+
+
+/**
+ * @brief TimTask_Init() 定时器任务调度初始化函数，主要用于初始化定时器
+ * @return {NULL}
+ */
+void TimTask_Init(void)
 {
 	NVIC_InitTypeDef NVIC_InitStruct;
 	TIM_TimeBaseInitTypeDef TIM_TimeBaseStruct;
@@ -34,31 +49,30 @@ void TIM2_Init(void)
 	TIM_Cmd(TIM2, ENABLE);
 }
 
-uint8_t tim2Fun_cnt = 0;
-timFunList_def timTaskList[4];
-
 
 /**
- * @description: 
- * @param undefined
- * @param undefined
- * @param undefined
- * @return {*}
+ * @brief 定时器周期调度 任务添加
+ * @param _fun: 需要调度的任务函数,函数指针
+ * @param period_t:  任务函数的调度周期 100表示每100ms执行一次
+ * @param parm : 任务函数的传递参数，没有则输入 NULL 或 0
+ * @return (uint8_t)taskId: 返回任务ID 
  */
 uint8_t tim2_addTask(tim_Period_Fun _fun, uint16_t period_t, void *parm)
 {
 	uint8_t i = 0;
 	// TODO >>>> 判断有可用列表空间后再运行
-	_fun(parm);
+	_fun(parm);		  // 加入列队前先执行一次
 
 	for (i = 0; i < 4; i++)
 	{
+		// 检测任务ID位置是否已被占用
 		if (timTaskList[i].tFun == 0)
 		{
 			timTaskList[i].tFun = _fun;
 			timTaskList[i].PeriodTick = period_t;
 			timTaskList[i].param = parm;
-			break;
+			taskReadyCnt ++;
+			break; 
 		}
 	}
 
@@ -74,6 +88,7 @@ void tim2_delTask(tim_Period_Fun _fun)
 		{
 			timTaskList[i].tFun = 0;
 			timTaskList[i].PeriodTick = 0;
+			taskReadyCnt --;
 			break;
 		}
 	}

@@ -7,6 +7,8 @@
 ".\objects\timtask.o"
 ".\objects\operatesetarea.o"
 ".\objects\motor_hpwm.o"
+".\objects\motor_locsensor.o"
+".\objects\sensor_encoder.o"
 ".\objects\misc.o"
 ".\objects\stm32f10x_adc.o"
 ".\objects\stm32f10x_exti.o"

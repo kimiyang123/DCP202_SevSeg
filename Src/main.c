@@ -1,6 +1,7 @@
 
 
 #include "stm32f10x.h" // Device header
+#include "stm32f10x_conf.h"
 
 #include "main.h"
 #include "Bsp_sevseg.h"
@@ -9,8 +10,6 @@
 
 #include "TimTask.h"
 #include "Motor_HPWM.h"
-
-int num;
 
 void fundemo(void)
 {
@@ -32,36 +31,36 @@ void LED2_flash()
 unsigned char State = 0, perState = 0xff;
 int main(void)
 {
-	SysTick_Config(72000);
-
 	BSP_Configuration();
-	BSP_SMG_Init();
+	SMG_BSP_Init();
+
 	keyPad_Init();
 	keyIndepend_Init();
 
-	//TIM2_Init();
+	TimTask_Init();
+	Beep_On(200);
 
 	Motor_PortInit();
 
 	int pwmv = 0;
-	TIM1->CCR3 = 1;
-	TIM1->CCR2 = 100;
-	while (1);
+	uint8_t dir=0;
+
+	SMG_ShowInt(123,2,3);
+	while (1)
 	{
-		if(pwmv ++ >= 100)
-		{
-			pwmv = 0;
+		MotorX_Run(dir,50);
+		delay_ticks(2000);
+		MotorY_Run(1,30);
+		dir = !dir;
 
-			// TIM_CCxCmd(TIM1,TIM_Channel_1,TIM_CCx_Disable);
-			// TIM_CCxNCmd(TIM1,TIM_Channel_1,TIM_CCxN_Disable);
+		MotorX_Run(MOTOR_RUN_Dir_Forward,50);
 
-		}
-		TIM1->CCR2 = pwmv;
-		delay_ticks(100);
+		delay_ticks(5000);
 
-		
-
-		/* code */
+		MotorX_Stop();
+		delay_ticks(3000);
+		MotorY_Stop();
+		delay_ticks(6000);
 	}
 	
 
@@ -112,7 +111,6 @@ int main(void)
 	}
 	
 	Beep_On(3000);
-
 
 	while (1)
 	{

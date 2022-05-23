@@ -61,8 +61,12 @@ void SMG_setData(uint8_t disSeg)
 }
 
 
-// 端口初始化函数
-void BSP_SMG_Init(void)
+/**
+ * @brief :数码管初始化方法，开机调用 
+ * @description: 
+ * @return {*}
+ */
+void SMG_BSP_Init(void)
 {
 	uint8_t i=0;
 	GPIO_InitTypeDef GpioInit;
@@ -83,10 +87,11 @@ void BSP_SMG_Init(void)
 }
 
 
-
-
-// 数码管动态刷新方法
-// 需要周期调用。
+/**
+ * @brief : 数码管动态刷新方法，推荐在定时在中断中周期调用
+ * @description: 每调用执行一次，数码管显示一个位。
+ * @return {*}
+ */
 void SMG_Refresh(void)
 {
 	static uint8_t idx;
@@ -103,6 +108,11 @@ void SMG_Refresh(void)
 
 }
 
+/**
+ * @brief : 清除数码管所有显示内容
+ * @description: 
+ * @return {*}
+ */
 void SMG_CleanAll(void){
 	uint8_t i=0;
 	for(i=0;i<SMG_ITEMS;i++)
@@ -111,6 +121,13 @@ void SMG_CleanAll(void){
 	}
 }
 
+/**
+ * @brief : 清除数码管某个显示管
+ * @description: 
+ * @param Spos:	StartPosition起始位置，右侧起
+ * @param len: 清除数码管显示个数
+ * @return {*}
+ */
 void SMG_CleanPos(uint8_t Spos,uint8_t len)
 {
 	uint8_t i=0;
@@ -137,13 +154,13 @@ void SMG_BuffWrite(uint8_t id,uint8_t buffd)
 
 
 // 数码管显示整型数据函数
-/**
- * @description: 数码管显示整数函数
- * @param {uint32_t} showNUM: 需要显示的数据值
- * @param {uint8_t} startPos: 个位数显示在哪个位置
- * @param {uint8_t} showBit: 显示几位有效数字
- * @return {*}
- */
+	/**
+	 * @description: 数码管显示整数函数
+	 * @param showNUM: {uint32_t} 需要显示的数据值
+	 * @param startPos: {uint8_t} 个位数显示在右侧起哪个位置
+	 * @param  showBit: {uint8_t} 显示几位有效数字
+	 * @return {*}
+	 */
 void SMG_ShowInt(uint32_t showNUM, uint8_t startPos, uint8_t showBit)
 {
 	uint8_t bit;
@@ -179,30 +196,26 @@ uint8_t LetterTab_find(char str)
 }
 
 /**
- * @description:	通过字符获取数码管显示段码 
- * @param undefined
+ * @brief : 获取ASCII码字符的数码管8段译码数据
+ * @description: 
+ * @param ch: {char} 需要查询的字符 如：'A'
  * @return {*}
  */
-uint8_t _getSEG_byChar(char str)
+uint8_t _getSEG_byChar(char ch)
 {
-	if(str >= '0' && str <= '9')
+	if(ch >= '0' && ch <= '9')
 	{
-		return Sev_Tab[ str - '0' ];
+		return Sev_Tab[ ch - '0' ];
 	}
 	else
 	{
-		str = toupper(str);	//将字符统一转换为大写
-		return LetterTab_find(str);
+		ch = toupper(ch);	//将字符统一转换为大写
+		return LetterTab_find(ch);
 	}
 	
 }
 
-/**
- * @description: 以字符串形式显示数码管符号
- * @param str   字符串指针
- * @param startPos  左侧开始的起始位置
- * @return {*}
- */
+
 void SMG_print(char *str , uint8_t startPos)
 {
 	uint8_t i=0;

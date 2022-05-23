@@ -1,5 +1,11 @@
 #include "Motor_HPWM.h"
 
+#include "Motor_LocSensor.h"
+
+
+motorInfo_def sMotor_X , sMotor_Y;
+
+
 void TIM1_PWM_Init(void)
 {
     GPIO_InitTypeDef sGPIO_Init;
@@ -22,7 +28,7 @@ void TIM1_PWM_Init(void)
     sTimBase_Init.TIM_ClockDivision = TIM_CKD_DIV1;
     sTimBase_Init.TIM_CounterMode = TIM_CounterMode_Up;
     sTimBase_Init.TIM_Period = 100 - 1;  // ARR
-    sTimBase_Init.TIM_Prescaler = 72 - 1; //时钟分频
+    sTimBase_Init.TIM_Prescaler = 9 - 1; //时钟分频     // PWM = 80KHz
     sTimBase_Init.TIM_RepetitionCounter = 0;
     TIM_TimeBaseInit(TIM1, &sTimBase_Init);
 
@@ -58,6 +64,12 @@ void TIM1_PWM_Init(void)
     TIM_CtrlPWMOutputs(TIM1, ENABLE);
 }
 
+
+/**
+ * @brief :  电机GPIO及涉及到的TIM定时器等初始化
+ * @description: 
+ * @return {void}
+ */
 void Motor_PortInit(void)
 {
     TIM1_PWM_Init();
@@ -68,8 +80,119 @@ void Motor_PortInit(void)
 
     TIM_CCxNCmd(TIM1,TIM_Channel_1,TIM_CCxN_Enable);    // - PE8
     TIM_CCxCmd( TIM1,TIM_Channel_2,TIM_CCx_Enable);     // - PE11
-
-
+    
     // 单独开启或关闭某个定时器通道的指令
     // TIM_CCxCmd(TIM1,TIM_Channel_1,TIM_CCx_Enable);
+
+    // 电机结构体对象初始化
+    MotorX_Reset();
+    MotorY_Reset();
+    // 电机位置传感器初始化
+    locSensor_MorotX_Bind(&sMotor_X);
+    locSensor_MorotY_Bind(&sMotor_Y);
 }
+
+
+/**
+ * @description:  通过电机方向和速度参数，转换为CCR的PWM值
+ * @param dir: 电机方向 0 or 1
+ * @param speed: 电机速度 数值范围[0:50]
+ * @return {uint8_t}
+ */
+uint8_t _getPWMofCCR(uint8_t dir,uint8_t speed)
+{
+    uint8_t _ccr;
+    if(speed > 50) speed = 50;
+    if(dir == 0)
+    {
+        _ccr = 50 - speed;
+    }
+    else
+    {
+        _ccr = 50 + speed;
+    }
+    if(_ccr == 0) _ccr = 1;
+    else if(_ccr >=100) _ccr = 99;
+
+    return _ccr;
+}
+
+/**
+ * @description: X轴电机运行方法
+ * @param MotorRun_dir: 电机方向 0 or 1
+ * @param speed: 电机速度 < 50
+ * @return {void}
+ */
+void MotorX_Run(uint8_t MotorRun_dir,uint8_t speed)
+{
+    sMotor_X.Dir = MotorRun_dir;
+    sMotor_X.speed = speed;
+
+    // X轴电机使用 TIM1-CH2 PWM
+    TIM1->CCR2 = _getPWMofCCR(MotorRun_dir,speed);
+}
+
+void MotorX_Stop(void)
+{
+    sMotor_X.speed = 0;
+    TIM1->CCR2 = _getPWMofCCR(sMotor_X.Dir,sMotor_X.speed);
+}
+
+void MotorX_Reset(void)
+{
+    // sMotor_X.Dir = MOTOR_RUN_Dir_STOP;
+    sMotor_X.location = 0;
+    sMotor_X.speed = 0;
+}
+
+
+/**
+ * @description: Y轴电机运行方法
+ * @param MotorRun_dir: 电机方向 0 or 1
+ * @param speed: 电机速度 < 50
+ * @return {void}
+ */
+void MotorY_Run(uint8_t MotorRun_dir,uint8_t speed)
+{
+    sMotor_Y.Dir = MotorRun_dir;
+    sMotor_Y.speed = speed;
+
+    // Y轴电机使用 TIM1-CH3 PWM
+    TIM1->CCR3 = _getPWMofCCR(MotorRun_dir,speed);
+}
+
+void MotorY_Stop(void)
+{
+    sMotor_Y.speed = 0;
+    TIM1->CCR3 = _getPWMofCCR(sMotor_Y.Dir,sMotor_Y.speed);
+}
+
+void MotorY_Reset(void)
+{
+    // sMotor_Y.Dir = MOTOR_RUN_Dir_STOP;
+    sMotor_Y.location = 0;
+    sMotor_Y.speed = 0;
+}
+
+/**
+ * @brief : 获取电机方向
+ * @description: 
+ * @param {uint8_t} motorID
+ * @return {*}
+ */
+uint8_t get_MotorDir(uint8_t motorID)
+{
+    switch (motorID)
+    {
+    case 0:
+        return sMotor_X.Dir;
+        break;
+    case 1:
+        return sMotor_Y.Dir;
+        break;
+    default:
+        return 0xff;
+        break;
+    }
+}
+

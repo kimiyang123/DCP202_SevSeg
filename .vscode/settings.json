@@ -8,7 +8,10 @@
         "appsmg_ui.h": "c",
         "string.h": "c",
         "bsp_sevseg.h": "c",
-        "motor_hpwm.h": "c"
+        "motor_hpwm.h": "c",
+        "timtask.h": "c",
+        "sensorsapi.h": "c",
+        "sensors.h": "c"
     },
     "files.exclude": {
         "**/.git": true,

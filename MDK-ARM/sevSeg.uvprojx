@@ -337,7 +337,7 @@
               <MiscControls></MiscControls>
               <Define>STM32F10X_HD,USE_STDPERIPH_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath>..\Src\Motors</IncludePath>
+              <IncludePath>..\Src\Motors;..\Src\Motors\LocSensor;..\Src</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -387,11 +387,6 @@
               <FilePath>..\Src\main.c</FilePath>
             </File>
             <File>
-              <FileName>main.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\Src\main.h</FilePath>
-            </File>
-            <File>
               <FileName>Bsp_sevseg.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Src\Bsp_sevseg.c</FilePath>
@@ -430,6 +425,16 @@
               <FileName>Motor_HPWM.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Src\Motors\Motor_HPWM.c</FilePath>
+            </File>
+            <File>
+              <FileName>Motor_LocSensor.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\Motors\Motor_LocSensor.c</FilePath>
+            </File>
+            <File>
+              <FileName>Sensor_Encoder.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\Motors\LocSensor\Sensor_Encoder.c</FilePath>
             </File>
           </Files>
         </Group>

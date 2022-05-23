@@ -27,21 +27,21 @@ Project File Date:  05/22/2022
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 7 (build 960)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'Target 1'
-compiling main.c...
-..\Src\main.c(51): warning:  #111-D: statement is unreachable
-  		if(pwmv ++ >= 100)
-..\Src\main.c(114): warning:  #111-D: statement is unreachable
-  	Beep_On(3000);
-..\Src\main.c(68): warning:  #177-D: variable "flag"  was declared but never referenced
-  	uint8_t flag = 0;
-..\Src\main.c(74): warning:  #177-D: variable "numStr"  was declared but never referenced
-  	char *numStr;
-..\Src\main.c(76): warning:  #177-D: variable "perSetflas"  was declared but never referenced
-  	uint8_t setflas = 0,perSetflas;
-..\Src\main.c: 5 warnings, 0 errors
+compiling Motor_LocSensor.c...
+compiling Sensor_Encoder.c...
+compiling Motor_HPWM.c...
+..\Src\Motors\Motor_HPWM.c(14): warning:  #177-D: variable "TIM_BDTRInitStructure"  was declared but never referenced
+      TIM_BDTRInitTypeDef TIM_BDTRInitStructure;
+..\Src\Motors\Motor_HPWM.c(189): warning:  #111-D: statement is unreachable
+          break;
+..\Src\Motors\Motor_HPWM.c(192): warning:  #111-D: statement is unreachable
+          break;
+..\Src\Motors\Motor_HPWM.c(195): warning:  #111-D: statement is unreachable
+          break;
+..\Src\Motors\Motor_HPWM.c: 4 warnings, 0 errors
 linking...
-Program Size: Code=2756 RO-data=336 RW-data=84 ZI-data=1684  
-".\Objects\sevSeg.axf" - 0 Error(s), 5 Warning(s).
+Program Size: Code=4780 RO-data=336 RW-data=100 ZI-data=1684  
+".\Objects\sevSeg.axf" - 0 Error(s), 4 Warning(s).
 
 <h2>Software Packages used:</h2>
 

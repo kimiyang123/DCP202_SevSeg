@@ -1,18 +1,18 @@
 /*
  * @Date: 2022-05-21 23:00:04
  * @LastEditors: kimiyang
- * @LastEditTime: 2022-05-21 23:10:44
+ * @LastEditTime: 2022-05-22 23:42:50
  * @FilePath: \DCP202_SevSeg\Src\Motors\Motor_HPWM.h
- * @Description:  æœ¬æ–‡æ–‡ä»¶ä¸º DCP-218  Hæ¡¥é©±åŠ¨ç¨‹åº
- *                DRV8412  åŒè·¯æœ‰åˆ·DCç”µæœºé©±åŠ¨
- *          ä½¿ç”¨STM32 çš„TIM1 - PWM é€šé“ä½œä¸ºè¾“å‡º
- * 
- *     DRV8412      GPIO
- *      PWM-A       PE12-(CH3N)       
+ * @Description: ±¾´úÂëÍ¨¹ıSTM32µÄTIM1¶¨Ê±Æ÷µÄPWMÊä³ö£¬
+ *               Çı¶¯2Â·Ö±Á÷ÓĞË¢µç»ú
+ *  *
+ *      DRV8412      GPIO
+ *      PWM-A       PE12-(CH3N)
  *      PWM-B       PE9 -(CH1)
  *      PWM-C       PE8 -(CH1N)
  *      PWM-D       PE11-(CH2)
  */
+
 #ifndef __MOTOR_HPWM_H__
 #define __MOTOR_HPWM_H__
 
@@ -20,8 +20,30 @@
 #include <stm32f10x_conf.h>
 
 
- void Motor_PortInit(void);
+enum
+{
+    MOTOR_RUN_Dir_Forward = 0,
+    MOTOR_RUN_Dir_Backward,
+    MOTOR_RUN_Dir_STOP
+};
 
 
+// µç»ú¶ÔÏó Êı¾İĞÅÏ¢½á¹¹Ìå
+typedef struct
+{
+    uint8_t Dir;      //µç»ú·½Ïò
+    uint8_t speed;    //µç»úµ±Ç°ËÙ¶È
+    uint16_t location; // µç»úÎ»ÖÃ ÎŞµ¥Î»ÊıÖµ16bit
+} motorInfo_def;
+
+void Motor_PortInit(void);
+
+void MotorX_Run(uint8_t MotorRun_dir, uint8_t speed);
+void MotorX_Stop(void);
+void MotorX_Reset(void);
+
+void MotorY_Run(uint8_t MotorRun_dir, uint8_t speed);
+void MotorY_Stop(void);
+void MotorY_Reset(void);
 
 #endif

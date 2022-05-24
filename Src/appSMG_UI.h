@@ -1,9 +1,9 @@
 /*
  * @Date: 2022-05-20 09:21:18
  * @LastEditors: kimiyang
- * @LastEditTime: 2022-05-21 14:01:46
+ * @LastEditTime: 2022-05-24 22:41:14
  * @FilePath: \DCP202_SevSeg\Src\appSMG_UI.h
- * @Description: ÊıÂë¹ÜÓÃ»§²Ù×÷ÈË»ú½Ó¿Ú½çÃæ³ÌĞò
+ * @Description: æ•°ç ç®¡ç”¨æˆ·æ“ä½œäººæœºæ¥å£ç•Œé¢ç¨‹åº
  * 
  */
 #ifndef __APP_UI_SMG_H__
@@ -26,13 +26,13 @@ char* ui_WaitEnter(uint8_t entPos, uint8_t maxEnter, uint8_t keyEvent,  uint8_t 
 // char* ui_WaitEnter(uint8_t entPos, uint8_t maxEnter, uint8_t EnterType);
 
 /**
- * @description: »ñÈ¡UI°´¼üÊı¾İ»º´æÇø°´¼üÊıÁ¿
+ * @description: è·å–UIæŒ‰é”®æ•°æ®ç¼“å­˜åŒºæŒ‰é”®æ•°é‡
  * @return {*}
  */
 uint8_t get_entBuff_length(void);
 
 /**
- * @description: Çå¿Õ°´¼ü»º³åÇøÊı¾İ
+ * @description: æ¸…ç©ºæŒ‰é”®ç¼“å†²åŒºæ•°æ®
  * @return {*}
  */
 void enterBuff_clean(void);

@@ -1,15 +1,15 @@
 /*
  * @Date: 2022-05-18 19:57:20
  * @LastEditors: kimiyang
- * @LastEditTime: 2022-05-22 21:19:29
+ * @LastEditTime: 2022-05-24 22:45:06
  * @FilePath: \DCP202_SevSeg\Src\TimTask.c
- * @Description: ¶¨Ê±Æ÷ºÍPMW¹¦ÄÜ³õÊ¼»¯
+ * @Description: å®šæ—¶å™¨å’ŒPMWåŠŸèƒ½åˆå§‹åŒ–
  * 
  */
 #include "TimTask.h"
 
 
-uint8_t taskReadyCnt = 0;	//¶¨Ê±ÈÎÎñ¾ÍÐ÷ÊýÁ¿
+uint8_t taskReadyCnt = 0;	//å®šæ—¶ä»»åŠ¡å°±ç»ªæ•°é‡
 timFunList_def timTaskList[TIM_TASK_MAX];
 
 
@@ -20,7 +20,7 @@ timFunList_def timTaskList[TIM_TASK_MAX];
 
 
 /**
- * @brief TimTask_Init() ¶¨Ê±Æ÷ÈÎÎñµ÷¶È³õÊ¼»¯º¯Êý£¬Ö÷ÒªÓÃÓÚ³õÊ¼»¯¶¨Ê±Æ÷
+ * @brief TimTask_Init() å®šæ—¶å™¨ä»»åŠ¡è°ƒåº¦åˆå§‹åŒ–å‡½æ•°ï¼Œä¸»è¦ç”¨äºŽåˆå§‹åŒ–å®šæ—¶å™¨
  * @return {NULL}
  */
 void TimTask_Init(void)
@@ -28,7 +28,7 @@ void TimTask_Init(void)
 	NVIC_InitTypeDef NVIC_InitStruct;
 	TIM_TimeBaseInitTypeDef TIM_TimeBaseStruct;
 
-	NVIC_PriorityGroupConfig(NVIC_PriorityGroup_1);
+	// NVIC_PriorityGroupConfig(NVIC_PriorityGroup_1);
 	RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM2, ENABLE);
 
 	TIM_TimeBaseStruct.TIM_Prescaler = 72 - 1;
@@ -37,35 +37,35 @@ void TimTask_Init(void)
 	TIM_TimeBaseStruct.TIM_CounterMode = TIM_CounterMode_Up;
 	TIM_TimeBaseInit(TIM2, &TIM_TimeBaseStruct);
 
-	// ÉèÖÃÖÐ¶ÏÓÅÏÈ¼¶
+	// è®¾ç½®ä¸­æ–­ä¼˜å…ˆçº§
 	NVIC_InitStruct.NVIC_IRQChannel = TIM2_IRQn;
 	NVIC_InitStruct.NVIC_IRQChannelPreemptionPriority = 1;
-	NVIC_InitStruct.NVIC_IRQChannelSubPriority = 2;
+	NVIC_InitStruct.NVIC_IRQChannelSubPriority = 1;
 	NVIC_InitStruct.NVIC_IRQChannelCmd = ENABLE;
 	NVIC_Init(&NVIC_InitStruct);
 
-	// Ê¹ÄÜÖÐ¶Ï
+	// ä½¿èƒ½ä¸­æ–­
 	TIM_ITConfig(TIM2, TIM_IT_Update, ENABLE);
 	TIM_Cmd(TIM2, ENABLE);
 }
 
 
 /**
- * @brief ¶¨Ê±Æ÷ÖÜÆÚµ÷¶È ÈÎÎñÌí¼Ó
- * @param _fun: ÐèÒªµ÷¶ÈµÄÈÎÎñº¯Êý,º¯ÊýÖ¸Õë
- * @param period_t:  ÈÎÎñº¯ÊýµÄµ÷¶ÈÖÜÆÚ 100±íÊ¾Ã¿100msÖ´ÐÐÒ»´Î
- * @param parm : ÈÎÎñº¯ÊýµÄ´«µÝ²ÎÊý£¬Ã»ÓÐÔòÊäÈë NULL »ò 0
- * @return (uint8_t)taskId: ·µ»ØÈÎÎñID 
+ * @brief å®šæ—¶å™¨å‘¨æœŸè°ƒåº¦ ä»»åŠ¡æ·»åŠ 
+ * @param _fun: éœ€è¦è°ƒåº¦çš„ä»»åŠ¡å‡½æ•°,å‡½æ•°æŒ‡é’ˆ
+ * @param period_t:  ä»»åŠ¡å‡½æ•°çš„è°ƒåº¦å‘¨æœŸ 100è¡¨ç¤ºæ¯100msæ‰§è¡Œä¸€æ¬¡
+ * @param parm : ä»»åŠ¡å‡½æ•°çš„ä¼ é€’å‚æ•°ï¼Œæ²¡æœ‰åˆ™è¾“å…¥ NULL æˆ– 0
+ * @return (uint8_t)taskId: è¿”å›žä»»åŠ¡ID 
  */
 uint8_t tim2_addTask(tim_Period_Fun _fun, uint16_t period_t, void *parm)
 {
 	uint8_t i = 0;
-	// TODO >>>> ÅÐ¶ÏÓÐ¿ÉÓÃÁÐ±í¿Õ¼äºóÔÙÔËÐÐ
-	_fun(parm);		  // ¼ÓÈëÁÐ¶ÓÇ°ÏÈÖ´ÐÐÒ»´Î
+	// TODO >>>> åˆ¤æ–­æœ‰å¯ç”¨åˆ—è¡¨ç©ºé—´åŽå†è¿è¡Œ
+	_fun(parm);		  // åŠ å…¥åˆ—é˜Ÿå‰å…ˆæ‰§è¡Œä¸€æ¬¡
 
 	for (i = 0; i < 4; i++)
 	{
-		// ¼ì²âÈÎÎñIDÎ»ÖÃÊÇ·ñÒÑ±»Õ¼ÓÃ
+		// æ£€æµ‹ä»»åŠ¡IDä½ç½®æ˜¯å¦å·²è¢«å ç”¨
 		if (timTaskList[i].tFun == 0)
 		{
 			timTaskList[i].tFun = _fun;
@@ -96,7 +96,7 @@ void tim2_delTask(tim_Period_Fun _fun)
 
 /*******************************************************************************
  * Function Name  : TIM2_IRQHandler
- * Description    : TIM2ÖÐ¶Ïº¯Êý
+ * Description    : TIM2ä¸­æ–­å‡½æ•°
  * Input          : None
  * Output         : None
  * Return         : None
@@ -105,7 +105,7 @@ uint32_t tim2Cnt = 0;
 void TIM2_IRQHandler(void)
 {
 	uint8_t i = 0;
-	if (TIM_GetITStatus(TIM2, TIM_IT_Update) != RESET) // ¼ì²âÖÐ¶ÏÊÇ·ñ·¢Éú;
+	if (TIM_GetITStatus(TIM2, TIM_IT_Update) != RESET) // æ£€æµ‹ä¸­æ–­æ˜¯å¦å‘ç”Ÿ;
 	{
 		tim2Cnt++; // 1ms
 
@@ -121,5 +121,5 @@ void TIM2_IRQHandler(void)
 		}
 	}
 
-	TIM_ClearITPendingBit(TIM2, TIM_IT_Update); // Çå³ýÖÐ¶Ï´ý´¦ÀíÎ»;
+	TIM_ClearITPendingBit(TIM2, TIM_IT_Update); // æ¸…é™¤ä¸­æ–­å¾…å¤„ç†ä½;
 }

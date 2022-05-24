@@ -25,6 +25,8 @@
 
 	#define lowByte(w) 	((uint8_t) ((w) & 0xff))
 	#define highByte(w) ((uint8_t) ((w) >> 8))
+
+	#define constrain(amt,low,high) ((amt)<(low)?(low):((amt)>(high)?(high):(amt)))
 	
 
 #endif

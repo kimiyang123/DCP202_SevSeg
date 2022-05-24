@@ -1,11 +1,9 @@
 #include "Motor_HPWM.h"
-
 #include "Motor_LocSensor.h"
-
 
 motorInfo_def sMotor_X , sMotor_Y;
 
-
+// 双路电机驱动需要用到TIM1 的4路PWM信号
 void TIM1_PWM_Init(void)
 {
     GPIO_InitTypeDef sGPIO_Init;
@@ -28,7 +26,7 @@ void TIM1_PWM_Init(void)
     sTimBase_Init.TIM_ClockDivision = TIM_CKD_DIV1;
     sTimBase_Init.TIM_CounterMode = TIM_CounterMode_Up;
     sTimBase_Init.TIM_Period = 100 - 1;  // ARR
-    sTimBase_Init.TIM_Prescaler = 9 - 1; //时钟分频     // PWM = 80KHz
+    sTimBase_Init.TIM_Prescaler = 72 - 1; //时钟分频     // PWM = 80KHz
     sTimBase_Init.TIM_RepetitionCounter = 0;
     TIM_TimeBaseInit(TIM1, &sTimBase_Init);
 
@@ -73,7 +71,6 @@ void TIM1_PWM_Init(void)
 void Motor_PortInit(void)
 {
     TIM1_PWM_Init();
-
     // 开启PWM 通道
     TIM_CCxCmd( TIM1,TIM_Channel_1,TIM_CCx_Enable);     // - PE9
     TIM_CCxNCmd(TIM1,TIM_Channel_3,TIM_CCxN_Enable);    // - PE12
@@ -128,20 +125,21 @@ void MotorX_Run(uint8_t MotorRun_dir,uint8_t speed)
     sMotor_X.Dir = MotorRun_dir;
     sMotor_X.speed = speed;
 
-    // X轴电机使用 TIM1-CH2 PWM
-    TIM1->CCR2 = _getPWMofCCR(MotorRun_dir,speed);
+    // X轴电机 PWMA and PWMB 使用 TIM1-CH3N  +  CH1
+    TIM1->CCR3 = _getPWMofCCR(MotorRun_dir,speed);
 }
 
 void MotorX_Stop(void)
 {
     sMotor_X.speed = 0;
-    TIM1->CCR2 = _getPWMofCCR(sMotor_X.Dir,sMotor_X.speed);
+    //sMotor_X.Dir = MOTOR_RUN_Dir_STOP;
+    TIM1->CCR3 = _getPWMofCCR(sMotor_X.Dir,sMotor_X.speed);
 }
 
 void MotorX_Reset(void)
 {
-    // sMotor_X.Dir = MOTOR_RUN_Dir_STOP;
-    sMotor_X.location = 0;
+    sMotor_X.Dir = MOTOR_RUN_Dir_STOP;
+    sMotor_X.locRAW = 0;
     sMotor_X.speed = 0;
 }
 
@@ -157,20 +155,24 @@ void MotorY_Run(uint8_t MotorRun_dir,uint8_t speed)
     sMotor_Y.Dir = MotorRun_dir;
     sMotor_Y.speed = speed;
 
-    // Y轴电机使用 TIM1-CH3 PWM
-    TIM1->CCR3 = _getPWMofCCR(MotorRun_dir,speed);
+    // Y轴电机 PWMC and PWMD 使用 TIM1-CH2 + CH1N
+    TIM1->CCR2 = _getPWMofCCR(MotorRun_dir,speed);
 }
 
 void MotorY_Stop(void)
 {
+    //方向刹车
+    // TIM1->CCR2 = _getPWMofCCR(!sMotor_Y.Dir,sMotor_Y.speed);
+    
     sMotor_Y.speed = 0;
-    TIM1->CCR3 = _getPWMofCCR(sMotor_Y.Dir,sMotor_Y.speed);
+    sMotor_Y.Dir = MOTOR_RUN_Dir_STOP;
+    TIM1->CCR2 = _getPWMofCCR(sMotor_Y.Dir,sMotor_Y.speed);
 }
 
 void MotorY_Reset(void)
 {
-    // sMotor_Y.Dir = MOTOR_RUN_Dir_STOP;
-    sMotor_Y.location = 0;
+    sMotor_Y.Dir = MOTOR_RUN_Dir_STOP;
+    sMotor_Y.locRAW = 0;
     sMotor_Y.speed = 0;
 }
 
@@ -194,5 +196,120 @@ uint8_t get_MotorDir(uint8_t motorID)
         return 0xff;
         break;
     }
+
 }
+
+/******************电机绝对定位移动 控制函数**************************************/
+
+/**
+ * @brief : X轴电机绝对位置移动
+ * @description: 
+ * @param disMM :{int16_t} 目标位置mm为单位
+ * @return {uint8_t} 返回电机当前状态，
+ *  MOTOR_RUN_Dir_STOP  : 电机已停机，目标位置已到
+ *  MOTOR_RUN_Dir_Backward : 电机仍在后退
+ *  MOTOR_RUN_Dir_Forward  :
+ */
+uint8_t motorX_moveTo_disMM(int16_t disMM)
+{   
+    static uint8_t mState = 0;
+
+    if(disMM != sMotor_X.locTargetMM)
+    {
+        sMotor_X.locTargetMM = disMM;
+        mState = 0;
+        MotorX_Run(MOTOR_RUN_Dir_STOP,0);
+    }
+    
+    switch (mState)
+    {
+    case 0: //判断电机行进方向
+        if(disMM == sMotor_X.locMM)
+        { // 已经到达位置
+          return MOTOR_RUN_Dir_STOP;
+        }
+        // 目标距离 > 电机当前距离
+        if(sMotor_X.locTargetMM > sMotor_X.locMM)
+        {
+            MotorX_Run(MOTOR_RUN_Dir_Forward,DEFAULT_SPEED);
+            mState = 1;     //进入目标距离检测状态
+        }else if(sMotor_X.locTargetMM < sMotor_X.locMM)
+        {
+            MotorX_Run(MOTOR_RUN_Dir_Backward,DEFAULT_SPEED);
+            mState = 1;
+        }
+        break;
+    case 1:
+        if(sMotor_X.Dir == MOTOR_RUN_Dir_Forward && sMotor_X.locMM == sMotor_X.locTargetMM ||\
+            sMotor_X.Dir == MOTOR_RUN_Dir_Backward && sMotor_X.locMM < sMotor_X.locTargetMM)
+        {//到达目标位置
+            MotorX_Stop();
+            mState = 0;
+            return sMotor_X.Dir;
+        }
+
+    break;
+    default:
+        break;
+    }
+    return sMotor_X.Dir;
+}
+
+/**
+ * @brief : Y轴电机绝对位置移动
+ * @description: 
+ * @param disMM :{int16_t} 目标位置mm为单位
+ * @return {uint8_t} 返回电机当前状态，
+ *  MOTOR_RUN_Dir_STOP  : 电机已停机，目标位置已到
+ *  MOTOR_RUN_Dir_Backward : 电机仍在后退
+ *  MOTOR_RUN_Dir_Forward  :
+ */
+uint8_t motorY_moveTo_disMM(int16_t disMM)
+{   
+    static uint8_t mState = 0;
+
+    if(disMM != sMotor_Y.locTargetMM)
+    {
+        sMotor_Y.locTargetMM = disMM;
+        mState = 0;
+        MotorY_Run(MOTOR_RUN_Dir_STOP,0);
+    }
+    
+    switch (mState)
+    {
+    case 0: //判断电机行进方向
+        if(disMM == sMotor_Y.locMM)
+        { // 已经到达位置
+          return MOTOR_RUN_Dir_STOP;
+        }
+        // 目标距离 > 电机当前距离
+        if(sMotor_Y.locTargetMM > sMotor_Y.locMM)
+        {
+            MotorY_Run(MOTOR_RUN_Dir_Forward,DEFAULT_SPEED);
+            mState = 1;     //进入目标距离检测状态
+        }else if(sMotor_Y.locTargetMM < sMotor_Y.locMM)
+        {
+            MotorY_Run(MOTOR_RUN_Dir_Backward,DEFAULT_SPEED);
+            mState = 1;
+        }
+        break;
+    case 1:
+        if(sMotor_Y.Dir == MOTOR_RUN_Dir_Forward && sMotor_Y.locMM == sMotor_Y.locTargetMM ||\
+            sMotor_Y.Dir == MOTOR_RUN_Dir_Backward && sMotor_Y.locMM < sMotor_Y.locTargetMM)
+        {//到达目标位置
+            MotorY_Stop();
+            mState = 0;
+            return sMotor_Y.Dir;
+        }
+
+    break;
+    default:
+        break;
+    }
+    return sMotor_Y.Dir;
+}
+
+// 2022-05-24 
+// todo.. 尝试修改在 传感器检测中断，定时器中判断目标距离是否到达。
+// 
 

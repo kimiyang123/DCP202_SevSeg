@@ -1,10 +1,10 @@
 /*
  * @Date: 2022-05-21 23:00:04
  * @LastEditors: kimiyang
- * @LastEditTime: 2022-05-22 23:42:50
+ * @LastEditTime: 2022-05-24 22:57:39
  * @FilePath: \DCP202_SevSeg\Src\Motors\Motor_HPWM.h
- * @Description: ±¾´úÂëÍ¨¹ıSTM32µÄTIM1¶¨Ê±Æ÷µÄPWMÊä³ö£¬
- *               Çı¶¯2Â·Ö±Á÷ÓĞË¢µç»ú
+ * @Description: æœ¬ä»£ç é€šè¿‡STM32çš„TIM1å®šæ—¶å™¨çš„PWMè¾“å‡ºï¼Œ
+ *               é©±åŠ¨2è·¯ç›´æµæœ‰åˆ·ç”µæœº
  *  *
  *      DRV8412      GPIO
  *      PWM-A       PE12-(CH3N)
@@ -19,7 +19,9 @@
 #include <stm32f10x.h>
 #include <stm32f10x_conf.h>
 
+#define DEFAULT_SPEED   35
 
+// ç”µæœºæ–¹å‘æ§åˆ¶ç±»å‹
 enum
 {
     MOTOR_RUN_Dir_Forward = 0,
@@ -28,13 +30,18 @@ enum
 };
 
 
-// µç»ú¶ÔÏó Êı¾İĞÅÏ¢½á¹¹Ìå
+// ç”µæœºå¯¹è±¡ æ•°æ®ä¿¡æ¯ç»“æ„ä½“
 typedef struct
 {
-    uint8_t Dir;      //µç»ú·½Ïò
-    uint8_t speed;    //µç»úµ±Ç°ËÙ¶È
-    uint16_t location; // µç»úÎ»ÖÃ ÎŞµ¥Î»ÊıÖµ16bit
+    uint8_t Dir;      //ç”µæœºæ–¹å‘
+    uint8_t speed;    //ç”µæœºå½“å‰é€Ÿåº¦
+    int32_t locRAW; // ç”µæœºä½ç½® æ— å•ä½æ•°å€¼16bit(æœ‰ç¬¦å·æ•°)
+    int16_t locMM;      // ç”µæœºè·ç¦»åæ ‡å€¼ï¼Œå•ä½mm(æœ‰ç¬¦å·ï¼Œå¯è¡¨ç¤ºè´Ÿæ•°)
+    int16_t locTargetMM;    // ç”µæœºæ»‘å°ç›®æ ‡ä½ç½®
 } motorInfo_def;
+
+
+extern motorInfo_def sMotor_X , sMotor_Y;
 
 void Motor_PortInit(void);
 
@@ -45,5 +52,25 @@ void MotorX_Reset(void);
 void MotorY_Run(uint8_t MotorRun_dir, uint8_t speed);
 void MotorY_Stop(void);
 void MotorY_Reset(void);
+
+
+
+/**
+ * @brief : Xè½´ç”µæœºç§»åŠ¨åˆ°å…·ä½“çš„ ä¼ æ„Ÿå™¨ RAWå€¼ä½ç½®,ç²¾åº¦æ¯”ä»¥æ¯«ç±³ä¸ºå•ä½ç§»åŠ¨æ›´é«˜
+ * @description: 
+ * @param  senRaw :{int32_t}ä¼ æ„Ÿå™¨è„‰å†²æ•°å€¼
+ * @return {*}
+ */
+uint8_t motorX_moveTo_senRAW(int32_t senRaw);
+uint8_t motorY_moveTo_senRAW(int32_t senRaw);
+
+
+
+
+
+
+uint8_t motorX_moveTo_disMM(int16_t disMM);
+
+uint8_t motorY_moveTo_disMM(int16_t disMM);
 
 #endif

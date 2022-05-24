@@ -1,24 +1,16 @@
-/*
- * @Date: 2022-05-18 10:20:15
- * @LastEditors: kimiyang
- * @LastEditTime: 2022-05-22 19:31:59
- * @FilePath: \DCP202_SevSeg\Src\BSP.c
- * @Description: 
- * 
- */
 
 #include "BSP.h"
 
-// Ê±ÖÓ½ÚÅÄ
+// æ—¶é’ŸèŠ‚æ‹
 __IO uint32_t _sysTicks_inc = 0;	
 
 /****************************************************************************
-* Ãû    ³Æ£ºvoid sysTick_increase(void)
-* ¹¦    ÄÜ£ºÊ±ÖÓ½ÚÅÄÔöÁ¿
-* Èë¿Ú²ÎÊı£ºÎŞ
-* ³ö¿Ú²ÎÊı£ºÎŞ
-* Ëµ    Ã÷£º´Ë·½·¨ÓÉ systick¶¨Ê±Æ÷ÖĞ¶ÏÖÜÆÚµ÷ÓÃ
-* µ÷ÓÃ·½·¨£ºÎŞ 
+* å    ç§°ï¼švoid sysTick_increase(void)
+* åŠŸ    èƒ½ï¼šæ—¶é’ŸèŠ‚æ‹å¢é‡
+* å…¥å£å‚æ•°ï¼šæ— 
+* å‡ºå£å‚æ•°ï¼šæ— 
+* è¯´    æ˜ï¼šæ­¤æ–¹æ³•ç”± systickå®šæ—¶å™¨ä¸­æ–­å‘¨æœŸè°ƒç”¨
+* è°ƒç”¨æ–¹æ³•ï¼šæ—  
 ****************************************************************************/  
 void sysTick_increase(void)
 {
@@ -26,19 +18,19 @@ void sysTick_increase(void)
 }
 
 
-/*»ñÈ¡ÏµÍ³Ê±ÖÓ½ÚÅÄÊıÁ¿*/
+/*è·å–ç³»ç»Ÿæ—¶é’ŸèŠ‚æ‹æ•°é‡*/
 uint32_t getSysTicks(void)
 {
 	return _sysTicks_inc;	
 }
 
 /****************************************************************************
-* Ãû    ³Æ£ºvoid delay_ticks
-* ¹¦    ÄÜ£º»ùÓÚsystick¶¨Ê±Æ÷µÄÑÓÊ±º¯Êı
-* Èë¿Ú²ÎÊı£ºdtime ÑÓÊ±Ê±¼ä£¬µ¥Î»mS
-* ³ö¿Ú²ÎÊı£ºÎŞ
-* Ëµ    Ã÷£º´Ë·½·¨ÓÉ systick¶¨Ê±Æ÷ÖĞ¶ÏÖÜÆÚµ÷ÓÃ
-* µ÷ÓÃ·½·¨£ºÎŞ 
+* å    ç§°ï¼švoid delay_ticks
+* åŠŸ    èƒ½ï¼šåŸºäºsystickå®šæ—¶å™¨çš„å»¶æ—¶å‡½æ•°
+* å…¥å£å‚æ•°ï¼šdtime å»¶æ—¶æ—¶é—´ï¼Œå•ä½mS
+* å‡ºå£å‚æ•°ï¼šæ— 
+* è¯´    æ˜ï¼šæ­¤æ–¹æ³•ç”± systickå®šæ—¶å™¨ä¸­æ–­å‘¨æœŸè°ƒç”¨
+* è°ƒç”¨æ–¹æ³•ï¼šæ—  
 ****************************************************************************/  
 
 void delay_ticks(uint16_t dtime)
@@ -72,7 +64,7 @@ void SysTick_Handler(void)
 */
 
 /**
- * @brief : ¿ª·¢°å °åÔØ×ÊÔ´ÅäÖÃ£¬º¬GPIO systick³õÊ¼»¯
+ * @brief : å¼€å‘æ¿ æ¿è½½èµ„æºé…ç½®ï¼Œå«GPIO systickåˆå§‹åŒ–
  * @description: 
  * @return {*}
  */
@@ -94,15 +86,24 @@ void BSP_Configuration(void)
 	GPIOInit.GPIO_Speed 	= GPIO_Speed_50MHz;
 	GPIO_Init(GPIOC,&GPIOInit);
 	GPIO_WriteBit(GPIOC,GPIOInit.GPIO_Pin,(BitAction)1);
+	
 
-	SysTick_Config(72000);
+	// NVIC_PriorityGroupConfig(NVIC_PriorityGroup_1);
+	NVIC_SetPriorityGrouping(NVIC_PriorityGroup_2);
+
+	SysTick_Config(SystemCoreClock / 1000);
+	// SysTick_Config(72000);
+	NVIC_SetPriority(SysTick_IRQn,  
+				NVIC_EncodePriority(NVIC_GetPriorityGrouping(),1,0 ));
+
+	
 }
 
 
 /**
- * @brief : ·äÃùÆ÷·¢Éù
+ * @brief : èœ‚é¸£å™¨å‘å£°
  * @description: 
- * @param onTime: (uint16_t)·¢ÉùÊ±¼ä£¬µ¥Î»ms
+ * @param onTime: (uint16_t)å‘å£°æ—¶é—´ï¼Œå•ä½ms
  * @return {null}
  */
 void Beep_On(uint16_t onTime)

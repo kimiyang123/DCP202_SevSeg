@@ -11,7 +11,8 @@
         "motor_hpwm.h": "c",
         "timtask.h": "c",
         "sensorsapi.h": "c",
-        "sensors.h": "c"
+        "sensors.h": "c",
+        "motor_locsensor.h": "c"
     },
     "files.exclude": {
         "**/.git": true,

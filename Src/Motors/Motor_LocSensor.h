@@ -1,14 +1,14 @@
 /*
  * @Date: 2022-05-22 14:29:03
  * @LastEditors: kimiyang
- * @LastEditTime: 2022-05-22 23:48:59
+ * @LastEditTime: 2022-05-24 22:40:07
  * @FilePath: \DCP202_SevSeg\Src\Motors\Motor_LocSensor.h
  * @Description: motor Location sensor
- *        µç»úÎ»ÖÃ»ñÈ¡º¯Êı·â×°
- *     - µç»ú´«¸ĞÆ÷ÀàĞÍ: 1.±àÂëÆ÷ 
- *                      2.µçÈİÊ½´«¸ĞÆ÷ 
- *                      3.MEMS´«¸ĞÆ÷ 
- *                      4.²½½øµç»úÊı
+ *        ç”µæœºä½ç½®è·å–å‡½æ•°å°è£…
+ *     - ç”µæœºä¼ æ„Ÿå™¨ç±»å‹: 1.ç¼–ç å™¨ 
+ *                      2.ç”µå®¹å¼ä¼ æ„Ÿå™¨ 
+ *                      3.MEMSä¼ æ„Ÿå™¨ 
+ *                      4.æ­¥è¿›ç”µæœºæ•°
  */
 #ifndef __MOTOR_LOCATION_SENSOR_H_
 #define __MOTOR_LOCATION_SENSOR_H_
@@ -17,20 +17,13 @@
 		
     #include "Motor_HPWM.h"
     
-    #include "Sensor_Encoder.h"     // ±àÂëÆ÷´«¸ĞÆ÷
+    #include "Sensor_Encoder.h"     // ç¼–ç å™¨ä¼ æ„Ÿå™¨
     
     #define NULL 0
 
     #define MOTOR_POSLOC_MAX        0xFFFF
 
     
-    /**
-     * @brief : °ó¶¨XÖá´«¸ĞÆ÷¶ÔÓ¦µÄµç»ú
-     * @description: 
-     * @param  pMotx: {motorInfo_def*}X Öáµç»ú¶ÔÏó
-     * @return {*}
-     */
-//		 
     void locSensor_MorotX_Bind(motorInfo_def* pMotx);
 		
     void locSensor_MorotY_Bind(motorInfo_def* pMoty);

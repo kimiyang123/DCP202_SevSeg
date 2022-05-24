@@ -11,24 +11,8 @@
 #include "TimTask.h"
 #include "Motor_HPWM.h"
 
-void fundemo(void)
-{
-	static uint16_t i = 0;
-	SMG_ShowInt(i, 0, 4);
-	i++;
-}
-
-void LED1_flash()
-{
-	LED1_Toggle();
-}
-
-void LED2_flash()
-{
-	LED2_Toggle();
-}
-
 unsigned char State = 0, perState = 0xff;
+
 int main(void)
 {
 	BSP_Configuration();
@@ -38,33 +22,96 @@ int main(void)
 	keyIndepend_Init();
 
 	TimTask_Init();
-	Beep_On(200);
+	Beep_On(20);
 
 	Motor_PortInit();
 
-	int pwmv = 0;
-	uint8_t dir=0;
-
+	uint8_t dir=0,xdir = 0;
 	SMG_ShowInt(123,2,3);
+
+	int16_t dis = 10;
+	uint8_t xStopFlag,yStopFlag;
+	while (1)
+	{	//双电机运作测试
+
+		xStopFlag = motorX_moveTo_disMM(dis*5);
+		yStopFlag = motorY_moveTo_disMM(dis);
+
+		if(xStopFlag == MOTOR_RUN_Dir_STOP &&
+			yStopFlag == MOTOR_RUN_Dir_STOP)
+		{
+				delay_ticks(2000);
+				dis= 0 - dis;
+		}
+	}
+
+	//MotorX_Run(0,50);
+	uint8_t state = 0;
+	#define moRunSpeed 35
+	MotorY_Run(0,moRunSpeed);
+	MotorX_Run(1,50);
 	while (1)
 	{
-		MotorX_Run(dir,50);
-		delay_ticks(2000);
-		MotorY_Run(1,30);
-		dir = !dir;
+		switch (state)
+		{
+		case 0:
+			if (sMotor_Y.locRAW == 3000)
+			{
+				MotorY_Stop();
+				delay_ticks(2000);
+				MotorY_Run(1,moRunSpeed);
+				state = 1;
+			}else if(sMotor_Y.locRAW >= (3000-500))
+			{
+				MotorY_Run(0, \
+					constrain(((1500 - sMotor_Y.locRAW) / 12),15,20) );
+			}
+			
+			
 
-		MotorX_Run(MOTOR_RUN_Dir_Forward,50);
-
-		delay_ticks(5000);
-
-		MotorX_Stop();
-		delay_ticks(3000);
-		MotorY_Stop();
-		delay_ticks(6000);
+			break;
+		case 1:
+			if (sMotor_Y.locRAW == 0)
+			{
+				MotorY_Stop();
+				delay_ticks(2000);
+				MotorY_Run(0,moRunSpeed);
+				state = 0;
+			}
+			else if(sMotor_Y.locRAW < 500)
+			{
+				MotorY_Run(1, \
+					constrain((sMotor_Y.locRAW /25 ),15, 20) );
+			}
+			break;
+		
+		default:
+			break;
+		}
 	}
 	
 
-	uint8_t flag = 0;
+	while (1)
+	{
+		
+
+		MotorY_Run(dir,35);
+		delay_ticks(2000);
+		MotorY_Stop();
+		delay_ticks(3000);
+		
+		dir = !dir;
+		MotorY_Run(dir,35);
+		delay_ticks(2000);
+		MotorY_Stop(); 
+		delay_ticks(3000);
+		dir = !dir;
+
+		xdir = !xdir;
+
+	}
+	
+
 	uint16_t thisKey = 0;
 
 	tim2_addTask(SMG_Refresh, 3, NULL);
@@ -79,7 +126,6 @@ int main(void)
 		switch (setflas)
 		{
 		case 0:
-
 			SMG_print("S",0);
 			if(0 == app_setArea() && getKeyLast() == 1) setflas = 1;
 			break;

@@ -4,7 +4,7 @@
 #include "stm32f10x.h"
 
 
-#define TIM_TASK_MAX	4		//¶¨Òå¶¨Ê±ÈÎÎñ×î´óÊıÁ¿
+#define TIM_TASK_MAX	4		//å®šä¹‰å®šæ—¶ä»»åŠ¡æœ€å¤§æ•°é‡
 
 typedef void (*tim_Period_Fun)();
 
@@ -17,25 +17,25 @@ typedef struct timFun_List
 
 
 /**
- * @brief : ÈÎÎñ³õÊ¼·½·¨
+ * @brief : ä»»åŠ¡åˆå§‹æ–¹æ³•
  * @description: 
  * @return {void}
  */
 void TimTask_Init(void);
 
 /**
- * @brief ¶¨Ê±Æ÷ÖÜÆÚµ÷¶È ÈÎÎñÌí¼Ó
- * @param _fun: ĞèÒªµ÷¶ÈµÄÈÎÎñº¯Êı,º¯ÊıÖ¸Õë
- * @param period_t:  ÈÎÎñº¯ÊıµÄµ÷¶ÈÖÜÆÚ 100±íÊ¾Ã¿100msÖ´ĞĞÒ»´Î
- * @param parm : ÈÎÎñº¯ÊıµÄ´«µİ²ÎÊı£¬Ã»ÓĞÔòÊäÈë NULL »ò 0
- * @return (uint8_t)taskId: ·µ»ØÈÎÎñID 
+ * @brief å®šæ—¶å™¨å‘¨æœŸè°ƒåº¦ ä»»åŠ¡æ·»åŠ 
+ * @param _fun: éœ€è¦è°ƒåº¦çš„ä»»åŠ¡å‡½æ•°,å‡½æ•°æŒ‡é’ˆ
+ * @param period_t:  ä»»åŠ¡å‡½æ•°çš„è°ƒåº¦å‘¨æœŸ 100è¡¨ç¤ºæ¯100msæ‰§è¡Œä¸€æ¬¡
+ * @param parm : ä»»åŠ¡å‡½æ•°çš„ä¼ é€’å‚æ•°ï¼Œæ²¡æœ‰åˆ™è¾“å…¥ NULL æˆ– 0
+ * @return (uint8_t)taskId: è¿”å›ä»»åŠ¡ID 
  */
 uint8_t tim2_addTask(tim_Period_Fun _fun, uint16_t period_t, void *parm);
 
 /**
- * @brief : ¶¨Ê±ÈÎÎñÉ¾³ı·½·¨
+ * @brief : å®šæ—¶ä»»åŠ¡åˆ é™¤æ–¹æ³•
  * @description: 
- * @param _fun :ĞèÒªÉ¾³ıµÄÈÎÎñº¯ÊıÖ¸Õë
+ * @param _fun :éœ€è¦åˆ é™¤çš„ä»»åŠ¡å‡½æ•°æŒ‡é’ˆ
  * @return {void}
  */
 void tim2_delTask(tim_Period_Fun _fun);

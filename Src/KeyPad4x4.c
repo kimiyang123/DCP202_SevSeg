@@ -5,7 +5,7 @@ void keyPad_delay(uint16_t dt)
 	uint16_t i = 0;
 	while (dt--)
 	{
-		i = 10000; //×Ô¼º¶¨Òå
+		i = 10000; //è‡ªå·±å®šä¹‰
 		while (i--)
 			;
 	}
@@ -17,23 +17,23 @@ void keyPad_Init(void)
 
 	RCC->APB2ENR |= KEYPAD_IOEN;
 
-	// ROWĞĞÏß¸ß4Î»³õÊ¼»¯ÎªÊä³ö
+	// ROWè¡Œçº¿é«˜4ä½åˆå§‹åŒ–ä¸ºè¾“å‡º
 	gpioInit.GPIO_Mode = GPIO_Mode_Out_PP;
 	gpioInit.GPIO_Pin = KEYPAD_ROW_BITMASK;
 	gpioInit.GPIO_Speed = GPIO_Speed_50MHz;
 	GPIO_Init(KEYPAD_GPIO, &gpioInit);
-	// COLÁĞÏßµÍ4Î»³õÊ¼»¯Î»ÊäÈë
+	// COLåˆ—çº¿ä½4ä½åˆå§‹åŒ–ä½è¾“å…¥
 	gpioInit.GPIO_Mode = GPIO_Mode_IPU;
 	gpioInit.GPIO_Pin = KEYPAD_COL_BITMASK;
 	GPIO_Init(KEYPAD_GPIO, &gpioInit);
 }
 
-// »ñÈ¡µÚnÎ» µÄÓĞĞ§Î»ËùÔÚÎ»µÄ mask
+// è·å–ç¬¬nä½ çš„æœ‰æ•ˆä½æ‰€åœ¨ä½çš„ mask
 uint16_t getBitMask(uint16_t mask, uint8_t id)
 {
 	uint8_t i = 0;
 
-	// ±éÀú1µÄÎ»ÖÃ
+	// éå†1çš„ä½ç½®
 	for (i = 0; i < 16; i++)
 	{
 		if ((mask & (1 << i)) != 0)
@@ -58,18 +58,18 @@ T	ROW3 --+-----+-----+-----+--
 	COL : 0xf000
 *****************************************/
 
-// 4x4°´¼üÉ¨Ãè³ÌĞò
+// 4x4æŒ‰é”®æ‰«æç¨‹åº
 uint8_t keyPad4x4_Scan(void)
 {
 	unsigned char KeyVal = 0;
 	unsigned char rowID, colId;
 	uint16_t tmp;
-	// ROWĞĞÉ¨Ãè
+	// ROWè¡Œæ‰«æ
 	for (rowID = 0; rowID < 4; rowID++)
 	{
 		GPIO_WriteBit(KEYPAD_GPIO, KEYPAD_ROW_BITMASK, (BitAction)1);
 		GPIO_WriteBit(KEYPAD_GPIO, (0x0800 >> rowID), (BitAction)0);
-		// ¶ÁÈ¡COLÎ»£¬ÅĞ¶ÏÊÇ·ñÓĞ0
+		// è¯»å–COLä½ï¼Œåˆ¤æ–­æ˜¯å¦æœ‰0
 		if ((GPIO_ReadInputData(KEYPAD_GPIO) & KEYPAD_COL_BITMASK) != KEYPAD_COL_BITMASK)
 		{
 			tmp = GPIO_ReadInputData(KEYPAD_GPIO) & KEYPAD_COL_BITMASK;
@@ -77,7 +77,7 @@ uint8_t keyPad4x4_Scan(void)
 			{
 				if ((tmp & (0x1000 << colId)) == 0x00)
 				{
-					// ²éÕÒµ½°´¼üËùÔÚĞĞÁĞ
+					// æŸ¥æ‰¾åˆ°æŒ‰é”®æ‰€åœ¨è¡Œåˆ—
 					KeyVal = rowID * 4 + colId + 1;
 					break;
 				}
@@ -99,19 +99,19 @@ uint8_t getKeyLast(void)
 	return _keyEvent;
 }
 
-uint8_t keyLast = 0; //±£ÁôÇ°Ò»´Î×´Ì¬Öµ
+uint8_t keyLast = 0; //ä¿ç•™å‰ä¸€æ¬¡çŠ¶æ€å€¼
 uint8_t keyPad_Event(void)
 {
 	uint8_t keyEventVal = 0;
 	uint16_t temp;
-	// ¼ì²âÊÇ·ñÓĞ°´¼ü°´ÏÂ
-	// ½«ĞĞROWËÄÎ»È«²¿ÉèÖÃÎ» 0 ¶ÁÈ¡COLÎ»
+	// æ£€æµ‹æ˜¯å¦æœ‰æŒ‰é”®æŒ‰ä¸‹
+	// å°†è¡ŒROWå››ä½å…¨éƒ¨è®¾ç½®ä½ 0 è¯»å–COLä½
 	GPIO_WriteBit(KEYPAD_GPIO, KEYPAD_ROW_BITMASK, 0);
 	temp = GPIO_ReadInputData(KEYPAD_GPIO) & KEYPAD_COL_BITMASK;
 
-	if (temp != KEYPAD_COL_BITMASK) // ÓĞ°´¼ü°´ÏÂ
+	if (temp != KEYPAD_COL_BITMASK) // æœ‰æŒ‰é”®æŒ‰ä¸‹
 	{
-		// Ïû¶¶ÑÓÊ±
+		// æ¶ˆæŠ–å»¶æ—¶
 		keyPad_delay(1);
 		temp = keyPad4x4_Scan();
 		if (temp != keyLast)
@@ -121,7 +121,7 @@ uint8_t keyPad_Event(void)
 			KEY_BEEP(1);
 		}
 		else
-		{ // °´¼üºÍÇ°Ò»´ÎÖµÏàµÈ
+		{ // æŒ‰é”®å’Œå‰ä¸€æ¬¡å€¼ç›¸ç­‰
 			keyEventVal = 0;
 		}
 	}
@@ -129,21 +129,21 @@ uint8_t keyPad_Event(void)
 	{
 		keyLast = 0;
 	}
-	_keyEvent = keyEventVal;	//±£´æµ½È«¾Ö±äÁ¿
+	_keyEvent = keyEventVal;	//ä¿å­˜åˆ°å…¨å±€å˜é‡
 	return keyEventVal;
 }
 
-/*******************¶ÀÁ¢°´¼ü*****************************/
+/*******************ç‹¬ç«‹æŒ‰é”®*****************************/
 
 /**
- * @description: ¶ÀÁ¢°´¼ü¹Ü½Å³õÊ¼»¯
+ * @description: ç‹¬ç«‹æŒ‰é”®ç®¡è„šåˆå§‹åŒ–
  * @return {*}
  */
 void keyIndepend_Init(void)
 {
 	GPIO_InitTypeDef gpioInit_def;
 
-	// Ê¹ÄÜKEYINDEP¹Ü½ÅÊ±ÖÓ
+	// ä½¿èƒ½KEYINDEPç®¡è„šæ—¶é’Ÿ
 	RCC_APB2PeriphClockCmd(KEY_INDEP_IOEN, ENABLE);
 
 	gpioInit_def.GPIO_Mode = GPIO_Mode_IPU;
@@ -152,8 +152,8 @@ void keyIndepend_Init(void)
 }
 
 /**
- * @description: ¶ÀÁ¢°´¼ü½Ó¿Ú,×î¶àÖ§³Ö8¸ö°´¼ü
- * @return {·µ»Ø°´¼üÓĞĞ§×´Ì¬Î»}
+ * @description: ç‹¬ç«‹æŒ‰é”®æ¥å£,æœ€å¤šæ”¯æŒ8ä¸ªæŒ‰é”®
+ * @return {è¿”å›æŒ‰é”®æœ‰æ•ˆçŠ¶æ€ä½}
  */
 uint8_t key_Independ(void)
 {
@@ -190,7 +190,7 @@ uint8_t key_Independ(void)
 	KeyEvent = keyTemp ^ perKey;
 	perKey = keyTemp;
 
-	return KeyEvent & keyTemp; //°´¼ü°´ÏÂÓĞĞ§
-	// return KeyEvent & ~keyTemp;	//°´¼üËÉ¿ªÓĞĞ§
+	return KeyEvent & keyTemp; //æŒ‰é”®æŒ‰ä¸‹æœ‰æ•ˆ
+	// return KeyEvent & ~keyTemp;	//æŒ‰é”®æ¾å¼€æœ‰æ•ˆ
 
 }

@@ -1,13 +1,14 @@
 #include "Sensor_Encoder.h"
 
 
-motorInfo_def* psMotorX;   //X÷·µÁª˙∂‘œÛ÷∏’Î
-motorInfo_def* psMotorY;   //Y÷·µÁª˙∂‘œÛ÷∏’Î
+motorInfo_def* psMotorX;   //XËΩ¥ÁîµÊú∫ÂØπË±°ÊåáÈíà
+motorInfo_def* psMotorY;   //YËΩ¥ÁîµÊú∫ÂØπË±°ÊåáÈíà
+
 
 
 /**
- * @brief : TIM3  ‰»Î≤∂ªÒ CH3 CH4 Õ®µ¿≥ı ºªØ
- * @description: ø™∆Ùch3 ch4 ¡Ω∏ˆÕ®µ¿µƒ ‰»Î≤∂ªÒ÷–∂œ
+ * @brief : TIM3 ËæìÂÖ•ÊçïËé∑ CH3 CH4 ÈÄöÈÅìÂàùÂßãÂåñ
+ * @description: ÂºÄÂêØch3 ch4 ‰∏§‰∏™ÈÄöÈÅìÁöÑËæìÂÖ•ÊçïËé∑‰∏≠Êñ≠
  * @return {void}
  */
 void TIM3_Cap_Init(void)
@@ -27,7 +28,7 @@ void TIM3_Cap_Init(void)
 
    sTIMBase_Init.TIM_ClockDivision = TIM_CKD_DIV1;
    sTIMBase_Init.TIM_CounterMode = TIM_CounterMode_Up;
-   sTIMBase_Init.TIM_Period = 0xFFFF;        //ARR-◊‘∂Ø÷ÿ‘ÿ÷µ
+   sTIMBase_Init.TIM_Period = 0xFFFF;        //ARR-Ëá™Âä®ÈáçËΩΩÂÄº
    sTIMBase_Init.TIM_Prescaler = 72 -1;
    TIM_TimeBaseInit(TIM3,&sTIMBase_Init);
    
@@ -38,10 +39,10 @@ void TIM3_Cap_Init(void)
    sTIM_ICInit.TIM_Channel = TIM_Channel_4;
    TIM_ICInit(TIM3,&sTIM_ICInit);
 
-   // ÷–∂œ…Ë÷√
+   // ‰∏≠Êñ≠ËÆæÁΩÆ
    sNVIC_Init.NVIC_IRQChannel = TIM3_IRQn;
    sNVIC_Init.NVIC_IRQChannelPreemptionPriority = 0;
-   sNVIC_Init.NVIC_IRQChannelSubPriority = 3;
+   sNVIC_Init.NVIC_IRQChannelSubPriority = 0;
    sNVIC_Init.NVIC_IRQChannelCmd = ENABLE;
    NVIC_Init(&sNVIC_Init);
 
@@ -57,56 +58,63 @@ void senEncoder_Init(motorInfo_def* motX,motorInfo_def* motY)
     {
         TIM3_Cap_Init();
     }
-    psMotorX = motX;
-    psMotorY = motY;
+    if(motX != NULL) psMotorX = motX;
+    if(motY != NULL) psMotorY = motY;
 
 }
 
 
 /*******************************************************************************
  * Function Name  : TIM3_IRQHandler
- * Description    : TIM3¬ˆ≥Â≤∂ªÒ÷–∂œ∑˛ŒÒ≥Ã–Ú;TIM3_CH3, TIM3_CH4;
+ * Description    : TIM3ËÑâÂÜ≤ÊçïËé∑‰∏≠Êñ≠ÊúçÂä°Á®ãÂ∫è;TIM3_CH3, TIM3_CH4;
  * Input          : None
  * Output         : None
  * Return         : None
  *******************************************************************************/
 void TIM3_IRQHandler(void)
 {
-    if (TIM_GetITStatus(TIM3, TIM_IT_CC3) != RESET) // GPIOB0 ”–…œ…˝—ÿ ‰»Î≤∂ªÒ–≈∫≈
+    if (TIM_GetITStatus(TIM3, TIM_IT_CC3) != RESET) // GPIOB0 Êúâ‰∏äÂçáÊ≤øËæìÂÖ•ÊçïËé∑‰ø°Âè∑
     {
         if(psMotorX != NULL)
         {
-            if (psMotorX->Dir == MOTOR_RUN_Dir_Forward)
+            if(psMotorX->Dir == MOTOR_RUN_Dir_Backward)
             {
-                if (psMotorX->location < MOTOR_POSLOC_MAX)
-                    psMotorX->location++;
-            }
-            else if(psMotorX->Dir == MOTOR_RUN_Dir_Forward)
-            {
-                if(psMotorX->location > 0)
+                if(psMotorX->locRAW > INT32_MIN)
                 {
-                    psMotorX->location --;
+                    psMotorX->locRAW --;
                 }
             }
+            else if (psMotorX->Dir == MOTOR_RUN_Dir_Forward)
+            {
+                if (psMotorX->locRAW < INT32_MAX)
+                    psMotorX->locRAW++;
+            }
+            psMotorX->locMM = psMotorX->locRAW * RAW_DIS_RATE;
         }
     }
 
-    if (TIM_GetITStatus(TIM3, TIM_IT_CC4) != RESET) // GPIOB0 ”–…œ…˝—ÿ ‰»Î≤∂ªÒ–≈∫≈
+    if (TIM_GetITStatus(TIM3, TIM_IT_CC4) != RESET) // GPIOB0 Êúâ‰∏äÂçáÊ≤øËæìÂÖ•ÊçïËé∑‰ø°Âè∑
     {
         if(psMotorY != NULL)
         {
-            if (psMotorY->Dir == MOTOR_RUN_Dir_Forward)
+            
+            if(psMotorY->Dir == MOTOR_RUN_Dir_Backward)
             {
-                if (psMotorY->location < MOTOR_POSLOC_MAX)
-                    psMotorY->location++;
-            }
-            else if(psMotorY->Dir == MOTOR_RUN_Dir_Forward)
-            {
-                if(psMotorY->location > 0)
+                if(psMotorY->locRAW > INT32_MIN)
                 {
-                    psMotorY->location --;
+                    psMotorY->locRAW --;
                 }
             }
+            else if (psMotorY->Dir == MOTOR_RUN_Dir_Forward)
+            {
+                if (psMotorY->locRAW < INT32_MAX)
+                    psMotorY->locRAW++;
+            }
+            psMotorY->locMM = psMotorY->locRAW * RAW_DIS_RATE;
+            
         }
     }
+
+    // Ê∏ÖÈô§‰∏≠Êñ≠Ê†áÂøó‰ΩçTIM_IT_Update
+    TIM_ClearITPendingBit(TIM3, TIM_IT_CC3 | TIM_IT_CC4);
 }

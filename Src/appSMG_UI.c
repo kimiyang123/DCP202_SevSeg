@@ -12,7 +12,7 @@ typedef struct
 
 enterBuff_typedef entBuff;
 
-/***°´¼ü×Ö·ûÓ³Éä±í***/
+/***æŒ‰é”®å­—ç¬¦æ˜ å°„è¡¨***/
 const uint8_t KeyMap[16] = {
     'F', '7', '8', '9',
     'S', '4', '5', '6',
@@ -20,13 +20,13 @@ const uint8_t KeyMap[16] = {
     '>', 'D', '0', 'E'};
 
 
-// ·µ»ØÊäÈëÁĞ±íÖĞ»ñÈ¡µÄ°´¼ü×Ö·ûÊı
+// è¿”å›è¾“å…¥åˆ—è¡¨ä¸­è·å–çš„æŒ‰é”®å­—ç¬¦æ•°
 uint8_t get_entBuff_length(void)
 {
     return entBuff.size;
 }
 
-/***½«°´¼ü±àÂë×ª»»Îª°´¼ü×Ö·ûÓ³Éä±í***/
+/***å°†æŒ‰é”®ç¼–ç è½¬æ¢ä¸ºæŒ‰é”®å­—ç¬¦æ˜ å°„è¡¨***/
 uint8_t _getKeyMap(uint8_t keyID)
 {
     if (keyID > 0 && keyID <= 16)
@@ -39,7 +39,7 @@ uint8_t _getKeyMap(uint8_t keyID)
     }
 }
 
-/***½«°´¼ü×Ö·ûÓ³Éä£¬×ª»»Îª°´¼ü±àÂë***/
+/***å°†æŒ‰é”®å­—ç¬¦æ˜ å°„ï¼Œè½¬æ¢ä¸ºæŒ‰é”®ç¼–ç ***/
 uint8_t _keyMap2KeyID(uint8_t kMapStr)
 {
     uint8_t i = 0;
@@ -62,8 +62,8 @@ void setCursor(uint8_t curId)
 }
 
 /**
- * @description: ¼üÅÌÊäÈëbufferÄÚ´æÈëÊı¾İ
- * @param str:ÊäÈë±£´æµÄ×Ö·û
+ * @description: é”®ç›˜è¾“å…¥bufferå†…å­˜å…¥æ•°æ®
+ * @param str:è¾“å…¥ä¿å­˜çš„å­—ç¬¦
  * @return {*}
  */
 void enterBuff_add(char str)
@@ -75,7 +75,7 @@ void enterBuff_add(char str)
 }
 
 /**
- * @description: ¼üÅÌÊäÈëbufferÄÚÉ¾³ı1¸öÊı¾İ
+ * @description: é”®ç›˜è¾“å…¥bufferå†…åˆ é™¤1ä¸ªæ•°æ®
  * @return {*}
  */
 void enterBuff_backspace(void)
@@ -87,48 +87,48 @@ void enterBuff_backspace(void)
 }
 
 /**
- * @description: Çå³ı¼üÅÌÊı¾İ»º´æÄÚµÄÊı¾İ
+ * @description: æ¸…é™¤é”®ç›˜æ•°æ®ç¼“å­˜å†…çš„æ•°æ®
  * @return {*}
  */
 void enterBuff_clean(void)
 {
-    memset(entBuff.buff, 0, ENTER_BUFFER_SIZE); // Çå¿ÕÊäÈë»º´æ
+    memset(entBuff.buff, 0, ENTER_BUFFER_SIZE); // æ¸…ç©ºè¾“å…¥ç¼“å­˜
     entBuff.size = 0;
 }
 
 /**
- * @brief  °´¼üÊäÈëµÈ´ı·½·¨
- * @param  entPos:ÊäÈëÆğÊ¼Î»
- * @param  maxEnter:×î´óÊäÈë×Ö·ûÊıÁ¿
- * @param  keyEvent:µ±Ç°°´¼üÖµ£¬¿ÉÓÉ getKeyLast()º¯Êı»ñÈ¡
- * @param  EnterType:¿ÉÊäÈë×Ö·ûÀàĞÍ
- *      @arg ENTER_TYPE_ALL: ËùÓĞÀàĞÍ
- *      @arg ENTER_TYPE_NUM: Ö»ÔÊĞíÊı×ÖÀàĞÍ
+ * @brief  æŒ‰é”®è¾“å…¥ç­‰å¾…æ–¹æ³•
+ * @param  entPos:è¾“å…¥èµ·å§‹ä½
+ * @param  maxEnter:æœ€å¤§è¾“å…¥å­—ç¬¦æ•°é‡
+ * @param  keyEvent:å½“å‰æŒ‰é”®å€¼ï¼Œå¯ç”± getKeyLast()å‡½æ•°è·å–
+ * @param  EnterType:å¯è¾“å…¥å­—ç¬¦ç±»å‹
+ *      @arg ENTER_TYPE_ALL: æ‰€æœ‰ç±»å‹
+ *      @arg ENTER_TYPE_NUM: åªå…è®¸æ•°å­—ç±»å‹
  * @retval None
  */
 char *ui_WaitEnter(uint8_t entPos, uint8_t maxEnter, uint8_t keyEvent, uint8_t EnterType)
 {
     uint8_t keyMapChar;
 
-    // Ê×´Îµ÷ÓÃÖ´ĞĞ
+    // é¦–æ¬¡è°ƒç”¨æ‰§è¡Œ
     if (entBuff.size == 0)
     {
         enterBuff_clean();
         SMG_CleanPos(entPos, maxEnter);
         setCursor(entPos);
     }
-    // ×ª»»Îª°´¼ü×Ö·û±àÂë
+    // è½¬æ¢ä¸ºæŒ‰é”®å­—ç¬¦ç¼–ç 
     keyMapChar = _getKeyMap(keyEvent);
 
     switch (keyMapChar)
     {
     case 0:
-        // 0 ÎªÃ»ÓĞ°´¼ü£¬²»×÷´¦Àí
+        // 0 ä¸ºæ²¡æœ‰æŒ‰é”®ï¼Œä¸ä½œå¤„ç†
         break;
-    case 'D': // ÍË¸ñÉ¾³ı
+    case 'D': // é€€æ ¼åˆ é™¤
         enterBuff_backspace();
         break;
-    case 'E': // È·ÈÏÊäÈë
+    case 'E': // ç¡®è®¤è¾“å…¥
         if (entBuff.size > 0)
         {
             entBuff.size = 0;
@@ -140,10 +140,10 @@ char *ui_WaitEnter(uint8_t entPos, uint8_t maxEnter, uint8_t keyEvent, uint8_t E
         }
         break;
 
-    default: // ³ıÒÔÉÏcaseÒÔÍâ£¬ĞèÒª´æÈë°´¼ü»º´æÄÚµÄ×Ö·û
+    default: // é™¤ä»¥ä¸Šcaseä»¥å¤–ï¼Œéœ€è¦å­˜å…¥æŒ‰é”®ç¼“å­˜å†…çš„å­—ç¬¦
         if (entBuff.size < maxEnter)
         {
-            // ×Ö·ûÊÇÊı×Ö£¬»òÊäÈëÀàĞÍÎªALL Çå¿ÕÏÂÌí¼Óµ½buff
+            // å­—ç¬¦æ˜¯æ•°å­—ï¼Œæˆ–è¾“å…¥ç±»å‹ä¸ºALL æ¸…ç©ºä¸‹æ·»åŠ åˆ°buff
             if (isdigit(keyMapChar) ||
                 EnterType == ENTER_TYPE_ALL)
             {
@@ -153,7 +153,7 @@ char *ui_WaitEnter(uint8_t entPos, uint8_t maxEnter, uint8_t keyEvent, uint8_t E
         break;
     }
 
-    // Ë¢ĞÂÏÔÊ¾
+    // åˆ·æ–°æ˜¾ç¤º
     if (keyMapChar != 0)
     {
         SMG_CleanPos(0,maxEnter);
@@ -180,7 +180,7 @@ char* ui_WaitEnter(uint8_t entPos, uint8_t maxEnter, uint8_t EnterType)
         keyMapChar = _getKeyMap( keyPad_Event() );
         switch (keyMapChar)
         {
-        case 'D':   // ÍË¸ñÉ¾³ı
+        case 'D':   // é€€æ ¼åˆ é™¤
             enterBuff_backspace();
             if(i>0) i--;
             break;
@@ -188,15 +188,15 @@ char* ui_WaitEnter(uint8_t entPos, uint8_t maxEnter, uint8_t EnterType)
         case '<':
             exit = 1;
             break;
-        case 'E':   // È·ÈÏÊäÈë
+        case 'E':   // ç¡®è®¤è¾“å…¥
             exit = 1;
             break;
 
         case 0:
-            // 0 ÎªÃ»ÓĞ°´¼ü£¬²»×÷´¦Àí
+            // 0 ä¸ºæ²¡æœ‰æŒ‰é”®ï¼Œä¸ä½œå¤„ç†
             break;
 
-        default:    // ÆäËü±£´æ°´¼ü
+        default:    // å…¶å®ƒä¿å­˜æŒ‰é”®
             if(i<maxEnter)
             {
                 if(EnterType == ENTER_TYPE_NUM)

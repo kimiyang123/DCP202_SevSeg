@@ -1,4 +1,4 @@
-#ifndef __OPERATE_AREA_H__
+﻿#ifndef __OPERATE_AREA_H__
 #define __OPERATE_AREA_H__
 
     #include "appSMG_UI.h"

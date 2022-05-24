@@ -16,7 +16,6 @@
 .\objects\motor_locsensor.o: C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\stm32f10x_gpio.h
 .\objects\motor_locsensor.o: C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\stm32f10x_rcc.h
 .\objects\motor_locsensor.o: C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\stm32f10x_tim.h
-.\objects\motor_locsensor.o: C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\stm32f10x_usart.h
 .\objects\motor_locsensor.o: C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\misc.h
 .\objects\motor_locsensor.o: ..\Src\Motors\Motor_HPWM.h
 .\objects\motor_locsensor.o: ..\Src\Motors\LocSensor\Sensor_Encoder.h

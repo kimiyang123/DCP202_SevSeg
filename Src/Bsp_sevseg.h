@@ -13,38 +13,46 @@
 	#define  SMG_GPIO_RCC_ENRBIT		RCC_APB2ENR_IOPGEN
 	
 	/**
-	 * @brief :ÊıÂë¹Ü³õÊ¼»¯·½·¨£¬¿ª»úµ÷ÓÃ 
+	 * @brief :æ•°ç ç®¡åˆå§‹åŒ–æ–¹æ³•ï¼Œå¼€æœºè°ƒç”¨ 
 	 * @description: 
 	 * @return {void}
 	 */
 	void SMG_BSP_Init(void);
 	
-	void SMG_Refresh(void);		// ÖĞ¶ÏÀï¼ä¸ôµ÷ÓÃ
+	void SMG_Refresh(void);		// ä¸­æ–­é‡Œé—´éš”è°ƒç”¨
 	void SMG_CleanAll(void);
 	void SMG_CleanPos(uint8_t Spos,uint8_t len);
+
+	/**
+	 * @brief : è·å–æ•°ç ç®¡æŒ‡å®šBuffå†…çš„å½“å‰æ˜¾ç¤ºæ®µç æ•°æ®
+	 * @description: 
+	 * @param  id:{uint8_t} æŒ‡å®šæ•°ç ç®¡ä½ç½®[0-7]
+	 * @return {uint8_t} è¿”å›æ•°ç ç®¡æ®µç 
+	 */	
+	uint8_t SMG_BuffRead(uint8_t id);
 
 	void SMG_BuffWrite(uint8_t id,uint8_t buffd);
 
 	/**
-	 * @description: ÊıÂë¹ÜÏÔÊ¾ÕûÊıº¯Êı
-	 * @param showNUM: {uint32_t} ĞèÒªÏÔÊ¾µÄÊı¾İÖµ
-	 * @param startPos: {uint8_t} ¸öÎ»ÊıÏÔÊ¾ÔÚÓÒ²àÆğÄÄ¸öÎ»ÖÃ
-	 * @param  showBit: {uint8_t} ÏÔÊ¾¼¸Î»ÓĞĞ§Êı×Ö
+	 * @description: æ•°ç ç®¡æ˜¾ç¤ºæ•´æ•°å‡½æ•°
+	 * @param showNUM: {uint32_t} éœ€è¦æ˜¾ç¤ºçš„æ•°æ®å€¼
+	 * @param startPos: {uint8_t} ä¸ªä½æ•°æ˜¾ç¤ºåœ¨å³ä¾§èµ·å“ªä¸ªä½ç½®
+	 * @param  showBit: {uint8_t} æ˜¾ç¤ºå‡ ä½æœ‰æ•ˆæ•°å­—
 	 * @return {void}
 	 */
 	void SMG_ShowInt(uint32_t showNUM, uint8_t startPos, uint8_t showBit);
 	
 	/**
-	 * @brief : ÒÔ×Ö·û´®ĞÎÊ½ÏÔÊ¾ÊıÂë¹Ü·ûºÅ
-	 * @param str :{char*}  ×Ö·û´®Ö¸Õë Èç:"hello"
-	 * @param startPos: {uint8_t}×ó²à¿ªÊ¼µÄÆğÊ¼Î»ÖÃ
+	 * @brief : ä»¥å­—ç¬¦ä¸²å½¢å¼æ˜¾ç¤ºæ•°ç ç®¡ç¬¦å·
+	 * @param str :{char*}  å­—ç¬¦ä¸²æŒ‡é’ˆ å¦‚:"hello"
+	 * @param startPos: {uint8_t}å·¦ä¾§å¼€å§‹çš„èµ·å§‹ä½ç½®
 	 * @return {void}
 	 */
 	void SMG_print(char *str , uint8_t startPos);
 
 
 
-	//¿ª»ú»­Ãæ£¬ÊıÂë¹ÜÊı¾İÒÆÎ»·½·¨
+	//å¼€æœºç”»é¢ï¼Œæ•°ç ç®¡æ•°æ®ç§»ä½æ–¹æ³•
 	void SMG_RotateShift(uint8_t shiftDir);
 	void SMG_All_num(uint8_t UpOrDn);
 
@@ -53,19 +61,19 @@
 
 
 /*******************************************
- * Ê¹ÓÃÑİÊ¾
+ * ä½¿ç”¨æ¼”ç¤º
  * 
  * #include "Bsp_sevseg.h"
  * int main()
  * {
- * 		SMG_BSP_Init();	//µ÷ÓÃ³õÊ¼»¯·½·¨
+ * 		SMG_BSP_Init();	//è°ƒç”¨åˆå§‹åŒ–æ–¹æ³•
  * 
- * 		SMG_ShowInt(123,0,3);	//ÔÚÊıÂë¹Ü×îÓÒ²àÏÔÊ¾123
- * 		SMG_print("Hello",0);	//ÔÚÊıÂë¹Ü×ó²àµÚÒ»Î»¿ªÊ¼ÏÔÊ¾"hello"×Ö·û
+ * 		SMG_ShowInt(123,0,3);	//åœ¨æ•°ç ç®¡æœ€å³ä¾§æ˜¾ç¤º123
+ * 		SMG_print("Hello",0);	//åœ¨æ•°ç ç®¡å·¦ä¾§ç¬¬ä¸€ä½å¼€å§‹æ˜¾ç¤º"hello"å­—ç¬¦
  * 
  * 		while(1)
  * 		{
- * 			SMG_Refresh();		//ÖÜÆÚË¢ĞÂÏÔÊ¾ÊıÂë¹Ü£¬ÍÆ¼öÔÚ¶¨Ê±Æ÷ÖĞ¶ÏÖĞµ÷ÓÃ
+ * 			SMG_Refresh();		//å‘¨æœŸåˆ·æ–°æ˜¾ç¤ºæ•°ç ç®¡ï¼Œæ¨èåœ¨å®šæ—¶å™¨ä¸­æ–­ä¸­è°ƒç”¨
  * 		}
  * 
  * }

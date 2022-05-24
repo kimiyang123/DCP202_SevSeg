@@ -3,8 +3,8 @@
 
 typedef struct
 {
-	char Letter;			//×Ö·û×ÖÄ¸
-	uint8_t SevSEG_Code;	//×ÖÄ¸µÄÊýÂë¹Ü±àÂë
+	char Letter;			//å­—ç¬¦å­—æ¯
+	uint8_t SevSEG_Code;	//å­—æ¯çš„æ•°ç ç®¡ç¼–ç 
 } LetterSev_def;
 
 LetterSev_def LetterTab[] = {
@@ -34,11 +34,11 @@ uint8_t Sev_Tab[] = {
 uint8_t  SMG_BUFFER[SMG_ITEMS];
 #define  COM_ALLOFF			0xFF
 
-// ÉèÖÃÊýÂë¹Ü¹«¹²¶Ë:
-// ¸ù¾ÝcomID Ñ¡ÔñÄÄ¸öÊýÂëÏÔÊ¾
+// è®¾ç½®æ•°ç ç®¡å…¬å…±ç«¯:
+// æ ¹æ®comID é€‰æ‹©å“ªä¸ªæ•°ç æ˜¾ç¤º
 void SMG_SetCom(uint8_t comId)
 {
-	// GPIO ¶Ë¿ÚµÄµÍ8Î»ÎªÊýÂë¹ÜÑ¡ÔñÎ»£¬bit0ÓÐÐ§
+	// GPIO ç«¯å£çš„ä½Ž8ä½ä¸ºæ•°ç ç®¡é€‰æ‹©ä½ï¼Œbit0æœ‰æ•ˆ
 	if(comId == COM_ALLOFF)
 	{
 		SMG_GPIO->ODR |= 0xff;
@@ -51,10 +51,10 @@ void SMG_SetCom(uint8_t comId)
 }
 
 
-// ÉèÖÃÏÔÊ¾¶ÎÂë£¬disSeg Æß¶ÎÒëÂëÖµ
+// è®¾ç½®æ˜¾ç¤ºæ®µç ï¼ŒdisSeg ä¸ƒæ®µè¯‘ç å€¼
 void SMG_setData(uint8_t disSeg)
 {
-	// GPIO¶Ë¿ÚµÄ ¸ß8Î»Îª¶ÎÂëÏÔÊ¾Î» 0ÎªµãÁÁ
+	// GPIOç«¯å£çš„ é«˜8ä½ä¸ºæ®µç æ˜¾ç¤ºä½ 0ä¸ºç‚¹äº®
 	SMG_GPIO->ODR &= ~(0xFF <<8);
 	SMG_GPIO->ODR |= (disSeg << 8);
 	
@@ -62,7 +62,7 @@ void SMG_setData(uint8_t disSeg)
 
 
 /**
- * @brief :ÊýÂë¹Ü³õÊ¼»¯·½·¨£¬¿ª»úµ÷ÓÃ 
+ * @brief :æ•°ç ç®¡åˆå§‹åŒ–æ–¹æ³•ï¼Œå¼€æœºè°ƒç”¨ 
  * @description: 
  * @return {*}
  */
@@ -71,14 +71,14 @@ void SMG_BSP_Init(void)
 	uint8_t i=0;
 	GPIO_InitTypeDef GpioInit;
 	
-	// ¿ªÆôGPIOµÄRCCÊ±ÖÓÊ¹ÄÜ
+	// å¼€å¯GPIOçš„RCCæ—¶é’Ÿä½¿èƒ½
 	RCC->APB2ENR |= SMG_GPIO_RCC_ENRBIT;
-	// ³õÊ¼»¯GPIO¹Ü½ÅÎªÊä³ö
+	// åˆå§‹åŒ–GPIOç®¡è„šä¸ºè¾“å‡º
 	GpioInit.GPIO_Mode 	= GPIO_Mode_Out_PP;
 	GpioInit.GPIO_Pin 	= GPIO_Pin_All;
 	GpioInit.GPIO_Speed = GPIO_Speed_50MHz;
 	GPIO_Init(SMG_GPIO, &GpioInit);
-	// ³õÊ¼»¯ÊýÂë¹ÜÏÔÊ¾»º´æÊý¾ÝÎª ²»ÁÁ
+	// åˆå§‹åŒ–æ•°ç ç®¡æ˜¾ç¤ºç¼“å­˜æ•°æ®ä¸º ä¸äº®
 	for(i=0;i<SMG_ITEMS;i++)
 	{
 		SMG_BUFFER[i] = 0xff;
@@ -88,19 +88,19 @@ void SMG_BSP_Init(void)
 
 
 /**
- * @brief : ÊýÂë¹Ü¶¯Ì¬Ë¢ÐÂ·½·¨£¬ÍÆ¼öÔÚ¶¨Ê±ÔÚÖÐ¶ÏÖÐÖÜÆÚµ÷ÓÃ
- * @description: Ã¿µ÷ÓÃÖ´ÐÐÒ»´Î£¬ÊýÂë¹ÜÏÔÊ¾Ò»¸öÎ»¡£
+ * @brief : æ•°ç ç®¡åŠ¨æ€åˆ·æ–°æ–¹æ³•ï¼ŒæŽ¨èåœ¨å®šæ—¶åœ¨ä¸­æ–­ä¸­å‘¨æœŸè°ƒç”¨
+ * @description: æ¯è°ƒç”¨æ‰§è¡Œä¸€æ¬¡ï¼Œæ•°ç ç®¡æ˜¾ç¤ºä¸€ä¸ªä½ã€‚
  * @return {*}
  */
 void SMG_Refresh(void)
 {
 	static uint8_t idx;
 	
-	// ¹«¹²¶ËCOM¹Ø±Õ(Ïû³ý¹íÓ°)
+	// å…¬å…±ç«¯COMå…³é—­(æ¶ˆé™¤é¬¼å½±)
 	SMG_SetCom(COM_ALLOFF);
-	// Ë¢ÐÂ dataÊý¾Ý
+	// åˆ·æ–° dataæ•°æ®
 	SMG_setData( SMG_BUFFER[idx] );
-	// ´ò¿ªÏÔÊ¾Î»ÊýÂë¹Ü¹«¹²¶Ë
+	// æ‰“å¼€æ˜¾ç¤ºä½æ•°ç ç®¡å…¬å…±ç«¯
 	SMG_SetCom(idx);
 	
 	idx ++;
@@ -109,7 +109,7 @@ void SMG_Refresh(void)
 }
 
 /**
- * @brief : Çå³ýÊýÂë¹ÜËùÓÐÏÔÊ¾ÄÚÈÝ
+ * @brief : æ¸…é™¤æ•°ç ç®¡æ‰€æœ‰æ˜¾ç¤ºå†…å®¹
  * @description: 
  * @return {*}
  */
@@ -122,10 +122,10 @@ void SMG_CleanAll(void){
 }
 
 /**
- * @brief : Çå³ýÊýÂë¹ÜÄ³¸öÏÔÊ¾¹Ü
+ * @brief : æ¸…é™¤æ•°ç ç®¡æŸä¸ªæ˜¾ç¤ºç®¡
  * @description: 
- * @param Spos:	StartPositionÆðÊ¼Î»ÖÃ£¬ÓÒ²àÆð
- * @param len: Çå³ýÊýÂë¹ÜÏÔÊ¾¸öÊý
+ * @param Spos:	StartPositionèµ·å§‹ä½ç½®ï¼Œå³ä¾§èµ·
+ * @param len: æ¸…é™¤æ•°ç ç®¡æ˜¾ç¤ºä¸ªæ•°
  * @return {*}
  */
 void SMG_CleanPos(uint8_t Spos,uint8_t len)
@@ -134,17 +134,17 @@ void SMG_CleanPos(uint8_t Spos,uint8_t len)
 	if(Spos > SMG_ITEMS -1) Spos = SMG_ITEMS -1;
 	if((len+Spos) > SMG_ITEMS) len = SMG_ITEMS - Spos;
 
-	for ( i = Spos; i < len; i++)
+	for ( i = Spos; i < len + Spos; i++)
 	{
 		SMG_BUFFER[ SMG_ITEMS - i - 1] = 0xFF;
 	}
 	
 }
 
-// ---------------ÒÔÏÂÊÇÏÔÊ¾Ïà¹Ø·½·¨-------------------------
+// ---------------ä»¥ä¸‹æ˜¯æ˜¾ç¤ºç›¸å…³æ–¹æ³•-------------------------
 void SMG_BuffWrite(uint8_t id,uint8_t buffd)
 {
-	if(id < SMG_ITEMS )		//±àºÅid±ØÐëÐ¡ÓÚÊýÂë¹ÜÊýÁ¿
+	if(id < SMG_ITEMS )		//ç¼–å·idå¿…é¡»å°äºŽæ•°ç ç®¡æ•°é‡
 	{
 		SMG_BUFFER[id] = buffd;
 	}
@@ -153,12 +153,12 @@ void SMG_BuffWrite(uint8_t id,uint8_t buffd)
 
 
 
-// ÊýÂë¹ÜÏÔÊ¾ÕûÐÍÊý¾Ýº¯Êý
+// æ•°ç ç®¡æ˜¾ç¤ºæ•´åž‹æ•°æ®å‡½æ•°
 	/**
-	 * @description: ÊýÂë¹ÜÏÔÊ¾ÕûÊýº¯Êý
-	 * @param showNUM: {uint32_t} ÐèÒªÏÔÊ¾µÄÊý¾ÝÖµ
-	 * @param startPos: {uint8_t} ¸öÎ»ÊýÏÔÊ¾ÔÚÓÒ²àÆðÄÄ¸öÎ»ÖÃ
-	 * @param  showBit: {uint8_t} ÏÔÊ¾¼¸Î»ÓÐÐ§Êý×Ö
+	 * @description: æ•°ç ç®¡æ˜¾ç¤ºæ•´æ•°å‡½æ•°
+	 * @param showNUM: {uint32_t} éœ€è¦æ˜¾ç¤ºçš„æ•°æ®å€¼
+	 * @param startPos: {uint8_t} ä¸ªä½æ•°æ˜¾ç¤ºåœ¨å³ä¾§èµ·å“ªä¸ªä½ç½®
+	 * @param  showBit: {uint8_t} æ˜¾ç¤ºå‡ ä½æœ‰æ•ˆæ•°å­—
 	 * @return {*}
 	 */
 void SMG_ShowInt(uint32_t showNUM, uint8_t startPos, uint8_t showBit)
@@ -166,7 +166,7 @@ void SMG_ShowInt(uint32_t showNUM, uint8_t startPos, uint8_t showBit)
 	uint8_t bit;
 	uint8_t endPos;
 	endPos = startPos + showBit;
-	if(endPos > 8 ) endPos = 8;				//ÏÞ¶¨½áÊøÎ»ÖÃ
+	if(endPos > 8 ) endPos = 8;				//é™å®šç»“æŸä½ç½®
 
 	for(bit = startPos; bit < endPos; bit++)
 	{
@@ -190,15 +190,15 @@ uint8_t LetterTab_find(char str)
 			return LetterTab[i].SevSEG_Code;
 		}
 	}
-	// Î´¶¨Òå×Ö·û£¬ÏÔÊ¾'_'
+	// æœªå®šä¹‰å­—ç¬¦ï¼Œæ˜¾ç¤º'_'
 	return ~0x08;
 	
 }
 
 /**
- * @brief : »ñÈ¡ASCIIÂë×Ö·ûµÄÊýÂë¹Ü8¶ÎÒëÂëÊý¾Ý
+ * @brief : èŽ·å–ASCIIç å­—ç¬¦çš„æ•°ç ç®¡8æ®µè¯‘ç æ•°æ®
  * @description: 
- * @param ch: {char} ÐèÒª²éÑ¯µÄ×Ö·û Èç£º'A'
+ * @param ch: {char} éœ€è¦æŸ¥è¯¢çš„å­—ç¬¦ å¦‚ï¼š'A'
  * @return {*}
  */
 uint8_t _getSEG_byChar(char ch)
@@ -209,7 +209,7 @@ uint8_t _getSEG_byChar(char ch)
 	}
 	else
 	{
-		ch = toupper(ch);	//½«×Ö·ûÍ³Ò»×ª»»Îª´óÐ´
+		ch = toupper(ch);	//å°†å­—ç¬¦ç»Ÿä¸€è½¬æ¢ä¸ºå¤§å†™
 		return LetterTab_find(ch);
 	}
 	
@@ -236,25 +236,25 @@ void SMG_print(char *str , uint8_t startPos)
 
 
 
-// ---------------ÒÔÏÂÊÇ¿ª»ú³õÊ¼»¯ÏÔÊ¾·½·¨-------------------------
-// ÊýÂë¹Ü¿ª¹Ø»¨ÑùÏÔÊ¾
+// ---------------ä»¥ä¸‹æ˜¯å¼€æœºåˆå§‹åŒ–æ˜¾ç¤ºæ–¹æ³•-------------------------
+// æ•°ç ç®¡å¼€å…³èŠ±æ ·æ˜¾ç¤º
 #define SHIFT_Data		12345678
 void SMG_RotateShift(uint8_t shiftDir)
 {
 	static uint32_t sdata = SHIFT_Data;
 	SMG_ShowInt(sdata,0,8);
 	
-	if(shiftDir == 0) // ×óÒÆ
+	if(shiftDir == 0) // å·¦ç§»
 	{
 		sdata = (sdata * 10) % 100000000 + (sdata / 10000000); 
 	}
-	else{		//ÓÒÒÆ
+	else{		//å³ç§»
 		sdata = (sdata % 10) * 10000000 + (sdata / 10);
 	}
 }
 
 
-// ÊýÂë¹ÜÕûÌåÊý¾Ý±ä»¯
+// æ•°ç ç®¡æ•´ä½“æ•°æ®å˜åŒ–
 #define DEFAULT_VALUE		99999999
 void SMG_All_num(uint8_t UpOrDn)
 {

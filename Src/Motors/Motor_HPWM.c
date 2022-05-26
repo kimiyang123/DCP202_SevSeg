@@ -85,8 +85,8 @@ void Motor_PortInit(void)
     MotorX_Reset();
     MotorY_Reset();
     // 电机位置传感器初始化
-    locSensor_MorotX_Bind(&sMotor_X);
-    locSensor_MorotY_Bind(&sMotor_Y);
+    // locSensor_MorotX_Bind(&sMotor_X);
+    // locSensor_MorotY_Bind(&sMotor_Y);
 }
 
 
@@ -124,10 +124,35 @@ void MotorX_Run(uint8_t MotorRun_dir,uint8_t speed)
 {
     sMotor_X.Dir = MotorRun_dir;
     sMotor_X.speed = speed;
-
     // X轴电机 PWMA and PWMB 使用 TIM1-CH3N  +  CH1
     TIM1->CCR3 = _getPWMofCCR(MotorRun_dir,speed);
 }
+
+/**
+ * @brief : X轴电机运行方法
+ * @description: 
+ * @param sigSpeed: int8_t 通过参数的正负值，控制电机正反转
+ * @return {void}
+ */
+void MotorX_SigRun(int8_t sigSpeed)
+{
+    uint8_t Dirbit = MOTOR_RUN_Dir_STOP;
+    uint8_t speed = 0;
+    if(sigSpeed < 0)    Dirbit = MOTOR_RUN_Dir_Backward;
+    else if( sigSpeed > 0) Dirbit = MOTOR_RUN_Dir_Forward;
+    
+    if(Dirbit != MOTOR_RUN_Dir_STOP)    //电机非停车
+    {
+        // 取速度绝对值
+        sigSpeed = sigSpeed > 0 ? (sigSpeed):(-sigSpeed);
+        MotorX_Run(Dirbit,sigSpeed);
+    }
+    else{
+        MotorX_Stop();
+    }
+    
+}
+
 
 void MotorX_Stop(void)
 {
@@ -158,6 +183,31 @@ void MotorY_Run(uint8_t MotorRun_dir,uint8_t speed)
     // Y轴电机 PWMC and PWMD 使用 TIM1-CH2 + CH1N
     TIM1->CCR2 = _getPWMofCCR(MotorRun_dir,speed);
 }
+
+/**
+ * @brief : Y 轴电机符号运行方法
+ * @description: 
+ * @param sigSpeed: int8_t 通过参数的正负值，控制电机正反转
+ * @return {void}
+ */
+void MotorY_SigRun(int8_t sigSpeed)
+{
+    uint8_t Dirbit = MOTOR_RUN_Dir_STOP;
+    uint8_t speed = 0;
+    if(sigSpeed < 0)    Dirbit = MOTOR_RUN_Dir_Backward;
+    else if( sigSpeed > 0) Dirbit = MOTOR_RUN_Dir_Forward;
+    
+    if(Dirbit != MOTOR_RUN_Dir_STOP)    //电机非停车
+    {
+        // 取速度绝对值
+        sigSpeed = sigSpeed > 0 ? (sigSpeed):(-sigSpeed);
+        MotorY_Run(Dirbit,sigSpeed);
+    }
+    else{
+        MotorY_Stop();
+    }
+}
+
 
 void MotorY_Stop(void)
 {

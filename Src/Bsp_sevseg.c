@@ -141,6 +141,17 @@ void SMG_CleanPos(uint8_t Spos,uint8_t len)
 	
 }
 
+uint8_t SMG_BuffRead(uint8_t id){
+	if(id < SMG_ITEMS)
+	{
+		return SMG_BUFFER[id];
+	}
+	else{
+		return 0xff;
+	}
+}
+
+
 // ---------------以下是显示相关方法-------------------------
 void SMG_BuffWrite(uint8_t id,uint8_t buffd)
 {

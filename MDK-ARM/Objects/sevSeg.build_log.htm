@@ -22,38 +22,30 @@ Dialog DLL:      TCM.DLL V1.53.0.0
  
 <h2>Project:</h2>
 F:\QSGX_Work\DCP202_SevSeg\MDK-ARM\sevSeg.uvprojx
-Project File Date:  05/22/2022
+Project File Date:  05/26/2022
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 7 (build 960)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'Target 1'
 compiling main.c...
-..\Src\main.c(49): warning:  #185-D: dynamic initialization in unreachable code
+..\Src\main.c(66): warning:  #185-D: dynamic initialization in unreachable code
+  	int16_t dis = 10;
+..\Src\main.c(83): warning:  #185-D: dynamic initialization in unreachable code
   	uint8_t state = 0;
-..\Src\main.c(94): warning:  #128-D: loop is not reachable
+..\Src\main.c(128): warning:  #128-D: loop is not reachable
   	while (1)
-..\Src\main.c(115): warning:  #185-D: dynamic initialization in unreachable code
+..\Src\main.c(149): warning:  #185-D: dynamic initialization in unreachable code
   	uint16_t thisKey = 0;
-..\Src\main.c(159): warning:  #111-D: statement is unreachable
+..\Src\main.c(193): warning:  #111-D: statement is unreachable
   	Beep_On(3000);
-..\Src\main.c(120): warning:  #177-D: variable "numStr"  was declared but never referenced
+..\Src\main.c(154): warning:  #177-D: variable "numStr"  was declared but never referenced
   	char *numStr;
-..\Src\main.c(122): warning:  #177-D: variable "perSetflas"  was declared but never referenced
+..\Src\main.c(156): warning:  #177-D: variable "perSetflas"  was declared but never referenced
   	uint8_t setflas = 0,perSetflas;
-..\Src\main.c: 6 warnings, 0 errors
-compiling Motor_HPWM.c...
-..\Src\Motors\Motor_HPWM.c(12): warning:  #177-D: variable "TIM_BDTRInitStructure"  was declared but never referenced
-      TIM_BDTRInitTypeDef TIM_BDTRInitStructure;
-..\Src\Motors\Motor_HPWM.c(191): warning:  #111-D: statement is unreachable
-          break;
-..\Src\Motors\Motor_HPWM.c(194): warning:  #111-D: statement is unreachable
-          break;
-..\Src\Motors\Motor_HPWM.c(197): warning:  #111-D: statement is unreachable
-          break;
-..\Src\Motors\Motor_HPWM.c: 4 warnings, 0 errors
+..\Src\main.c: 7 warnings, 0 errors
 linking...
-Program Size: Code=6032 RO-data=336 RW-data=116 ZI-data=1708  
-".\Objects\sevSeg.axf" - 0 Error(s), 10 Warning(s).
+Program Size: Code=5736 RO-data=336 RW-data=136 ZI-data=1704  
+".\Objects\sevSeg.axf" - 0 Error(s), 7 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -69,6 +61,7 @@ Package Vendor: Keil
                 STMicroelectronics STM32F1 Series Device Support, Drivers and Examples
    * Component: Startup Version: 1.0.0
    * Component: ADC Version: 3.6.0
+   * Component: DMA Version: 3.6.0
    * Component: EXTI Version: 3.6.0
    * Component: Flash Version: 3.6.0
    * Component: Framework Version: 3.6.0
@@ -88,14 +81,18 @@ Package Vendor: Keil
    * Component: ARM::CMSIS:CORE:5.5.0
 
    * Component: Keil::Device:Startup:1.0.0
-      Include file:  RTE_Driver\Config\RTE_Device.h
       Source file:   Device\Source\ARM\startup_stm32f10x_hd.s
-      Source file:   Device\Source\system_stm32f10x.c
       Source file:   Device\Source\ARM\STM32F1xx_OPT.s
+      Include file:  RTE_Driver\Config\RTE_Device.h
+      Source file:   Device\Source\system_stm32f10x.c
 
    * Component: Keil::Device:StdPeriph Drivers:ADC:3.6.0
       Source file:   Device\StdPeriph_Driver\src\stm32f10x_adc.c
       Include file:  Device\StdPeriph_Driver\inc\stm32f10x_adc.h
+
+   * Component: Keil::Device:StdPeriph Drivers:DMA:3.6.0
+      Source file:   Device\StdPeriph_Driver\src\stm32f10x_dma.c
+      Include file:  Device\StdPeriph_Driver\inc\stm32f10x_dma.h
 
    * Component: Keil::Device:StdPeriph Drivers:EXTI:3.6.0
       Include file:  Device\StdPeriph_Driver\inc\stm32f10x_exti.h
@@ -107,18 +104,18 @@ Package Vendor: Keil
 
    * Component: Keil::Device:StdPeriph Drivers:Framework:3.6.0
       Include file:  Device\StdPeriph_Driver\inc\misc.h
-      Source file:   Device\StdPeriph_Driver\src\misc.c
-      Source file:   Device\StdPeriph_Driver\templates\stm32f10x_conf.h
       Include file:  Device\StdPeriph_Driver\templates\stm32f10x_it.h
+      Source file:   Device\StdPeriph_Driver\templates\stm32f10x_conf.h
+      Source file:   Device\StdPeriph_Driver\src\misc.c
       Source file:   Device\StdPeriph_Driver\templates\stm32f10x_it.c
 
    * Component: Keil::Device:StdPeriph Drivers:GPIO:3.6.0
-      Include file:  Device\StdPeriph_Driver\inc\stm32f10x_gpio.h
       Source file:   Device\StdPeriph_Driver\src\stm32f10x_gpio.c
+      Include file:  Device\StdPeriph_Driver\inc\stm32f10x_gpio.h
 
    * Component: Keil::Device:StdPeriph Drivers:RCC:3.6.0
-      Source file:   Device\StdPeriph_Driver\src\stm32f10x_rcc.c
       Include file:  Device\StdPeriph_Driver\inc\stm32f10x_rcc.h
+      Source file:   Device\StdPeriph_Driver\src\stm32f10x_rcc.c
 
    * Component: Keil::Device:StdPeriph Drivers:TIM:3.6.0
       Include file:  Device\StdPeriph_Driver\inc\stm32f10x_tim.h

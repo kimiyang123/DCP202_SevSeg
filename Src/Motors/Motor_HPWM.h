@@ -1,7 +1,7 @@
 /*
  * @Date: 2022-05-21 23:00:04
  * @LastEditors: kimiyang
- * @LastEditTime: 2022-05-24 22:57:39
+ * @LastEditTime: 2022-05-26 22:36:51
  * @FilePath: \DCP202_SevSeg\Src\Motors\Motor_HPWM.h
  * @Description: 本代码通过STM32的TIM1定时器的PWM输出，
  *               驱动2路直流有刷电机
@@ -35,8 +35,8 @@ typedef struct
 {
     uint8_t Dir;      //电机方向
     uint8_t speed;    //电机当前速度
-    int32_t locRAW; // 电机位置 无单位数值16bit(有符号数)
-    int16_t locMM;      // 电机距离坐标值，单位mm(有符号，可表示负数)
+    __IO int32_t locRAW; // 电机位置 无单位数值16bit(有符号数)
+    __IO int16_t locMM;      // 电机距离坐标值，单位mm(有符号，可表示负数)
     int16_t locTargetMM;    // 电机滑台目标位置
 } motorInfo_def;
 
@@ -46,10 +46,12 @@ extern motorInfo_def sMotor_X , sMotor_Y;
 void Motor_PortInit(void);
 
 void MotorX_Run(uint8_t MotorRun_dir, uint8_t speed);
+void MotorX_SigRun(int8_t sigSpeed);            //通过带符号数控制方向
 void MotorX_Stop(void);
 void MotorX_Reset(void);
 
 void MotorY_Run(uint8_t MotorRun_dir, uint8_t speed);
+void MotorY_SigRun(int8_t sigSpeed);            //通过带符号数控制方向
 void MotorY_Stop(void);
 void MotorY_Reset(void);
 
@@ -66,11 +68,7 @@ uint8_t motorY_moveTo_senRAW(int32_t senRaw);
 
 
 
-
-
-
 uint8_t motorX_moveTo_disMM(int16_t disMM);
-
 uint8_t motorY_moveTo_disMM(int16_t disMM);
 
 #endif

@@ -10,8 +10,8 @@
 
 #include "TimTask.h"
 #include "Motor_HPWM.h"
+#include "Joystick_Driver.h"
 
-unsigned char State = 0, perState = 0xff;
 
 int main(void)
 {
@@ -24,11 +24,47 @@ int main(void)
 	TimTask_Init();
 	Beep_On(20);
 
+	Joystick_Init();
+
 	Motor_PortInit();
+	MotorX_SigRun(-100);
 
 	uint8_t dir=0,xdir = 0;
 	SMG_ShowInt(123,2,3);
 
+	// 摇杆测试电机控制
+	while (1)
+	{
+
+		// *** 摇杆按键和电位器测试
+		sJoyStick.keyscanFun();
+
+		if(*sJoyStick.pKeyEventDN== 1)
+		{
+			Beep_On(100);
+		}
+		
+		if(*sJoyStick.pJoyRAW_x > 2500)
+		{
+			Beep_On(2);
+		}
+	
+		// ******* 通过摇杆电位器 调节电机速度和方向
+		// if( JoyADC_DMABuff[0] > 2100 )
+		// {
+		// 	MotorX_Run(0,map(JoyADC_DMABuff[0]-2048,0,2048,10,50));
+		// }
+		// else if(JoyADC_DMABuff[0] < 2000)
+		// {
+		// 	MotorX_Run(1,map(2000-JoyADC_DMABuff[0],0,2000,10,50));
+		// }
+		// else{
+		// 	MotorX_Stop();
+		// }
+	}
+	
+
+	// 电机直线位置运动测试
 	int16_t dis = 10;
 	uint8_t xStopFlag,yStopFlag;
 	while (1)

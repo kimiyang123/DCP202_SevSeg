@@ -1,5 +1,5 @@
 Dependencies for Project 'sevSeg', Target 'Target 1': (DO NOT MODIFY !)
-F (..\Src\main.c)(0x628CFB49)(--gnu -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\Src\Motors -I ..\Src\Motors\LocSensor -I ..\Src-I.\RTE\Device\STM32F103ZE-I.\RTE\_Target_1-IC:\Users\DELL\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IC:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\Include-IC:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc-D__UVISION_VERSION="525" -D_RTE_ -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
+F (..\Src\main.c)(0x628F9898)(--gnu -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\Src\Motors -I ..\Src\Motors\LocSensor -I ..\Src-I.\RTE\Device\STM32F103ZE-I.\RTE\_Target_1-IC:\Users\DELL\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IC:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\Include-IC:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc-D__UVISION_VERSION="525" -D_RTE_ -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
 I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\Include\stm32f10x.h)(0x61AD795E)
 I (C:\Users\DELL\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include\core_cm3.h)(0x60D3E8E2)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x6025237E)
@@ -8,28 +8,30 @@ I (C:\Users\DELL\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include\cmsi
 I (C:\Users\DELL\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include\cmsis_armcc.h)(0x60D3E8E2)
 I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\Include\system_stm32f10x.h)(0x61AD795E)
 I (.\RTE\Device\STM32F103ZE\stm32f10x_conf.h)(0x61AD795E)
-I (.\RTE\_Target_1\RTE_Components.h)(0x628ACAE1)
+I (.\RTE\_Target_1\RTE_Components.h)(0x628F1898)
 I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\stm32f10x_adc.h)(0x61AD795E)
+I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\stm32f10x_dma.h)(0x61AD795E)
 I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\stm32f10x_exti.h)(0x61AD795E)
 I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\stm32f10x_flash.h)(0x61AD795E)
 I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\stm32f10x_gpio.h)(0x61AD795E)
 I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\stm32f10x_rcc.h)(0x61AD795E)
 I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\stm32f10x_tim.h)(0x61AD795E)
 I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\misc.h)(0x61AD795E)
-I (..\Src\main.h)(0x628BB015)
+I (..\Src\main.h)(0x628F6043)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x60252374)
 I (..\Src\appSMG_UI.h)(0x628CEE8A)
 I (..\Src\KeyPad4x4.h)(0x628CEEF9)
-I (..\Src\BSP.h)(0x628CEEDE)
-I (..\Src\Bsp_sevseg.h)(0x628CC761)
+I (..\Src\BSP.h)(0x628F6156)
+I (..\Src\Bsp_sevseg.h)(0x628F7A24)
 I (C:\Keil_v5\ARM\ARMCC\include\ctype.h)(0x60252376)
 I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x6025237E)
 I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x60252374)
 I (..\Src\operateSetArea.h)(0x628CEF6A)
 I (..\Src\TimTask.h)(0x628CEF79)
-I (..\Src\Motors\Motor_HPWM.h)(0x628CF26B)
-F (..\Src\Bsp_sevseg.c)(0x628C92D8)(--gnu -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\Src\Motors -I ..\Src\Motors\LocSensor -I ..\Src-I.\RTE\Device\STM32F103ZE-I.\RTE\_Target_1-IC:\Users\DELL\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IC:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\Include-IC:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc-D__UVISION_VERSION="525" -D_RTE_ -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o .\objects\bsp_sevseg.o --omf_browse .\objects\bsp_sevseg.crf --depend .\objects\bsp_sevseg.d)
-I (..\Src\Bsp_sevseg.h)(0x628CC761)
+I (..\Src\Motors\Motor_HPWM.h)(0x628F908C)
+I (..\Src\Joystick_Driver.h)(0x628F9556)
+F (..\Src\Bsp_sevseg.c)(0x628F79FE)(--gnu -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\Src\Motors -I ..\Src\Motors\LocSensor -I ..\Src-I.\RTE\Device\STM32F103ZE-I.\RTE\_Target_1-IC:\Users\DELL\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IC:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\Include-IC:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc-D__UVISION_VERSION="525" -D_RTE_ -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o .\objects\bsp_sevseg.o --omf_browse .\objects\bsp_sevseg.crf --depend .\objects\bsp_sevseg.d)
+I (..\Src\Bsp_sevseg.h)(0x628F7A24)
 I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\Include\stm32f10x.h)(0x61AD795E)
 I (C:\Users\DELL\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include\core_cm3.h)(0x60D3E8E2)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x6025237E)
@@ -38,8 +40,9 @@ I (C:\Users\DELL\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include\cmsi
 I (C:\Users\DELL\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include\cmsis_armcc.h)(0x60D3E8E2)
 I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\Include\system_stm32f10x.h)(0x61AD795E)
 I (.\RTE\Device\STM32F103ZE\stm32f10x_conf.h)(0x61AD795E)
-I (.\RTE\_Target_1\RTE_Components.h)(0x628ACAE1)
+I (.\RTE\_Target_1\RTE_Components.h)(0x628F1898)
 I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\stm32f10x_adc.h)(0x61AD795E)
+I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\stm32f10x_dma.h)(0x61AD795E)
 I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\stm32f10x_exti.h)(0x61AD795E)
 I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\stm32f10x_flash.h)(0x61AD795E)
 I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\stm32f10x_gpio.h)(0x61AD795E)
@@ -47,8 +50,8 @@ I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeri
 I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\stm32f10x_tim.h)(0x61AD795E)
 I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\misc.h)(0x61AD795E)
 I (C:\Keil_v5\ARM\ARMCC\include\ctype.h)(0x60252376)
-F (..\Src\BSP.c)(0x628CEEC6)(--gnu -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\Src\Motors -I ..\Src\Motors\LocSensor -I ..\Src-I.\RTE\Device\STM32F103ZE-I.\RTE\_Target_1-IC:\Users\DELL\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IC:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\Include-IC:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc-D__UVISION_VERSION="525" -D_RTE_ -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o .\objects\bsp.o --omf_browse .\objects\bsp.crf --depend .\objects\bsp.d)
-I (..\Src\BSP.h)(0x628CEEDE)
+F (..\Src\BSP.c)(0x628F60B4)(--gnu -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\Src\Motors -I ..\Src\Motors\LocSensor -I ..\Src-I.\RTE\Device\STM32F103ZE-I.\RTE\_Target_1-IC:\Users\DELL\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IC:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\Include-IC:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc-D__UVISION_VERSION="525" -D_RTE_ -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o .\objects\bsp.o --omf_browse .\objects\bsp.crf --depend .\objects\bsp.d)
+I (..\Src\BSP.h)(0x628F6156)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x60252374)
 I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\Include\stm32f10x.h)(0x61AD795E)
 I (C:\Users\DELL\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include\core_cm3.h)(0x60D3E8E2)
@@ -58,8 +61,9 @@ I (C:\Users\DELL\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include\cmsi
 I (C:\Users\DELL\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include\cmsis_armcc.h)(0x60D3E8E2)
 I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\Include\system_stm32f10x.h)(0x61AD795E)
 I (.\RTE\Device\STM32F103ZE\stm32f10x_conf.h)(0x61AD795E)
-I (.\RTE\_Target_1\RTE_Components.h)(0x628ACAE1)
+I (.\RTE\_Target_1\RTE_Components.h)(0x628F1898)
 I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\stm32f10x_adc.h)(0x61AD795E)
+I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\stm32f10x_dma.h)(0x61AD795E)
 I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\stm32f10x_exti.h)(0x61AD795E)
 I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\stm32f10x_flash.h)(0x61AD795E)
 I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\stm32f10x_gpio.h)(0x61AD795E)
@@ -76,15 +80,16 @@ I (C:\Users\DELL\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include\cmsi
 I (C:\Users\DELL\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include\cmsis_armcc.h)(0x60D3E8E2)
 I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\Include\system_stm32f10x.h)(0x61AD795E)
 I (.\RTE\Device\STM32F103ZE\stm32f10x_conf.h)(0x61AD795E)
-I (.\RTE\_Target_1\RTE_Components.h)(0x628ACAE1)
+I (.\RTE\_Target_1\RTE_Components.h)(0x628F1898)
 I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\stm32f10x_adc.h)(0x61AD795E)
+I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\stm32f10x_dma.h)(0x61AD795E)
 I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\stm32f10x_exti.h)(0x61AD795E)
 I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\stm32f10x_flash.h)(0x61AD795E)
 I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\stm32f10x_gpio.h)(0x61AD795E)
 I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\stm32f10x_rcc.h)(0x61AD795E)
 I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\stm32f10x_tim.h)(0x61AD795E)
 I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\misc.h)(0x61AD795E)
-I (..\Src\BSP.h)(0x628CEEDE)
+I (..\Src\BSP.h)(0x628F6156)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x60252374)
 F (..\Src\appSMG_UI.c)(0x628CEE83)(--gnu -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\Src\Motors -I ..\Src\Motors\LocSensor -I ..\Src-I.\RTE\Device\STM32F103ZE-I.\RTE\_Target_1-IC:\Users\DELL\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IC:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\Include-IC:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc-D__UVISION_VERSION="525" -D_RTE_ -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o .\objects\appsmg_ui.o --omf_browse .\objects\appsmg_ui.crf --depend .\objects\appsmg_ui.d)
 I (..\Src\appSMG_UI.h)(0x628CEE8A)
@@ -97,17 +102,18 @@ I (C:\Users\DELL\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include\cmsi
 I (C:\Users\DELL\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include\cmsis_armcc.h)(0x60D3E8E2)
 I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\Include\system_stm32f10x.h)(0x61AD795E)
 I (.\RTE\Device\STM32F103ZE\stm32f10x_conf.h)(0x61AD795E)
-I (.\RTE\_Target_1\RTE_Components.h)(0x628ACAE1)
+I (.\RTE\_Target_1\RTE_Components.h)(0x628F1898)
 I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\stm32f10x_adc.h)(0x61AD795E)
+I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\stm32f10x_dma.h)(0x61AD795E)
 I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\stm32f10x_exti.h)(0x61AD795E)
 I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\stm32f10x_flash.h)(0x61AD795E)
 I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\stm32f10x_gpio.h)(0x61AD795E)
 I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\stm32f10x_rcc.h)(0x61AD795E)
 I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\stm32f10x_tim.h)(0x61AD795E)
 I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\misc.h)(0x61AD795E)
-I (..\Src\BSP.h)(0x628CEEDE)
+I (..\Src\BSP.h)(0x628F6156)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x60252374)
-I (..\Src\Bsp_sevseg.h)(0x628CC761)
+I (..\Src\Bsp_sevseg.h)(0x628F7A24)
 I (C:\Keil_v5\ARM\ARMCC\include\ctype.h)(0x60252376)
 I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x6025237E)
 I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x60252374)
@@ -121,8 +127,9 @@ I (C:\Users\DELL\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include\cmsi
 I (C:\Users\DELL\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include\cmsis_armcc.h)(0x60D3E8E2)
 I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\Include\system_stm32f10x.h)(0x61AD795E)
 I (.\RTE\Device\STM32F103ZE\stm32f10x_conf.h)(0x61AD795E)
-I (.\RTE\_Target_1\RTE_Components.h)(0x628ACAE1)
+I (.\RTE\_Target_1\RTE_Components.h)(0x628F1898)
 I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\stm32f10x_adc.h)(0x61AD795E)
+I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\stm32f10x_dma.h)(0x61AD795E)
 I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\stm32f10x_exti.h)(0x61AD795E)
 I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\stm32f10x_flash.h)(0x61AD795E)
 I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\stm32f10x_gpio.h)(0x61AD795E)
@@ -141,22 +148,42 @@ I (C:\Users\DELL\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include\cmsi
 I (C:\Users\DELL\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include\cmsis_armcc.h)(0x60D3E8E2)
 I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\Include\system_stm32f10x.h)(0x61AD795E)
 I (.\RTE\Device\STM32F103ZE\stm32f10x_conf.h)(0x61AD795E)
-I (.\RTE\_Target_1\RTE_Components.h)(0x628ACAE1)
+I (.\RTE\_Target_1\RTE_Components.h)(0x628F1898)
 I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\stm32f10x_adc.h)(0x61AD795E)
+I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\stm32f10x_dma.h)(0x61AD795E)
 I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\stm32f10x_exti.h)(0x61AD795E)
 I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\stm32f10x_flash.h)(0x61AD795E)
 I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\stm32f10x_gpio.h)(0x61AD795E)
 I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\stm32f10x_rcc.h)(0x61AD795E)
 I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\stm32f10x_tim.h)(0x61AD795E)
 I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\misc.h)(0x61AD795E)
-I (..\Src\BSP.h)(0x628CEEDE)
+I (..\Src\BSP.h)(0x628F6156)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x60252374)
-I (..\Src\Bsp_sevseg.h)(0x628CC761)
+I (..\Src\Bsp_sevseg.h)(0x628F7A24)
 I (C:\Keil_v5\ARM\ARMCC\include\ctype.h)(0x60252376)
 I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x6025237E)
 I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x60252374)
-F (..\Src\Motors\Motor_HPWM.c)(0x628CFB0F)(--gnu -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\Src\Motors -I ..\Src\Motors\LocSensor -I ..\Src-I.\RTE\Device\STM32F103ZE-I.\RTE\_Target_1-IC:\Users\DELL\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IC:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\Include-IC:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc-D__UVISION_VERSION="525" -D_RTE_ -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o .\objects\motor_hpwm.o --omf_browse .\objects\motor_hpwm.crf --depend .\objects\motor_hpwm.d)
-I (..\Src\Motors\Motor_HPWM.h)(0x628CF26B)
+F (..\Src\Joystick_Driver.c)(0x628F955E)(--gnu -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\Src\Motors -I ..\Src\Motors\LocSensor -I ..\Src-I.\RTE\Device\STM32F103ZE-I.\RTE\_Target_1-IC:\Users\DELL\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IC:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\Include-IC:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc-D__UVISION_VERSION="525" -D_RTE_ -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o .\objects\joystick_driver.o --omf_browse .\objects\joystick_driver.crf --depend .\objects\joystick_driver.d)
+I (..\Src\Joystick_Driver.h)(0x628F9556)
+I (.\RTE\Device\STM32F103ZE\stm32f10x_conf.h)(0x61AD795E)
+I (.\RTE\_Target_1\RTE_Components.h)(0x628F1898)
+I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\stm32f10x_adc.h)(0x61AD795E)
+I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\Include\stm32f10x.h)(0x61AD795E)
+I (C:\Users\DELL\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include\core_cm3.h)(0x60D3E8E2)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x6025237E)
+I (C:\Users\DELL\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include\cmsis_version.h)(0x60D3E8E2)
+I (C:\Users\DELL\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include\cmsis_compiler.h)(0x60D3E8E2)
+I (C:\Users\DELL\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include\cmsis_armcc.h)(0x60D3E8E2)
+I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\Include\system_stm32f10x.h)(0x61AD795E)
+I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\stm32f10x_dma.h)(0x61AD795E)
+I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\stm32f10x_exti.h)(0x61AD795E)
+I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\stm32f10x_flash.h)(0x61AD795E)
+I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\stm32f10x_gpio.h)(0x61AD795E)
+I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\stm32f10x_rcc.h)(0x61AD795E)
+I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\stm32f10x_tim.h)(0x61AD795E)
+I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\misc.h)(0x61AD795E)
+F (..\Src\Motors\Motor_HPWM.c)(0x628F8DE5)(--gnu -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\Src\Motors -I ..\Src\Motors\LocSensor -I ..\Src-I.\RTE\Device\STM32F103ZE-I.\RTE\_Target_1-IC:\Users\DELL\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IC:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\Include-IC:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc-D__UVISION_VERSION="525" -D_RTE_ -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o .\objects\motor_hpwm.o --omf_browse .\objects\motor_hpwm.crf --depend .\objects\motor_hpwm.d)
+I (..\Src\Motors\Motor_HPWM.h)(0x628F908C)
 I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\Include\stm32f10x.h)(0x61AD795E)
 I (C:\Users\DELL\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include\core_cm3.h)(0x60D3E8E2)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x6025237E)
@@ -165,8 +192,9 @@ I (C:\Users\DELL\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include\cmsi
 I (C:\Users\DELL\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include\cmsis_armcc.h)(0x60D3E8E2)
 I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\Include\system_stm32f10x.h)(0x61AD795E)
 I (.\RTE\Device\STM32F103ZE\stm32f10x_conf.h)(0x61AD795E)
-I (.\RTE\_Target_1\RTE_Components.h)(0x628ACAE1)
+I (.\RTE\_Target_1\RTE_Components.h)(0x628F1898)
 I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\stm32f10x_adc.h)(0x61AD795E)
+I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\stm32f10x_dma.h)(0x61AD795E)
 I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\stm32f10x_exti.h)(0x61AD795E)
 I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\stm32f10x_flash.h)(0x61AD795E)
 I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\stm32f10x_gpio.h)(0x61AD795E)
@@ -178,7 +206,7 @@ I (..\Src\Motors\LocSensor\Sensor_Encoder.h)(0x628CEE0D)
 F (..\Src\Motors\Motor_LocSensor.c)(0x628CEE77)(--gnu -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\Src\Motors -I ..\Src\Motors\LocSensor -I ..\Src-I.\RTE\Device\STM32F103ZE-I.\RTE\_Target_1-IC:\Users\DELL\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IC:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\Include-IC:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc-D__UVISION_VERSION="525" -D_RTE_ -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o .\objects\motor_locsensor.o --omf_browse .\objects\motor_locsensor.crf --depend .\objects\motor_locsensor.d)
 I (..\Src\Motors\Motor_LocSensor.h)(0x628CEE7B)
 I (.\RTE\Device\STM32F103ZE\stm32f10x_conf.h)(0x61AD795E)
-I (.\RTE\_Target_1\RTE_Components.h)(0x628ACAE1)
+I (.\RTE\_Target_1\RTE_Components.h)(0x628F1898)
 I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\stm32f10x_adc.h)(0x61AD795E)
 I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\Include\stm32f10x.h)(0x61AD795E)
 I (C:\Users\DELL\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include\core_cm3.h)(0x60D3E8E2)
@@ -187,17 +215,18 @@ I (C:\Users\DELL\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include\cmsi
 I (C:\Users\DELL\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include\cmsis_compiler.h)(0x60D3E8E2)
 I (C:\Users\DELL\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include\cmsis_armcc.h)(0x60D3E8E2)
 I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\Include\system_stm32f10x.h)(0x61AD795E)
+I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\stm32f10x_dma.h)(0x61AD795E)
 I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\stm32f10x_exti.h)(0x61AD795E)
 I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\stm32f10x_flash.h)(0x61AD795E)
 I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\stm32f10x_gpio.h)(0x61AD795E)
 I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\stm32f10x_rcc.h)(0x61AD795E)
 I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\stm32f10x_tim.h)(0x61AD795E)
 I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\misc.h)(0x61AD795E)
-I (..\Src\Motors\Motor_HPWM.h)(0x628CF26B)
+I (..\Src\Motors\Motor_HPWM.h)(0x628F908C)
 I (..\Src\Motors\LocSensor\Sensor_Encoder.h)(0x628CEE0D)
 F (..\Src\Motors\LocSensor\Sensor_Encoder.c)(0x628CEDEC)(--gnu -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\Src\Motors -I ..\Src\Motors\LocSensor -I ..\Src-I.\RTE\Device\STM32F103ZE-I.\RTE\_Target_1-IC:\Users\DELL\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IC:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\Include-IC:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc-D__UVISION_VERSION="525" -D_RTE_ -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o .\objects\sensor_encoder.o --omf_browse .\objects\sensor_encoder.crf --depend .\objects\sensor_encoder.d)
 I (..\Src\Motors\LocSensor\Sensor_Encoder.h)(0x628CEE0D)
-I (..\Src\Motors\Motor_HPWM.h)(0x628CF26B)
+I (..\Src\Motors\Motor_HPWM.h)(0x628F908C)
 I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\Include\stm32f10x.h)(0x61AD795E)
 I (C:\Users\DELL\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include\core_cm3.h)(0x60D3E8E2)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x6025237E)
@@ -206,8 +235,9 @@ I (C:\Users\DELL\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include\cmsi
 I (C:\Users\DELL\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include\cmsis_armcc.h)(0x60D3E8E2)
 I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\Include\system_stm32f10x.h)(0x61AD795E)
 I (.\RTE\Device\STM32F103ZE\stm32f10x_conf.h)(0x61AD795E)
-I (.\RTE\_Target_1\RTE_Components.h)(0x628ACAE1)
+I (.\RTE\_Target_1\RTE_Components.h)(0x628F1898)
 I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\stm32f10x_adc.h)(0x61AD795E)
+I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\stm32f10x_dma.h)(0x61AD795E)
 I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\stm32f10x_exti.h)(0x61AD795E)
 I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\stm32f10x_flash.h)(0x61AD795E)
 I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\stm32f10x_gpio.h)(0x61AD795E)
@@ -225,8 +255,9 @@ I (C:\Users\DELL\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include\cmsi
 I (C:\Users\DELL\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include\cmsis_armcc.h)(0x60D3E8E2)
 I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\Include\system_stm32f10x.h)(0x61AD795E)
 I (.\RTE\Device\STM32F103ZE\stm32f10x_conf.h)(0x61AD795E)
-I (.\RTE\_Target_1\RTE_Components.h)(0x628ACAE1)
+I (.\RTE\_Target_1\RTE_Components.h)(0x628F1898)
 I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\stm32f10x_adc.h)(0x61AD795E)
+I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\stm32f10x_dma.h)(0x61AD795E)
 I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\stm32f10x_exti.h)(0x61AD795E)
 I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\stm32f10x_flash.h)(0x61AD795E)
 I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\stm32f10x_gpio.h)(0x61AD795E)
@@ -242,7 +273,8 @@ I (C:\Users\DELL\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include\cmsi
 I (C:\Users\DELL\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include\cmsis_armcc.h)(0x60D3E8E2)
 I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\Include\system_stm32f10x.h)(0x61AD795E)
 I (.\RTE\Device\STM32F103ZE\stm32f10x_conf.h)(0x61AD795E)
-I (.\RTE\_Target_1\RTE_Components.h)(0x628ACAE1)
+I (.\RTE\_Target_1\RTE_Components.h)(0x628F1898)
+I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\stm32f10x_dma.h)(0x61AD795E)
 I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\stm32f10x_exti.h)(0x61AD795E)
 I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\stm32f10x_flash.h)(0x61AD795E)
 I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\stm32f10x_gpio.h)(0x61AD795E)
@@ -259,8 +291,9 @@ I (C:\Users\DELL\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include\cmsi
 I (C:\Users\DELL\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include\cmsis_armcc.h)(0x60D3E8E2)
 I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\Include\system_stm32f10x.h)(0x61AD795E)
 I (.\RTE\Device\STM32F103ZE\stm32f10x_conf.h)(0x61AD795E)
-I (.\RTE\_Target_1\RTE_Components.h)(0x628ACAE1)
+I (.\RTE\_Target_1\RTE_Components.h)(0x628F1898)
 I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\stm32f10x_adc.h)(0x61AD795E)
+I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\stm32f10x_dma.h)(0x61AD795E)
 I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\stm32f10x_flash.h)(0x61AD795E)
 I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\stm32f10x_gpio.h)(0x61AD795E)
 I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\stm32f10x_rcc.h)(0x61AD795E)
@@ -276,8 +309,9 @@ I (C:\Users\DELL\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include\cmsi
 I (C:\Users\DELL\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include\cmsis_armcc.h)(0x60D3E8E2)
 I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\Include\system_stm32f10x.h)(0x61AD795E)
 I (.\RTE\Device\STM32F103ZE\stm32f10x_conf.h)(0x61AD795E)
-I (.\RTE\_Target_1\RTE_Components.h)(0x628ACAE1)
+I (.\RTE\_Target_1\RTE_Components.h)(0x628F1898)
 I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\stm32f10x_adc.h)(0x61AD795E)
+I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\stm32f10x_dma.h)(0x61AD795E)
 I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\stm32f10x_exti.h)(0x61AD795E)
 I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\stm32f10x_gpio.h)(0x61AD795E)
 I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\stm32f10x_rcc.h)(0x61AD795E)
@@ -293,8 +327,9 @@ I (C:\Users\DELL\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include\cmsi
 I (C:\Users\DELL\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include\cmsis_armcc.h)(0x60D3E8E2)
 I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\Include\system_stm32f10x.h)(0x61AD795E)
 I (.\RTE\Device\STM32F103ZE\stm32f10x_conf.h)(0x61AD795E)
-I (.\RTE\_Target_1\RTE_Components.h)(0x628ACAE1)
+I (.\RTE\_Target_1\RTE_Components.h)(0x628F1898)
 I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\stm32f10x_adc.h)(0x61AD795E)
+I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\stm32f10x_dma.h)(0x61AD795E)
 I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\stm32f10x_exti.h)(0x61AD795E)
 I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\stm32f10x_flash.h)(0x61AD795E)
 I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\stm32f10x_rcc.h)(0x61AD795E)
@@ -310,8 +345,9 @@ I (C:\Users\DELL\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include\cmsi
 I (C:\Users\DELL\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include\cmsis_armcc.h)(0x60D3E8E2)
 I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\Include\system_stm32f10x.h)(0x61AD795E)
 I (.\RTE\Device\STM32F103ZE\stm32f10x_conf.h)(0x61AD795E)
-I (.\RTE\_Target_1\RTE_Components.h)(0x628ACAE1)
+I (.\RTE\_Target_1\RTE_Components.h)(0x628F1898)
 I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\stm32f10x_adc.h)(0x61AD795E)
+I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\stm32f10x_dma.h)(0x61AD795E)
 I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\stm32f10x_exti.h)(0x61AD795E)
 I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\stm32f10x_flash.h)(0x61AD795E)
 I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\stm32f10x_gpio.h)(0x61AD795E)
@@ -327,8 +363,9 @@ I (C:\Users\DELL\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include\cmsi
 I (C:\Users\DELL\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include\cmsis_armcc.h)(0x60D3E8E2)
 I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\Include\system_stm32f10x.h)(0x61AD795E)
 I (.\RTE\Device\STM32F103ZE\stm32f10x_conf.h)(0x61AD795E)
-I (.\RTE\_Target_1\RTE_Components.h)(0x628ACAE1)
+I (.\RTE\_Target_1\RTE_Components.h)(0x628F1898)
 I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\stm32f10x_adc.h)(0x61AD795E)
+I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\stm32f10x_dma.h)(0x61AD795E)
 I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\stm32f10x_exti.h)(0x61AD795E)
 I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\stm32f10x_flash.h)(0x61AD795E)
 I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\stm32f10x_gpio.h)(0x61AD795E)
@@ -346,7 +383,26 @@ I (C:\Users\DELL\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include\cmsi
 I (C:\Users\DELL\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include\cmsis_armcc.h)(0x60D3E8E2)
 I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\Include\system_stm32f10x.h)(0x61AD795E)
 I (.\RTE\Device\STM32F103ZE\stm32f10x_conf.h)(0x61AD795E)
-I (.\RTE\_Target_1\RTE_Components.h)(0x628ACAE1)
+I (.\RTE\_Target_1\RTE_Components.h)(0x628F1898)
+I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\stm32f10x_adc.h)(0x61AD795E)
+I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\stm32f10x_dma.h)(0x61AD795E)
+I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\stm32f10x_exti.h)(0x61AD795E)
+I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\stm32f10x_flash.h)(0x61AD795E)
+I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\stm32f10x_gpio.h)(0x61AD795E)
+I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\stm32f10x_rcc.h)(0x61AD795E)
+I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\stm32f10x_tim.h)(0x61AD795E)
+I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\misc.h)(0x61AD795E)
+F (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\src\stm32f10x_dma.c)(0x61AD795E)(--gnu -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\Src\Motors -I ..\Src\Motors\LocSensor -I ..\Src-I.\RTE\Device\STM32F103ZE-I.\RTE\_Target_1-IC:\Users\DELL\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IC:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\Include-IC:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc-D__UVISION_VERSION="525" -D_RTE_ -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o .\objects\stm32f10x_dma.o --omf_browse .\objects\stm32f10x_dma.crf --depend .\objects\stm32f10x_dma.d)
+I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\stm32f10x_dma.h)(0x61AD795E)
+I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\Include\stm32f10x.h)(0x61AD795E)
+I (C:\Users\DELL\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include\core_cm3.h)(0x60D3E8E2)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x6025237E)
+I (C:\Users\DELL\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include\cmsis_version.h)(0x60D3E8E2)
+I (C:\Users\DELL\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include\cmsis_compiler.h)(0x60D3E8E2)
+I (C:\Users\DELL\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include\cmsis_armcc.h)(0x60D3E8E2)
+I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\Include\system_stm32f10x.h)(0x61AD795E)
+I (.\RTE\Device\STM32F103ZE\stm32f10x_conf.h)(0x61AD795E)
+I (.\RTE\_Target_1\RTE_Components.h)(0x628F1898)
 I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\stm32f10x_adc.h)(0x61AD795E)
 I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\stm32f10x_exti.h)(0x61AD795E)
 I (C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\stm32f10x_flash.h)(0x61AD795E)

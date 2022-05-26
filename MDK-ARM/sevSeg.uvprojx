@@ -416,6 +416,11 @@
               <FileType>1</FileType>
               <FilePath>..\Src\operateSetArea.c</FilePath>
             </File>
+            <File>
+              <FileName>Joystick_Driver.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\Joystick_Driver.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -464,6 +469,12 @@
         </targetInfos>
       </component>
       <component Cclass="Device" Cgroup="StdPeriph Drivers" Csub="ADC" Cvendor="Keil" Cversion="3.6.0" condition="STM32F1xx STDPERIPH RCC">
+        <package name="STM32F1xx_DFP" schemaVersion="1.7.2" url="http://www.keil.com/pack/" vendor="Keil" version="2.4.0"/>
+        <targetInfos>
+          <targetInfo name="Target 1"/>
+        </targetInfos>
+      </component>
+      <component Cclass="Device" Cgroup="StdPeriph Drivers" Csub="DMA" Cvendor="Keil" Cversion="3.6.0" condition="STM32F1xx STDPERIPH RCC">
         <package name="STM32F1xx_DFP" schemaVersion="1.7.2" url="http://www.keil.com/pack/" vendor="Keil" version="2.4.0"/>
         <targetInfos>
           <targetInfo name="Target 1"/>

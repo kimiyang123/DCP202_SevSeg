@@ -25,5 +25,17 @@ void BSP_Configuration(void);
 
 void Beep_On(uint16_t onTime);
 
+/**
+ * @brief : 数值比例映像方法
+ * @description: 
+ * @param {long} x:
+ * @param {long} in_min
+ * @param {long} in_max
+ * @param {long} out_min
+ * @param {long} out_max
+ * @return {*}
+ */
+long map(long x, long in_min, long in_max, long out_min, long out_max);
+
 #endif
 

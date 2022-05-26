@@ -25,7 +25,7 @@
 
 	/**
 	 * @brief : 获取数码管指定Buff内的当前显示段码数据
-	 * @description: 
+	 * @description: 如果id大于数码管数量，则返回0xff
 	 * @param  id:{uint8_t} 指定数码管位置[0-7]
 	 * @return {uint8_t} 返回数码管段码
 	 */	

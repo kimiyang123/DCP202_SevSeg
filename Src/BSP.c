@@ -41,10 +41,9 @@ void delay_ticks(uint16_t dtime)
 }
 
 
-
-
-
 extern void SMG_Refresh(void);
+
+
 /**
   * @brief  This function handles SysTick Handler.
   * @param  None
@@ -74,27 +73,33 @@ void BSP_Configuration(void)
 	
 	RCC->APB2ENR |= RCC_APB2ENR_IOPCEN;
 	
-	// beep Pin init
+	// *******BEEP 蜂鸣器管脚初始化**********/
 	GPIOInit.GPIO_Mode = GPIO_Mode_Out_PP;
 	GPIOInit.GPIO_Pin = GPIO_Pin_13;
 	GPIOInit.GPIO_Speed = GPIO_Speed_50MHz;
-	GPIO_Init(GPIOC,&GPIOInit);
+	GPIO_Init(BEEP_Port,&GPIOInit);
+
 	
-	// LED1 and LED2 Init
+	// *******LED 管脚初始化**********/
 	GPIOInit.GPIO_Mode	 	= GPIO_Mode_Out_PP;
 	GPIOInit.GPIO_Pin 		= GPIO_Pin_7|GPIO_Pin_9;
 	GPIOInit.GPIO_Speed 	= GPIO_Speed_50MHz;
 	GPIO_Init(GPIOC,&GPIOInit);
 	GPIO_WriteBit(GPIOC,GPIOInit.GPIO_Pin,(BitAction)1);
 	
-
+	// *******Button 按键管脚初始化**********/
+	GPIOInit.GPIO_Mode		= GPIO_Mode_IPU;
+	GPIOInit.GPIO_Pin		= GPIO_Pin_6 | GPIO_Pin_8;
+	GPIO_Init(BTN_Port,&GPIOInit);
+	
+	// 中断优先级分组配置
 	// NVIC_PriorityGroupConfig(NVIC_PriorityGroup_1);
 	NVIC_SetPriorityGrouping(NVIC_PriorityGroup_2);
-
+// ***********Systick 初始化******************************/
 	SysTick_Config(SystemCoreClock / 1000);
 	// SysTick_Config(72000);
-	NVIC_SetPriority(SysTick_IRQn,  
-				NVIC_EncodePriority(NVIC_GetPriorityGrouping(),1,0 ));
+	NVIC_SetPriority(SysTick_IRQn, NVIC_EncodePriority(NVIC_GetPriorityGrouping(),1,0 ));
+// *************systick 初始化结束**************************/
 
 	
 }
@@ -114,8 +119,51 @@ void Beep_On(uint16_t onTime)
 }
 
 
+uint8_t bspKey_EventDn , perBspKey = 0xff;
+uint8_t Bsp_BTNScan(void)
+{
+	uint8_t key = 0;
+	uint8_t i=0;
+
+	// 将2个按键 组合到一个字节数据的最低2位
+	if(GPIO_ReadInputDataBit(BTN_Port,BTN1_Pin) == 1)
+	{
+		key |= 0x01;
+	}
+	key<<=1;
+	if(GPIO_ReadInputDataBit(BTN_Port,BTN2_Pin) == 1)
+	{
+		key |= 0x01;
+	}
+	key = (~key) & 0x03;  // 取反以1表示按键有效
+
+	if(key != 0x00)
+	{	//有按键按下
+		bspKey_EventDn = (key ^ perBspKey);
+		
+		if(key != perBspKey)
+		{
+
+		}
+
+	}
+
+	
+
+}
 
 
+
+/**
+ * @brief : 数据范围映射方法
+ * @description: 
+ * @param {long} x
+ * @param {long} in_min
+ * @param {long} in_max
+ * @param {long} out_min
+ * @param {long} out_max
+ * @return {*}
+ */
 long map(long x, long in_min, long in_max, long out_min, long out_max)
 {
   return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;

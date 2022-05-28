@@ -1,7 +1,8 @@
 
 #include "Joystick_Driver.h"
 
-uint16_t JoyADC_DMABuff[2];
+
+uint16_t JoyADC_DMABuff[2];    /*>!  只可读取，不可修改*/
 
 uint8_t Joystick_KeyScan(void);
 
@@ -72,6 +73,23 @@ void Joystick_Init(void)
 }
 
 
+/**
+ * @brief : 获取 摇杆(Joystick) X 或 Y轴通道的ADC值 
+ * @description: 
+ * @param axisID : [uint8_t] 摇杆通道ID, 0\1 or can be a enum typed 
+ *                  like as  AXIS_X、AXIS_Y
+ * @return {*}
+ */
+uint16_t Joystick_getAxis(uint8_t axisID)
+{
+    if(axisID < 2)
+    {
+        return JoyADC_DMABuff[axisID];      // 返回XY轴通道的ADC值
+    }
+    return 0;  // 通道号无效则返回0
+}
+
+
 uint8_t perJoyKey = 0xff;
 uint8_t joykey_EventDN = 0;     // 按键按下事件
 /**
@@ -117,3 +135,4 @@ Joystick_def sJoyStick = {
     .keyscanFun = Joystick_KeyScan,
     .pKeyEventDN = &joykey_EventDN
 };
+

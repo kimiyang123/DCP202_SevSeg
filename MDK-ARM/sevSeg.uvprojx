@@ -421,6 +421,11 @@
               <FileType>1</FileType>
               <FilePath>..\Src\Joystick_Driver.c</FilePath>
             </File>
+            <File>
+              <FileName>Servo_MotorZ.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\Motors\Servo_MotorZ.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

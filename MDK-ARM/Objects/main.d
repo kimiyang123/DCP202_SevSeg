@@ -1,4 +1,8 @@
 .\objects\main.o: ..\Src\main.c
+.\objects\main.o: ..\Src\main.h
+.\objects\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\main.o: ..\Src\appSMG_UI.h
+.\objects\main.o: ..\Src\KeyPad4x4.h
 .\objects\main.o: C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\Include\stm32f10x.h
 .\objects\main.o: C:\Users\DELL\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include\core_cm3.h
 .\objects\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
@@ -17,16 +21,11 @@
 .\objects\main.o: C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\stm32f10x_rcc.h
 .\objects\main.o: C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\stm32f10x_tim.h
 .\objects\main.o: C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\misc.h
-.\objects\main.o: ..\Src\main.h
-.\objects\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
-.\objects\main.o: ..\Src\appSMG_UI.h
-.\objects\main.o: ..\Src\KeyPad4x4.h
 .\objects\main.o: ..\Src\BSP.h
 .\objects\main.o: ..\Src\Bsp_sevseg.h
 .\objects\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\ctype.h
 .\objects\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 .\objects\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 .\objects\main.o: ..\Src\operateSetArea.h
-.\objects\main.o: ..\Src\TimTask.h
-.\objects\main.o: ..\Src\Motors\Motor_HPWM.h
 .\objects\main.o: ..\Src\Joystick_Driver.h
+.\objects\main.o: ..\Src\Motors\Servo_MotorZ.h

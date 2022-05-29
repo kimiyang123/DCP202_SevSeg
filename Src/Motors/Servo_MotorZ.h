@@ -1,7 +1,7 @@
 /*
  * @Date: 2022-05-27 16:55:50
  * @LastEditors: kimiyang
- * @LastEditTime: 2022-05-27 21:52:39
+ * @LastEditTime: 2022-05-28 10:38:48
  * @FilePath: \DCP202_SevSeg\Src\Motors\ServO_MotorZ.h
  * @Description: 舵机及Z轴电机控制
  *             使用TIM4 定时器的2个PWM脉冲，分别控制Z轴电机和Servo舵机
@@ -32,11 +32,11 @@
 
     /**
      * @brief : 舵机及Z轴电机控制初始化方法
-     *          <br/>初始化TIM4 以及对应CH3 CH4 通道的GPIOB8,GPIOB9
+     *          <p>初始化TIM4 </p> 以及对应CH3 CH4 通道的GPIOB8,GPIOB9
      * @description: 
      * @return {*}
      */    
-    void ServoMotor_Init(void);
+    void ServoMotorZ_Init(void);
 
     /**
      * @brief : 舵机开合度设置
@@ -82,3 +82,38 @@
 #endif
 
 
+
+
+ /***********MotorZ Servo使用Demo********************************
+  * 
+  * #include "main.h"
+  * #include "Servo_MotorZ.h"
+  * 
+    int main()
+    {
+        int speed = 100;
+        BSP_Configuration();
+
+        ServoMotorZ_Init();      // 舵机和 Z轴 定时器GPIO初始化
+
+        ServoWrite(0);           // 舵机走到0角度位置
+        MotorZ_Stop();           // Z轴电机停车
+
+
+        delay_ticks(2000);
+
+        while (1)
+        {
+            // 一种简单的 Z轴电机到位测试 移动2S时间
+            if(MotorZ_MoveByTime(speed,2000) == enMOTORz_TIMOUT)
+            {
+                speed = -speed;
+                ServoWrite(speed); 
+            }
+        }
+
+    }
+  * 
+  * 
+  * 
+  *************************************************************/ 

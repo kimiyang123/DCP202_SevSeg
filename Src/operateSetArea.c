@@ -49,7 +49,7 @@ uint8_t app_setArea(void)
     char cmd[4];
     char *pStr;
     uint8_t keytTMP;
-    keytTMP = getKeyLast();
+    keytTMP = KeyPad_getLastEvent();
     switch (funState)
     {
     case 0: //主菜单
@@ -99,7 +99,7 @@ uint8_t app_setArea(void)
             funState = 0; //回到主菜单
             SMG_CleanPos(0, 8);
         }
-        if(getKeyLast() == 9 && get_entBuff_length() == 0)
+        if(KeyPad_getLastEvent() == 9 && get_entBuff_length() == 0)
              perfunState = 0xff;
         break;
     case 02: //设置终点
@@ -121,7 +121,7 @@ uint8_t app_setArea(void)
             funState = 0; //回到主菜单
             SMG_CleanPos(0, 8);
         }
-        if(getKeyLast() == 9 && get_entBuff_length() == 0)
+        if(KeyPad_getLastEvent() == 9 && get_entBuff_length() == 0)
             perfunState = 0xff;
         break;
 
@@ -154,7 +154,7 @@ uint8_t app_viewParam(void)
             perState = state;
         }
 
-        pstr = ui_WaitEnter(1,3,getKeyLast(),ENTER_TYPE_ALL);
+        pstr = ui_WaitEnter(1,3,KeyPad_getLastEvent(),ENTER_TYPE_ALL);
         if(pstr !=NULL)
         {
             strncpy(cmd,pstr,3);
@@ -176,7 +176,7 @@ uint8_t app_viewParam(void)
             SMG_print("F01",0);
             state = perState;
         }
-        if(getKeyLast() == 1) state = 0;
+        if(KeyPad_getLastEvent() == 1) state = 0;
         break;
     case 2:
         if(perState != state)
@@ -184,7 +184,7 @@ uint8_t app_viewParam(void)
             SMG_print("F02",0);
             state = perState;
         }
-        if(getKeyLast() == 1) state = 0;
+        if(KeyPad_getLastEvent() == 1) state = 0;
         break;
     case 3:
         if(perState != state)
@@ -192,7 +192,7 @@ uint8_t app_viewParam(void)
             SMG_print("F03",0);
             state = perState;
         }
-        if(getKeyLast() == 1) state = 0;
+        if(KeyPad_getLastEvent() == 1) state = 0;
         break;
     default:
         break;

@@ -8,6 +8,7 @@
 ".\objects\operatesetarea.o"
 ".\objects\joystick_driver.o"
 ".\objects\servo_motorz.o"
+".\objects\lcd12864_driver.o"
 ".\objects\motor_hpwm.o"
 ".\objects\motor_locsensor.o"
 ".\objects\sensor_encoder.o"

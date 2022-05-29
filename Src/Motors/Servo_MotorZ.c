@@ -5,7 +5,7 @@
  * @description:
  * @return {*}
  */
-void ServoMotor_Init(void)
+void ServoMotorZ_Init(void)
 {
     GPIO_InitTypeDef sGPIO_InitStruct;
     TIM_TimeBaseInitTypeDef sTIM_BaseInitStruct;
@@ -19,7 +19,7 @@ void ServoMotor_Init(void)
     sGPIO_InitStruct.GPIO_Speed = GPIO_Speed_50MHz;
     GPIO_Init(GPIOB, &sGPIO_InitStruct);
 
-    sTIM_BaseInitStruct.TIM_Period = 20000;
+    sTIM_BaseInitStruct.TIM_Period = 20000;         //舵机需要50Hz频率的PWM
     sTIM_BaseInitStruct.TIM_Prescaler = 72 - 1;
     sTIM_BaseInitStruct.TIM_ClockDivision = 0;
     sTIM_BaseInitStruct.TIM_CounterMode = TIM_CounterMode_Up;
@@ -116,7 +116,8 @@ uint8_t MotorZ_MoveByTime(int8_t zspeed, uint16_t duration)
     static uint32_t entTime = 0;
     static uint8_t state = 0;
 
-    if ((entTime + duration) > getSysTicks())
+    if ((entTime + duration) > getSysTicks() && 
+        sMotorZ.dir != enMOTORz_TIMOUT)
     { // 目标时间 大于 当前时间，说明前一此仍在执行
         return sMotorZ.dir;
     }

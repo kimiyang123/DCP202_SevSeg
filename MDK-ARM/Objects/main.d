@@ -29,3 +29,5 @@
 .\objects\main.o: ..\Src\operateSetArea.h
 .\objects\main.o: ..\Src\Joystick_Driver.h
 .\objects\main.o: ..\Src\Motors\Servo_MotorZ.h
+.\objects\main.o: ..\Src\LCD12864_Driver.h
+.\objects\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h

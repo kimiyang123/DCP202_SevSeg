@@ -26,6 +26,15 @@
 	#define lowByte(w) 	((uint8_t) ((w) & 0xff))
 	#define highByte(w) ((uint8_t) ((w) >> 8))
 
+
+	// 状态机控制块 结构体
+	typedef struct 
+	{
+		uint8_t thisState;
+		uint8_t perState;
+	} stateM_def;
+	
+
 	// 数值限定 最大最小值的方法
 	#define constrain(amt,low,high) ((amt)<(low)?(low):((amt)>(high)?(high):(amt)))
 	

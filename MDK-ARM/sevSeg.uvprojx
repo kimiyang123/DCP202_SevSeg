@@ -426,6 +426,11 @@
               <FileType>1</FileType>
               <FilePath>..\Src\Motors\Servo_MotorZ.c</FilePath>
             </File>
+            <File>
+              <FileName>LCD12864_Driver.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\LCD12864_Driver.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

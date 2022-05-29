@@ -94,7 +94,7 @@ uint8_t keyPad4x4_Scan(void)
 
 
 uint8_t _keyEvent = 0;
-uint8_t getKeyLast(void)
+uint8_t KeyPad_getLastEvent(void)
 {
 	return _keyEvent;
 }

@@ -158,6 +158,7 @@ char *ui_WaitEnter(uint8_t entPos, uint8_t maxEnter, uint8_t keyEvent, uint8_t E
     {
         SMG_CleanPos(0,maxEnter);
         SMG_print(entBuff.buff, entPos);
+        
         if(entBuff.size < maxEnter)
             setCursor(entPos + entBuff.size);
         Beep_On(5);

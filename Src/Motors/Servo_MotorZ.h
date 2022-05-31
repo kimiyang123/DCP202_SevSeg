@@ -1,7 +1,7 @@
 /*
  * @Date: 2022-05-27 16:55:50
  * @LastEditors: kimiyang
- * @LastEditTime: 2022-05-28 10:38:48
+ * @LastEditTime: 2022-05-31 14:10:28
  * @FilePath: \DCP202_SevSeg\Src\Motors\ServO_MotorZ.h
  * @Description: 舵机及Z轴电机控制
  *             使用TIM4 定时器的2个PWM脉冲，分别控制Z轴电机和Servo舵机
@@ -11,6 +11,8 @@
 #define __SERVO_MOTORZ_H__
 
     #include <stm32f10x_conf.h>
+
+    #include "BSP.h"
 
     enum {
         enMOTORz_FORW = 0,

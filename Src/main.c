@@ -2,10 +2,10 @@
 #include "Joystick_Driver.h"
 #include "Servo_MotorZ.h"
 #include "LCD12864_Driver.h"
-
+#include "TimTask.h"
 #include "KeyPad4x4.h"
 
-uint8_t speedArr[] = {100,0,100,0,-100,-50,0,45,0,-100};
+__WEAK int8_t speedArr[] = {100,0,100,0,-100,-50,0,45,0,-100};
 
 uint8_t Happle[][2] ;
 uint8_t Xapple[][2] ;
@@ -13,12 +13,18 @@ uint8_t Xapple[][2] ;
 void drawApple(uint8_t appArr[][2],uint8_t flag);
 
 
+uint8_t AutoRunState(uint8_t stateCMD);
+void showPushTask(void *p);
+
 int main()
 {
     uint16_t i=0;
     BSP_Configuration();
     LCD_CMD_Init();
     keyPad_Init();
+    Joystick_Init();
+    TimTask_Init();
+    ServoMotorZ_Init();
 
     Beep_On(20);
     
@@ -27,6 +33,8 @@ int main()
     LCD_Printf(0,3,"按 E键进入主界面");
     LCD_CursorSet(2,0);
     LCD_CursorON();
+
+
     while (1)
     {
         keyPad_Event();
@@ -39,7 +47,7 @@ int main()
         }
     }
     
-    uint8_t state,perState = 0xff;
+    uint8_t state = 0,perState = 0xff;
    while (1)
    {
        keyPad_Event();
@@ -56,77 +64,117 @@ int main()
                 LCD_Printf(0,2,"3.自动操作");
                perState = state;
            }
-                // 页面切换按键
-                switch (KeyPad_getLastEvent())
-                {
-                case 1:
-                    state = 1;
-                    Beep_On(15);
-                    break;
-                case 2:
-                     state = 2;
-                     Beep_On(15);
-                    break;
-                case 3:
-                     state = 3;
-                     Beep_On(15);
-                    break;
-                
-                default:
-                    break;
-                }
+           // 页面切换按键
+           switch (KeyPad_getLastEvent())
+           {
+           case 1:
+               state = 1;
+               Beep_On(15);
+               break;
+           case 2:
+               state = 2;
+               Beep_On(15);
+               break;
+           case 3:
+               state = 3;
+               Beep_On(15);
+               break;
+
+           default:
+               break;
+           }
 
            break;
-        case 1: // 区域设定页面
-           if(state != perState)
+       case 1: // 区域设定页面
+           if (state != perState)
            {
-                LCD_Clear_Screen();
-                LCD_Printf(0,0,"圆心坐标：");
-                LCD_Printf(0,1,"___mm X ___mm");
-                LCD_Printf(0,2,"查询圆半径：");
-                LCD_Printf(0,3,"___ mm");
-                LCD_CursorSet(1,0);
+               LCD_Clear_Screen();
+               LCD_Printf(0, 0, "圆心坐标：");
+               LCD_Printf(0, 1, "___ mm X___ mm");
+               LCD_Printf(0, 2, "查询圆半径：");
+               LCD_Printf(0, 3, "___ mm");
+               LCD_CursorSet(1, 0);
+               perState = state;
+           }
+           static uint8_t enterid = 0;
+           if (enterid == 0)
+           {
+               ui_WaitEnter(0, 1, 3, KeyPad_getLastEvent(), ENTER_TYPE_NUM);
+           }
+           else if (enterid == 1)
+           {
+               ui_WaitEnter(4, 1, 3, KeyPad_getLastEvent(), ENTER_TYPE_NUM);
+           }
+           else if (enterid == 2)
+           {
+               ui_WaitEnter(0, 3, 3, KeyPad_getLastEvent(), ENTER_TYPE_NUM);
+           }
+
+           if (KeyPad_getLastEvent() == 16)
+           {
+               state = 0;
+               Beep_On(15);
+           }
+
+           if (KeyPad_getLastEvent() == 9)
+           {
+               enterid++;
+               enterid %= 3;
+           }
+           if (KeyPad_getLastEvent() == 13)
+           {
+               enterid--;
+               enterid %= 3;
+           }
+
+           break;
+       case 2: // 夹持力控制页面
+           
+           if (state != perState)
+           {
+               LCD_Clear_Screen();
+               LCD_Printf(0, 0, "给定夹持力：");
+               LCD_Printf(2, 1, "%.2fV", 3.56);
+               LCD_Printf(0, 2, "实际夹持力：");
+               LCD_Printf(2, 3, "%3.2fV", 2.37);
+
+               tim2_addTask(showPushTask,10,NULL);
                perState = state;
            }
 
-            if(KeyPad_getLastEvent() == 16)
-            {
-                state = 0;
-                Beep_On(15);
-            }
-
-           break;
-        case 2:// 夹持力控制页面
-           if(state != perState)
-           {
-                LCD_Clear_Screen();
-                LCD_Printf(0,0,"给定夹持力：");
-                LCD_Printf(2,1,"%.2fV",3.56);
-                LCD_Printf(0,2,"实际夹持力：");
-                LCD_Printf(2,3,"%.2fV",2.37);
-                perState = state;
+           if(KeyPad_getLastEvent() == 1)
+           {// 夹紧
+                Beep_On(10);
+                ServoWrite(0);
+           }    
+           if(KeyPad_getLastEvent() == 2)
+           {// 松开
+                Beep_On(10);
+                ServoWrite(100);
            }
 
-            if(KeyPad_getLastEvent() == 16)
-            {
-                state = 0;
-                Beep_On(15);
-            }
-           break;
-        case 3: // 自动操作页面
-           if(state != perState)
+           if (KeyPad_getLastEvent() == 16)
            {
-                perState = state;
-                LCD_Clear_Screen();
-                AutoRunState(1);
-                // 子页面状态机复位
+               tim2_delTask(showPushTask);
+               state = 0;
+               Beep_On(15);
+           }
+           
+           break;
+       case 3: // 自动操作页面
+           if (state != perState)
+           {
+               perState = state;
+               LCD_Clear_Screen();
+               AutoRunState(1);
+               // 子页面状态机复位
            }
 
-            if(AutoRunState(0) == 0 && KeyPad_getLastEvent() == 16)
-            {
-                state = 0;
-                Beep_On(15);
-            }
+           if (AutoRunState(0) == 0 && KeyPad_getLastEvent() == 16)
+           {
+               state = 0;
+               Beep_On(15);
+           }
 
            break;
         
@@ -162,8 +210,6 @@ int main()
     LCD_Printf(0,3,"切回正常模式");
 
     while (1);
-
-    
 
     LCD_WriteCommand(0x36); // 打开显示
 
@@ -283,6 +329,16 @@ void drawApple(uint8_t appArr[][2],uint8_t flag)
 }
 
 
+void showPushTask(void *p)
+{
+	// static int i=0;
+	// // i++;
+    // // LED1_ON();
+    // // delay_ticks(5);
+    // // LED1_OFF();
+    LCD_Printf(2,3,"%3.2f" ,  (float)getHandGrasp_Push(1)/1000.0 );
+}
+
 
 
 
@@ -290,7 +346,7 @@ void drawApple(uint8_t appArr[][2],uint8_t flag)
 
 int main1()
 {
-    int speed = 100;
+
     BSP_Configuration();
 
     LED1_ON();

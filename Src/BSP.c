@@ -93,12 +93,13 @@ void BSP_Configuration(void)
 	GPIO_Init(BTN_Port,&GPIOInit);
 	
 	// 中断优先级分组配置
-	// NVIC_PriorityGroupConfig(NVIC_PriorityGroup_1);
-	NVIC_SetPriorityGrouping(NVIC_PriorityGroup_2);
+	  NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);	//需要用该方法修改中断优先级分组
+//	NVIC_SetPriorityGrouping(NVIC_PriorityGroup_2);
+
 // ***********Systick 初始化******************************/
 	SysTick_Config(SystemCoreClock / 1000);
 	// SysTick_Config(72000);
-	NVIC_SetPriority(SysTick_IRQn, NVIC_EncodePriority(NVIC_GetPriorityGrouping(),1,0 ));
+	NVIC_SetPriority(SysTick_IRQn, 0);			// systick中断优先级设置为0，0 最高。
 // *************systick 初始化结束**************************/
 
 	
@@ -113,8 +114,10 @@ void BSP_Configuration(void)
  */
 void Beep_On(uint16_t onTime)
 {
+	uint32_t BeepOnstamp;
+	BeepOnstamp = getSysTicks();
 	GPIO_WriteBit(GPIOC,GPIO_Pin_13,1);
-	delay_ticks(onTime);
+	while(getSysTicks() - BeepOnstamp < onTime );
 	GPIO_WriteBit(GPIOC,GPIO_Pin_13,0);
 }
 

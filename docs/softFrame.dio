@@ -1,0 +1,38 @@
+<mxfile host="65bd71144e">
+    <diagram id="uU5bxr3NAXnfRS8uUMLj" name="第 1 页">
+        <mxGraphModel dx="631" dy="639" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="35" value="appUI" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=55;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="30" y="20" width="200" height="223" as="geometry"/>
+                </mxCell>
+                <mxCell id="36" value="需要实现的接口函数" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="35">
+                    <mxGeometry y="55" width="200" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="37" value="attribute1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="35">
+                    <mxGeometry y="75" width="200" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="39" value="&lt;div style=&quot;background-color: rgb(255, 255, 255); font-family: consolas, &amp;quot;courier new&amp;quot;, monospace; font-size: 11px; line-height: 19px;&quot;&gt;&lt;span style=&quot;color: rgb(121, 94, 38); font-size: 11px;&quot;&gt;UI_setCursor&lt;/span&gt;(&lt;span style=&quot;color: rgb(38, 127, 153); font-size: 11px;&quot;&gt;uint8_t&lt;/span&gt; &lt;span style=&quot;color: rgb(0, 16, 128); font-size: 11px;&quot;&gt;curId&lt;/span&gt;)&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=11;" vertex="1" parent="35">
+                    <mxGeometry y="95" width="200" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="40" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" vertex="1" parent="35">
+                    <mxGeometry y="115" width="200" height="8" as="geometry"/>
+                </mxCell>
+                <mxCell id="41" value="operations" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="35">
+                    <mxGeometry y="123" width="200" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="42" value="&lt;div style=&quot;background-color: rgb(255 , 255 , 255) ; font-family: &amp;#34;consolas&amp;#34; , &amp;#34;courier new&amp;#34; , monospace ; font-size: 14px ; line-height: 19px&quot;&gt;&lt;span style=&quot;color: #795e26&quot;&gt;+ ui_WaitEnter&lt;/span&gt;&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="35">
+                    <mxGeometry y="143" width="200" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="43" value="&lt;div style=&quot;color: rgb(0 , 0 , 0) ; background-color: rgb(255 , 255 , 255) ; font-family: &amp;#34;consolas&amp;#34; , &amp;#34;courier new&amp;#34; , monospace ; font-weight: normal ; font-size: 14px ; line-height: 19px&quot;&gt;&lt;div&gt;&lt;span style=&quot;color: #795e26&quot;&gt;+ get_entBuff_length&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;" style="text;whiteSpace=wrap;html=1;" vertex="1" parent="35">
+                    <mxGeometry y="163" width="200" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="44" value="&lt;div style=&quot;color: rgb(0 , 0 , 0) ; background-color: rgb(255 , 255 , 255) ; font-family: &amp;#34;consolas&amp;#34; , &amp;#34;courier new&amp;#34; , monospace ; font-weight: normal ; font-size: 14px ; line-height: 19px&quot;&gt;&lt;div&gt;&lt;span style=&quot;color: #795e26&quot;&gt;+ enterBuff_clean&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;" style="text;whiteSpace=wrap;html=1;" vertex="1" parent="35">
+                    <mxGeometry y="193" width="200" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="23" value="未命名图层" parent="0"/>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>

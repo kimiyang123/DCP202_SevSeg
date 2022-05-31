@@ -22,12 +22,12 @@
 .\objects\main.o: C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\stm32f10x_tim.h
 .\objects\main.o: C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\misc.h
 .\objects\main.o: ..\Src\BSP.h
-.\objects\main.o: ..\Src\Bsp_sevseg.h
-.\objects\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\ctype.h
 .\objects\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 .\objects\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\ctype.h
+.\objects\main.o: ..\Src\LCD12864_Driver.h
+.\objects\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
 .\objects\main.o: ..\Src\operateSetArea.h
 .\objects\main.o: ..\Src\Joystick_Driver.h
 .\objects\main.o: ..\Src\Motors\Servo_MotorZ.h
-.\objects\main.o: ..\Src\LCD12864_Driver.h
-.\objects\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
+.\objects\main.o: ..\Src\TimTask.h

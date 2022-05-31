@@ -1,7 +1,7 @@
 /*
  * @Date: 
  * @LastEditors: kimiyang
- * @LastEditTime: 2022-05-29 16:28:52
+ * @LastEditTime: 2022-05-30 09:41:27
  * @FilePath: \DCP202_SevSeg\Src\LCD12864_Driver.h
  * @Description: LCD12864 字符屏驱动文件
  * 
@@ -33,6 +33,10 @@
     #define LCD_EXTEN_CMD       0x34        //LCD 扩展指令
     #define LCD_BASE_CMD        0x30        //LCD 基本指令
     #define LCD_EXT_SHOWON      0x02        // 扩展指令中绘图显示ON bit
+		
+		
+		void LCD_WriteCommand(uint8_t cmd);
+		
     // 打开光标闪烁
     #define LCD_CursorON()      do{\
                                     LCD_WriteCommand(LCD_BASE_CMD); \
@@ -61,6 +65,7 @@
 
     void LCD_Printf(uint8_t xPos, uint8_t yPos, const char *fmt,...);
     void LCD_Clear_Screen(void);
+    void LCD_clearPos(uint8_t xPos,uint8_t yLine, uint8_t amount);
 
 //*******(Graph mode Operate) ***************/
     void LCD_Graph_Clear(void);

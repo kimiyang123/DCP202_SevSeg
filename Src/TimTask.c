@@ -1,7 +1,7 @@
 /*
  * @Date: 2022-05-18 19:57:20
  * @LastEditors: kimiyang
- * @LastEditTime: 2022-05-24 22:45:06
+ * @LastEditTime: 2022-05-31 13:17:29
  * @FilePath: \DCP202_SevSeg\Src\TimTask.c
  * @Description: 定时器和PMW功能初始化
  * 
@@ -9,7 +9,7 @@
 #include "TimTask.h"
 
 
-uint8_t taskReadyCnt = 0;	//定时任务就绪数量
+__IO uint8_t taskReadyCnt = 0;	//定时任务就绪数量
 timFunList_def timTaskList[TIM_TASK_MAX];
 
 
@@ -61,8 +61,11 @@ uint8_t tim2_addTask(tim_Period_Fun _fun, uint16_t period_t, void *parm)
 {
 	uint8_t i = 0;
 	// TODO >>>> 判断有可用列表空间后再运行
-	_fun(parm);		  // 加入列队前先执行一次
-
+	if(taskReadyCnt < 4) //加入任务成功，运行一次
+	{
+		_fun(parm);		  // 加入列队前先执行一次
+	}
+	
 	for (i = 0; i < 4; i++)
 	{
 		// 检测任务ID位置是否已被占用
@@ -75,6 +78,7 @@ uint8_t tim2_addTask(tim_Period_Fun _fun, uint16_t period_t, void *parm)
 			break; 
 		}
 	}
+
 
 	return i;
 }
@@ -93,6 +97,9 @@ void tim2_delTask(tim_Period_Fun _fun)
 		}
 	}
 }
+
+
+
 
 /*******************************************************************************
  * Function Name  : TIM2_IRQHandler
@@ -115,7 +122,9 @@ void TIM2_IRQHandler(void)
 			{
 				if ((tim2Cnt % timTaskList[i].PeriodTick) == 0)
 				{
+					timTaskList[i].taskState = TASK_RUNING;
 					timTaskList[i].tFun(timTaskList[i].param);
+					timTaskList[i].taskState = TASK_IDLE;
 				}
 			}
 		}

@@ -169,8 +169,8 @@ void LCD_CMD_Init(void)
 /**
  * @brief : 设置屏幕光标位置
  * @description:  0x0C|0x02 : 光标显示
- * @param {uint8_t} Line
- * @param {uint8_t} xPos
+ * @param  Line : {uint8_t} Y 高度值[0-7]
+ * @param  xPos : {uint8_t} X 横向坐标[0-127]
  * @return {*}  
  */
 void LCD_CursorSet(uint8_t Line,uint8_t xPos )
@@ -260,6 +260,26 @@ void LCD_Printf(uint8_t xPos, uint8_t yPos, const char *fmt,...)
 
 
 /**
+ * @brief : 清除12864屏 指定行和X位置的 指定数量个屏幕数据
+ * @description: 
+ * @param xPos: {uint8_t} 屏幕坐标系X位置
+ * @param yLine: {uint8_t} 屏幕行号
+ * @param amount:{uint8_t} 清除字符数 AscII码
+ * @return {*}
+ */
+void LCD_clearPos(uint8_t xPos,uint8_t yLine, uint8_t amount)
+{
+    if(amount >= 16) amount = 0;
+    LCD_CursorSet(yLine,xPos);
+    while (amount != 0)
+    {
+        LCD_WriteData(' ');
+        amount --;
+    }
+}
+
+
+/**
  * @brief : 清屏指令，在基本指令模式下有效。
  * @description: 
  * @return {*}
@@ -270,9 +290,6 @@ void LCD_Clear_Screen(void)
     LCD_WriteCommand(0x01);  //清屏指令
 }
 
-
-
-uint16_t GraphBuffer[8*64];
 
 /**
  * @brief : Graph RAM  绘点模式下的清空

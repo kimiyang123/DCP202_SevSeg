@@ -28,42 +28,22 @@ Project File Date:  05/28/2022
 *** Using Compiler 'V5.06 update 7 (build 960)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'Target 1'
 compiling main.c...
-..\Src\main.c(8): warning:  #68-D: integer conversion resulted in a change of sign
-  uint8_t speedArr[] = {100,0,100,0,-100,-50,0,45,0,-100};
-..\Src\main.c(8): warning:  #68-D: integer conversion resulted in a change of sign
-  uint8_t speedArr[] = {100,0,100,0,-100,-50,0,45,0,-100};
-..\Src\main.c(8): warning:  #68-D: integer conversion resulted in a change of sign
-  uint8_t speedArr[] = {100,0,100,0,-100,-50,0,45,0,-100};
-..\Src\main.c(29): warning:  #223-D: function "LCD_WriteCommand" declared implicitly
-      LCD_CursorON();
-..\Src\main.c(121): warning:  #223-D: function "AutoRunState" declared implicitly
-                  AutoRunState(1);
-..\Src\main.c(125): warning:  #223-D: function "AutoRunState" declared implicitly
-              if(AutoRunState(0) == 0 && KeyPad_getLastEvent() == 16)
-..\Src\main.c(142): warning:  #128-D: loop is not reachable
+..\Src\main.h(38): warning:  #1215-D: #warning directive: please include bsp.h
+  		#warning please include bsp.h
+..\Src\main.c(190): warning:  #128-D: loop is not reachable
       for(i=0;i<30;i++)
-..\Src\main.c(168): warning:  #111-D: statement is unreachable
+..\Src\main.c(214): warning:  #111-D: statement is unreachable
       LCD_WriteCommand(0x36); // 打开显示
-..\Src\main.c(168): warning:  #223-D: function "LCD_WriteCommand" declared implicitly
-      LCD_WriteCommand(0x36); // 打开显示
-..\Src\main.c(187): warning:  #159-D: declaration is incompatible with previous "AutoRunState"  (declared at line 121)
-  uint8_t AutoRunState(uint8_t stateCMD)
-..\Src\main.c(237): warning:  #223-D: function "LCD_WriteCommand" declared implicitly
-              LCD_CursorON();
-..\Src\main.c(240): warning:  #223-D: function "LCD_WriteCommand" declared implicitly
-              LCD_CursorOFF();
-..\Src\main.c(296): warning:  #188-D: enumerated type mixed with another type
+..\Src\main.c(352): warning:  #188-D: enumerated type mixed with another type
       LED1_ON();
-..\Src\main.c(303): warning:  #188-D: enumerated type mixed with another type
+..\Src\main.c(359): warning:  #188-D: enumerated type mixed with another type
       LED1_OFF();
-..\Src\main.c(325): warning:  #128-D: loop is not reachable
+..\Src\main.c(381): warning:  #128-D: loop is not reachable
       while (1)
-..\Src\main.c(293): warning:  #177-D: variable "speed"  was declared but never referenced
-      int speed = 100;
-..\Src\main.c: 16 warnings, 0 errors
+..\Src\main.c: 6 warnings, 0 errors
 linking...
-Program Size: Code=10916 RO-data=852 RW-data=88 ZI-data=1680  
-".\Objects\sevSeg.axf" - 0 Error(s), 16 Warning(s).
+Program Size: Code=15070 RO-data=870 RW-data=124 ZI-data=1708  
+".\Objects\sevSeg.axf" - 0 Error(s), 6 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -100,17 +80,17 @@ Package Vendor: Keil
 
    * Component: Keil::Device:Startup:1.0.0
       Source file:   Device\Source\ARM\startup_stm32f10x_hd.s
-      Source file:   Device\Source\system_stm32f10x.c
       Include file:  RTE_Driver\Config\RTE_Device.h
       Source file:   Device\Source\ARM\STM32F1xx_OPT.s
+      Source file:   Device\Source\system_stm32f10x.c
 
    * Component: Keil::Device:StdPeriph Drivers:ADC:3.6.0
       Source file:   Device\StdPeriph_Driver\src\stm32f10x_adc.c
       Include file:  Device\StdPeriph_Driver\inc\stm32f10x_adc.h
 
    * Component: Keil::Device:StdPeriph Drivers:DMA:3.6.0
-      Include file:  Device\StdPeriph_Driver\inc\stm32f10x_dma.h
       Source file:   Device\StdPeriph_Driver\src\stm32f10x_dma.c
+      Include file:  Device\StdPeriph_Driver\inc\stm32f10x_dma.h
 
    * Component: Keil::Device:StdPeriph Drivers:EXTI:3.6.0
       Include file:  Device\StdPeriph_Driver\inc\stm32f10x_exti.h
@@ -121,24 +101,24 @@ Package Vendor: Keil
       Source file:   Device\StdPeriph_Driver\src\stm32f10x_flash.c
 
    * Component: Keil::Device:StdPeriph Drivers:Framework:3.6.0
+      Include file:  Device\StdPeriph_Driver\inc\misc.h
       Source file:   Device\StdPeriph_Driver\templates\stm32f10x_conf.h
       Include file:  Device\StdPeriph_Driver\templates\stm32f10x_it.h
-      Source file:   Device\StdPeriph_Driver\src\misc.c
       Source file:   Device\StdPeriph_Driver\templates\stm32f10x_it.c
-      Include file:  Device\StdPeriph_Driver\inc\misc.h
+      Source file:   Device\StdPeriph_Driver\src\misc.c
 
    * Component: Keil::Device:StdPeriph Drivers:GPIO:3.6.0
       Include file:  Device\StdPeriph_Driver\inc\stm32f10x_gpio.h
       Source file:   Device\StdPeriph_Driver\src\stm32f10x_gpio.c
 
    * Component: Keil::Device:StdPeriph Drivers:RCC:3.6.0
-      Source file:   Device\StdPeriph_Driver\src\stm32f10x_rcc.c
       Include file:  Device\StdPeriph_Driver\inc\stm32f10x_rcc.h
+      Source file:   Device\StdPeriph_Driver\src\stm32f10x_rcc.c
 
    * Component: Keil::Device:StdPeriph Drivers:TIM:3.6.0
-      Include file:  Device\StdPeriph_Driver\inc\stm32f10x_tim.h
       Source file:   Device\StdPeriph_Driver\src\stm32f10x_tim.c
-Build Time Elapsed:  00:00:01
+      Include file:  Device\StdPeriph_Driver\inc\stm32f10x_tim.h
+Build Time Elapsed:  00:00:00
 </pre>
 </body>
 </html>

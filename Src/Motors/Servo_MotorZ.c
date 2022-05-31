@@ -60,7 +60,9 @@ void ServoWrite(uint8_t SerVol)
         SerVol = 100;
 
     _SerVol = SerVol;
-    serPWM = (2500 - 500) / 100 * SerVol + 500; //[0,500] => [500,2500]
+    
+    serPWM = map(SerVol,0,100,400,2500);  // [400,2500]
+    // serPWM = (2500 - 500) / 100 * SerVol + 500; //[0,500] => [500,2500]
     TIM4->CCR4 = serPWM;
 }
 

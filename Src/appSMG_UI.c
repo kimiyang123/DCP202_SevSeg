@@ -53,12 +53,12 @@ uint8_t _keyMap2KeyID(uint8_t kMapStr)
     return 0;
 }
 
-void setCursor(uint8_t curId)
+__WEAK void UI_setCursor(uint8_t curId)
 {
-    if (curId >= SMG_ITEMS)
-        return;
+    // if (curId >= SMG_ITEMS)
+    //     return;
 
-    SMG_BuffWrite(SMG_ITEMS - curId - 1, ~0x08);
+    // SMG_BuffWrite(SMG_ITEMS - curId - 1, ~0x08);
 }
 
 /**
@@ -82,7 +82,8 @@ void enterBuff_backspace(void)
 {
     if (entBuff.size > 0)
     {
-        entBuff.buff[entBuff.size--] = 0;
+        entBuff.buff[entBuff.size-1] = 0;
+				entBuff.size --;
     }
 }
 
@@ -97,16 +98,20 @@ void enterBuff_clean(void)
 }
 
 /**
- * @brief  按键输入等待方法
- * @param  entPos:输入起始位
- * @param  maxEnter:最大输入字符数量
- * @param  keyEvent:当前按键值，可由 getKeyLast()函数获取
- * @param  EnterType:可输入字符类型
+ * @brief  : 按键输入等待方法
+ * @param  entPos: 输入起始位
+ * @param  yLine: 用户输入的行号
+ * @param  maxEnter: 最大输入字符数量
+ * @param  keyEvent: 当前按键值，可由 KeyPad_getLastEvent() 一类函数获取
+ * @param  EnterType: 可输入字符类型
  *      @arg ENTER_TYPE_ALL: 所有类型
  *      @arg ENTER_TYPE_NUM: 只允许数字类型
- * @retval None
+ * @retval char* 返回按键输入字符串数组。如输入为空，则返回NULL
+ * @History  // 历史修改记录
+      <author>  <time>   <version >   <desc>
+      kimiyang  5/30        1.2       添加yLine行号参数，为适配点阵显示屏 
  */
-char *ui_WaitEnter(uint8_t entPos, uint8_t maxEnter, uint8_t keyEvent, uint8_t EnterType)
+char *ui_WaitEnter(uint8_t entPos, uint8_t yLine , uint8_t maxEnter, uint8_t keyEvent, uint8_t EnterType)
 {
     uint8_t keyMapChar;
 
@@ -114,8 +119,10 @@ char *ui_WaitEnter(uint8_t entPos, uint8_t maxEnter, uint8_t keyEvent, uint8_t E
     if (entBuff.size == 0)
     {
         enterBuff_clean();
-        SMG_CleanPos(entPos, maxEnter);
-        setCursor(entPos);
+        // SMG_CleanPos(entPos, maxEnter);
+        UI_CLEARPOS(entPos,yLine,maxEnter);
+        // UI_setCursor(entPos);
+        UI_SETCURSOR(entPos + entBuff.size,yLine);
     }
     // 转换为按键字符编码
     keyMapChar = _getKeyMap(keyEvent);
@@ -156,85 +163,17 @@ char *ui_WaitEnter(uint8_t entPos, uint8_t maxEnter, uint8_t keyEvent, uint8_t E
     // 刷新显示
     if (keyMapChar != 0)
     {
-        SMG_CleanPos(0,maxEnter);
-        SMG_print(entBuff.buff, entPos);
-        
+        // SMG_CleanPos(0,maxEnter);
+        UI_CLEARPOS(entPos,yLine,maxEnter);
+        // SMG_print(entBuff.buff, entPos);
+        UI_PRINT(entPos,yLine,entBuff.buff);
         if(entBuff.size < maxEnter)
-            setCursor(entPos + entBuff.size);
+            // UI_setCursor(entPos + entBuff.size);
+            UI_SETCURSOR(entPos + entBuff.size,yLine);
         Beep_On(5);
     }
     
     return NULL;
 }
-/*****************************************
-char* ui_WaitEnter(uint8_t entPos, uint8_t maxEnter, uint8_t EnterType)
-{
-    uint8_t i=0,exit = 0;
-    uint8_t keyMapChar;
-
-    enterId = 0;
-
-    SMG_CleanPos(0,maxEnter);
-    setCursor(entPos+i);
-    do
-    {
-        keyMapChar = _getKeyMap( keyPad_Event() );
-        switch (keyMapChar)
-        {
-        case 'D':   // 退格删除
-            enterBuff_backspace();
-            if(i>0) i--;
-            break;
-        case '>':
-        case '<':
-            exit = 1;
-            break;
-        case 'E':   // 确认输入
-            exit = 1;
-            break;
-
-        case 0:
-            // 0 为没有按键，不作处理
-            break;
-
-        default:    // 其它保存按键
-            if(i<maxEnter)
-            {
-                if(EnterType == ENTER_TYPE_NUM)
-                {
-                    if( isdigit(keyMapChar))
-                    {
-                        enterBuff_add(keyMapChar);
-                        i++;
-                    }
-                }
-                else if(EnterType == ENTER_TYPE_ALL)
-                {
-                    enterBuff_add(keyMapChar);
-                    i++;
-                }
-            }
-            break;
-        }
-        if(keyMapChar != 0)
-        {
-            SMG_CleanPos(0,maxEnter);
-            SMG_print(&enterBuffer[0],entPos);
-            setCursor(entPos+i);
-            Beep_On(5);
-        }
-
-    } while (!exit);
-
-    if(keyMapChar == 'E' && enterId !=0 )
-    {
-        return enterBuffer;
-    }
-    else
-    {
-        return NULL;
-    }
-}
-*/
 
 

@@ -165,6 +165,7 @@ void MotorX_Reset(void)
 {
     sMotor_X.Dir = MOTOR_RUN_Dir_STOP;
     sMotor_X.locRAW = 0;
+    sMotor_X.locMM = 0;     //电机 距离值清零
     sMotor_X.speed = 0;
 }
 
@@ -223,6 +224,7 @@ void MotorY_Reset(void)
 {
     sMotor_Y.Dir = MOTOR_RUN_Dir_STOP;
     sMotor_Y.locRAW = 0;
+    sMotor_Y.locMM = 0;
     sMotor_Y.speed = 0;
 }
 

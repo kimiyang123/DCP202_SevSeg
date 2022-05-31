@@ -1,10 +1,11 @@
 /*
  * @Date: 2022-05-26 10:20:12
  * @LastEditors: kimiyang
- * @LastEditTime: 2022-05-27 16:52:27
+ * @LastEditTime: 2022-05-31 11:08:55
  * @FilePath: \DCP202_SevSeg\Src\Joystick_Driver.h
  * @Description: Joystick 摇杆手柄驱动
  *          本驱动需要依赖于 STM32的ADC 及 GPIO 模块
+ *      5/30 添加压力检测通道
  */
 #ifndef __JOYSTICK_DRIVER_H__
 #define __JOYSTICK_DRIVER_H__
@@ -16,14 +17,16 @@
     #define ADC_CLK                 RCC_APB2Periph_ADC1
 
 
-    #define ADC_PIN0        GPIO_Pin_0
-    #define ADC_PIN1        GPIO_Pin_1
+    #define ADC_PIN0        GPIO_Pin_0   //摇杆 X轴
+    #define ADC_PIN1        GPIO_Pin_1   //摇杆 Y轴
+    #define ADC_PIN3        GPIO_Pin_3   //压力传感器
     #define ADC_PORT1       GPIOC
 
+    // 摇杆通道 枚举类型
     enum{
         AXIS_X = 0,
         AXIS_Y,
-        AXIS_Z
+        AXIS_PUSH   // 机械手抓压力检测
     };
 
 // ******准备使用结构体封装的方法，构建Joystick类  *****/
@@ -39,7 +42,7 @@
     
 // *******ENDOF Joystick ******************** /
 
-    extern uint16_t JoyADC_DMABuff[2];
+    extern uint16_t JoyADC_DMABuff[3];
     extern Joystick_def sJoyStick;
 
     /**
@@ -50,9 +53,14 @@
      */    
     void Joystick_Init(void);
 
-    uint16_t Joystick_getAxis(uint8_t axisID);
+    uint16_t Joystick_getAxisADC(uint8_t axisID);
+    uint16_t getHandGrasp_Push(uint8_t type);
+
     uint8_t Joystick_KeyScan(void);
     uint8_t Joystick_getKeyEvent(void);
+
+
+    
     
 
 

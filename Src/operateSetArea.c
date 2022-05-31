@@ -60,7 +60,7 @@ uint8_t app_setArea(void)
             delay_ticks(1000);
             enterBuff_clean();
         }
-        pStr = ui_WaitEnter(1, 3, keytTMP, ENTER_TYPE_ALL);
+        pStr = ui_WaitEnter(1,0, 3, keytTMP, ENTER_TYPE_ALL);
         if (pStr != NULL)
         {
             //拷贝前3个字符到cmd中
@@ -89,7 +89,7 @@ uint8_t app_setArea(void)
             delay_ticks(1500);
         }
 
-        pStr = ui_WaitEnter(0, 8, keytTMP, ENTER_TYPE_NUM);
+        pStr = ui_WaitEnter(0,0, 8, keytTMP, ENTER_TYPE_NUM);
         if (pStr != NULL)
         {
             pointStart = ui_getEnterPoint(pStr);
@@ -111,7 +111,7 @@ uint8_t app_setArea(void)
             delay_ticks(1500);
         }
 
-        pStr = ui_WaitEnter(0, 8, keytTMP, ENTER_TYPE_NUM);
+        pStr = ui_WaitEnter(0,0, 8, keytTMP, ENTER_TYPE_NUM);
         if (pStr != NULL)
         {
             pointEnd = ui_getEnterPoint(pStr);
@@ -154,7 +154,7 @@ uint8_t app_viewParam(void)
             perState = state;
         }
 
-        pstr = ui_WaitEnter(1,3,KeyPad_getLastEvent(),ENTER_TYPE_ALL);
+        pstr = ui_WaitEnter(1,0,3,KeyPad_getLastEvent(),ENTER_TYPE_ALL);
         if(pstr !=NULL)
         {
             strncpy(cmd,pstr,3);

@@ -33,6 +33,10 @@
 		uint8_t thisState;
 		uint8_t perState;
 	} stateM_def;
+
+	#ifdef __SYS_BSP_H__
+		#warning please include bsp.h
+	#endif
 	
 
 	// 数值限定 最大最小值的方法

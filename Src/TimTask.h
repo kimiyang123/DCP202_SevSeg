@@ -6,13 +6,21 @@
 
 #define TIM_TASK_MAX	4		//定义定时任务最大数量
 
+ enum{
+	 TASK_IDLE,
+	 TASK_RUNING,
+	 TASK_WAITING,
+ };
+
 typedef void (*tim_Period_Fun)();
+
 
 typedef struct timFun_List
 {
 	tim_Period_Fun tFun;
 	uint16_t PeriodTick;
 	void *param;
+	uint8_t taskState;		// 任务状态
 } timFunList_def;
 
 

@@ -2,8 +2,9 @@
 
 #include "string.h"
 #include "stdarg.h"
+#include "stdio.h"
 
-void DBG_Uart_Init(uint16_t Baudrate)
+void DBG_Uart_Init(uint32_t Baudrate)
 {
     GPIO_InitTypeDef sGPIO_Init;
     USART_InitTypeDef sUART_Init;
@@ -36,6 +37,7 @@ void DBG_Uart_Init(uint16_t Baudrate)
     sUART_Init.USART_HardwareFlowControl = USART_HardwareFlowControl_None;
     sUART_Init.USART_Mode = USART_Mode_Rx | USART_Mode_Tx;
     USART_Init(DBG_UART, &sUART_Init);
+		
 
     // USART_ITConfig(DBG_UART,USART_IT_RXNE,ENABLE);
     USART_Cmd(DBG_UART, ENABLE);
@@ -43,11 +45,28 @@ void DBG_Uart_Init(uint16_t Baudrate)
 
 void DBG_Uart_write(uint8_t sByte)
 {
+    while (USART_GetFlagStatus(DBG_UART,USART_FLAG_TC) == RESET);
     USART_SendData(DBG_UART, sByte);
 }
 
-void DBG_Uart_printf()
+
+
+
+
+void DBG_Uart_printf(const char *fmt,...)
 {
+    char UtxBuff[64] = {0};
+    uint8_t *pTx = (uint8_t*)UtxBuff;
+
+    va_list args;
+    va_start(args,fmt);
+    vsprintf(UtxBuff,fmt,args);
+    va_end(args);
+
+    while (*pTx != '\0')
+    {
+        DBG_Uart_write(*pTx++);
+    }
     
 }
 
@@ -58,6 +77,7 @@ void DBG_Uart_printf()
  */
 void USARTx_IRQHandler()
 {
+    
 }
 
 

@@ -51,7 +51,6 @@
 	void SMG_print(char *str , uint8_t startPos);
 
 
-
 	//开机画面，数码管数据移位方法
 	void SMG_RotateShift(uint8_t shiftDir);
 	void SMG_All_num(uint8_t UpOrDn);

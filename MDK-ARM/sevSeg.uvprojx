@@ -337,7 +337,7 @@
               <MiscControls></MiscControls>
               <Define>STM32F10X_HD,USE_STDPERIPH_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath>..\Src\Motors;..\Src\Motors\LocSensor;..\Src</IncludePath>
+              <IncludePath>..\Src\Motors;..\Src\Motors\LocSensor;..\Src;..\Src\Motors\ExtADC</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -431,6 +431,16 @@
               <FileType>1</FileType>
               <FilePath>..\Src\LCD12864_Driver.c</FilePath>
             </File>
+            <File>
+              <FileName>Uart_Debug.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\Uart_Debug.c</FilePath>
+            </File>
+            <File>
+              <FileName>ADS1118.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\Motors\ExtADC\ADS1118.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -520,7 +530,19 @@
           <targetInfo name="Target 1"/>
         </targetInfos>
       </component>
+      <component Cclass="Device" Cgroup="StdPeriph Drivers" Csub="SPI" Cvendor="Keil" Cversion="3.6.0" condition="STM32F1xx STDPERIPH RCC">
+        <package name="STM32F1xx_DFP" schemaVersion="1.7.2" url="http://www.keil.com/pack/" vendor="Keil" version="2.4.0"/>
+        <targetInfos>
+          <targetInfo name="Target 1"/>
+        </targetInfos>
+      </component>
       <component Cclass="Device" Cgroup="StdPeriph Drivers" Csub="TIM" Cvendor="Keil" Cversion="3.6.0" condition="STM32F1xx STDPERIPH RCC">
+        <package name="STM32F1xx_DFP" schemaVersion="1.7.2" url="http://www.keil.com/pack/" vendor="Keil" version="2.4.0"/>
+        <targetInfos>
+          <targetInfo name="Target 1"/>
+        </targetInfos>
+      </component>
+      <component Cclass="Device" Cgroup="StdPeriph Drivers" Csub="USART" Cvendor="Keil" Cversion="3.6.0" condition="STM32F1xx STDPERIPH RCC">
         <package name="STM32F1xx_DFP" schemaVersion="1.7.2" url="http://www.keil.com/pack/" vendor="Keil" version="2.4.0"/>
         <targetInfos>
           <targetInfo name="Target 1"/>

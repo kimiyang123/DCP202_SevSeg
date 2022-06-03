@@ -41,7 +41,7 @@ void TIM3_Cap_Init(void)
 
    // 中断设置
    sNVIC_Init.NVIC_IRQChannel = TIM3_IRQn;
-   sNVIC_Init.NVIC_IRQChannelPreemptionPriority = 0;
+   sNVIC_Init.NVIC_IRQChannelPreemptionPriority = 1;
    sNVIC_Init.NVIC_IRQChannelSubPriority = 0;
    sNVIC_Init.NVIC_IRQChannelCmd = ENABLE;
    NVIC_Init(&sNVIC_Init);

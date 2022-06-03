@@ -242,8 +242,7 @@ void LCD_ShowInt(uint32_t sNum,uint8_t line,uint8_t xPos, uint8_t showBit)
  */
 void LCD_Printf(uint8_t xPos, uint8_t yPos, const char *fmt,...)
 {
-
-    char sBuff[50] = {0}; 
+    char sBuff[25] = {0}; 
     uint8_t *p = sBuff;
     va_list args;
     va_start(args,fmt);
@@ -269,7 +268,7 @@ void LCD_Printf(uint8_t xPos, uint8_t yPos, const char *fmt,...)
  */
 void LCD_clearPos(uint8_t xPos,uint8_t yLine, uint8_t amount)
 {
-    if(amount >= 16) amount = 0;
+    if(amount > 16) amount = 0;
     LCD_CursorSet(yLine,xPos);
     while (amount != 0)
     {

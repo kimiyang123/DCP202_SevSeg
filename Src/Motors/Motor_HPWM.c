@@ -85,8 +85,8 @@ void Motor_PortInit(void)
     MotorX_Reset();
     MotorY_Reset();
     // 电机位置传感器初始化
-    // locSensor_MorotX_Bind(&sMotor_X);
-    // locSensor_MorotY_Bind(&sMotor_Y);
+    locSensor_MorotX_Bind(&sMotor_X);
+    locSensor_MorotY_Bind(&sMotor_Y);
 }
 
 
@@ -365,3 +365,27 @@ uint8_t motorY_moveTo_disMM(int16_t disMM)
 // todo.. 尝试修改在 传感器检测中断，定时器中判断目标距离是否到达。
 // 
 
+/**
+ * @brief : 移动到机械零位处
+ * @description: 检测原理：通过判断传感器值不再变化后判定为停车
+ * @return {*}
+ */
+uint8_t moveX_ToZero(void)
+{
+    static uint8_t state=0;
+    switch (state)
+    {
+    case 0: // 电机启动后退
+        MotorX_Run(MOTOR_RUN_Dir_Backward,50);
+        // 延时一段时间后
+        state  = 1;
+        break;
+
+    case 1:
+
+    break;
+    
+    default:
+        break;
+    }
+}

@@ -34,7 +34,7 @@
 		uint8_t perState;
 	} stateM_def;
 
-	#ifdef __SYS_BSP_H__
+	#ifndef __SYS_BSP_H__
 		#warning please include bsp.h
 	#endif
 	

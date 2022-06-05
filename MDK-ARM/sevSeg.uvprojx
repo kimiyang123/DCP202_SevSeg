@@ -436,11 +436,6 @@
               <FileType>1</FileType>
               <FilePath>..\Src\Uart_Debug.c</FilePath>
             </File>
-            <File>
-              <FileName>ADS1118.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Src\Motors\ExtADC\ADS1118.c</FilePath>
-            </File>
           </Files>
         </Group>
         <Group>
@@ -460,6 +455,21 @@
               <FileName>Sensor_Encoder.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Src\Motors\LocSensor\Sensor_Encoder.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>ExtADC</GroupName>
+          <Files>
+            <File>
+              <FileName>SPI_HW.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\Motors\ExtADC\SPI_HW.c</FilePath>
+            </File>
+            <File>
+              <FileName>ADS7950.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\Motors\ExtADC\ADS7950.c</FilePath>
             </File>
           </Files>
         </Group>

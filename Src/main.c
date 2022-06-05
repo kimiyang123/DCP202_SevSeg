@@ -5,7 +5,8 @@
 #include "TimTask.h"
 #include "KeyPad4x4.h"
 #include "Uart_Debug.h"
-#include "ADS1118.h"
+// #include "ADS1118.h"
+#include "ADS7950.h"
 
 
 uint16_t i = 29;
@@ -24,10 +25,64 @@ void showd(void)
 
 int main(void)
 {
+
+    uint8_t chID ;
+    uint16_t adcV[4];
+    BSP_Configuration();
+    DBG_Uart_Init(115200);
+    DBG_Uart_printf("system run...\n");
+
+    ADS79xx_Init();
+    Beep_On(10);
+
+    uint16_t i=0,j=0;
+    // ADS79xx_setMode(ADS79xx_MANUAL,RANGE_1,0);
+    ADS79xx_setMode(ADS79xx_MANUAL,RANGE_1,3);
+    // while (1)
+    // {
+    //     adcV[0] = ADS79xx_ReadADC_Continue(&chID);
+    //     DBG_Uart_printf("ADC-%0.2d:%X\n",chID,adcV[0]);
+    //     delay_ticks(0);
+    //     if(j>=4) j = 0;
+    // }
+
+    while (1)
+    {
+        adcV[0] = ADS79xx_ReadADC(3);
+        DBG_Uart_printf("ADC:%X\n",adcV[0]);
+        delay_ticks(100);
+    }
+    
+    
+
+    while (1)
+    {
+
+        adcV[0] = ADS79xx_ReadADC_Continue(&chID);
+        DBG_Uart_printf("ADC-%0.2d:%X \tj=%d\n",chID,adcV[0],j);
+        delay_ticks(100);
+
+        if(i ++ >15)
+        {
+            i=0;
+            j++;
+            if(j>=4) j = 0;
+
+            ADS79xx_setMode(ADS79xx_AUTO_2,RANGE_1,j);
+        }
+    }
+    
+
+}
+
+
+
+/*    ADS1118 Test
+int main(void)
+{
     int motorx;
     int i = 0;
-    ADS_Cnf_typedef sADSInit;
-    
+
     BSP_Configuration();
     LCD_CMD_Init();
 	Beep_On(15);
@@ -37,7 +92,6 @@ int main(void)
     LCD_Printf(0,2,"HELLO");
 
 
-    SPI_Configuration();
     // ADS1118_StructInitDef(&sADSInit);
     // ADS1118_Init(&sADSInit);
 
@@ -68,3 +122,6 @@ int main(void)
         // Beep_On(10);
     }
 }
+*/
+
+

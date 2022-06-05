@@ -4,15 +4,16 @@
 #include <stm32f10x_conf.h>
 #include "BSP.h"
 
-#define SPI_SCK         GPIO_Pin_5   //(PA5)
-#define SPI_MISO        GPIO_Pin_6  //(PA6)
-#define SPI_MOSI        GPIO_Pin_7  //(PA7)
-#define SPI_ADSCS       GPIO_Pin_0 //(PA0)
-#define SPI_GPIO        GPIOA
+#include "SPI_HW.h"     //STM32 硬件SPI配置库
 
+// #define SPI_SCK         GPIO_Pin_5   //(PA5)
+// #define SPI_MISO        GPIO_Pin_6  //(PA6)
+// #define SPI_MOSI        GPIO_Pin_7  //(PA7)
+
+#define SPI_CS_Pin       GPIO_Pin_0 //(PA0)
+#define SPI_CS_GPIOx     GPIOA
 #define ADS_SPI         SPI1
-
-#define ADS_CSbit(bitVal) GPIO_WriteBit(SPI_GPIO, SPI_ADSCS, bitVal);
+#define ADS_CSbit(bitVal) GPIO_WriteBit(SPI_CS_GPIOx, SPI_CS_Pin, bitVal);
 
 /*********************************ADS1118 驱动************************************/
 // ADS1118 配置数据结构体
@@ -111,7 +112,7 @@ enum
  * @description: 
  * @return {*}
  */
-void SPI_Configuration(void);
+// void SPI_Configuration(void);
 
 /**
  * @brief : ADS1118 配置参数结构体默认值初始化

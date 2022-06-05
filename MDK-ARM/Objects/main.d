@@ -34,4 +34,6 @@
 .\objects\main.o: ..\Src\Motors\Servo_MotorZ.h
 .\objects\main.o: ..\Src\TimTask.h
 .\objects\main.o: ..\Src\Uart_Debug.h
-.\objects\main.o: ..\Src\Motors\ExtADC\ADS1118.h
+.\objects\main.o: ..\Src\Motors\ExtADC\ADS7950.h
+.\objects\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+.\objects\main.o: ..\Src\Motors\ExtADC\SPI_HW.h

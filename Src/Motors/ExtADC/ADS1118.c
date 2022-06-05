@@ -1,11 +1,13 @@
 
 #include "ADS1118.h"
 
+
 /**
  * @brief : SPI 硬件端口初始化
  * @description:
  * @return {*}
  */
+/*
 void SPI_Configuration(void)
 {
     GPIO_InitTypeDef sGPIO_Init;
@@ -57,7 +59,7 @@ uint16_t SPI_Read_16Bit(SPI_TypeDef *SPIx)
 {
     return (SPI_Send_16Bit(SPIx, 0));
 }
-
+*/
 /*********************************ADS1118 驱动**********************************
  *[ConfigREG]   os | MUX2 | MUX1 | MUX0 | PGA2 | PGA1 | PGA0 | MODE
  *  default_H:   1     0     0       0      0     1       0      1
@@ -97,6 +99,16 @@ void ADS1118_StructInitDef(ADS_Cnf_typedef *pCfg_struct)
  */
 void ADS1118_Init(ADS_Cnf_typedef *confInit)
 {
+    // 初始化CS引脚
+    GPIO_InitTypeDef    sGPIO;
+    sGPIO.GPIO_Pin = SPI_CS_Pin;
+    sGPIO.GPIO_Mode = GPIO_Mode_Out_PP;
+    sGPIO.GPIO_Speed = GPIO_Speed_50MHz;
+    GPIO_Init(SPI_GPIOx,&sGPIO);
+
+    //初始化 硬件SPI模块
+    HW_SPI_Init();
+
     ADS1118_REG = *confInit;
     ADS1118_REG.REG_bits.NOP = 01; //设置指令保存有效
     ADS_CSbit(0);
@@ -135,3 +147,5 @@ uint16_t ADS1118_ReadADC(void)
 
     return ADCret;
 }
+
+

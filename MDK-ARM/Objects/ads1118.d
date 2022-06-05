@@ -22,3 +22,4 @@
 .\objects\ads1118.o: C:\Users\DELL\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\misc.h
 .\objects\ads1118.o: ..\Src\BSP.h
 .\objects\ads1118.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\ads1118.o: ..\Src\Motors\ExtADC\SPI_HW.h

@@ -30,7 +30,9 @@
 .\objects\main.o: ..\Src\Motors\LocSensor\Sensor_Encoder.h
 .\objects\main.o: ..\Src\Motors\Motor_HPWM.h
 .\objects\main.o: ..\Src\Motors\Motor_LocSensor.h
+.\objects\main.o: ..\Src\Motors\LocSensor\Sensor_byTicks.h
 .\objects\main.o: ..\Src\Motors\Motor_Step.h
+.\objects\main.o: ..\Src\Motors\LocSensor\Sensor_ExtADC.h
 .\objects\main.o: ..\Src\Motors\ExtADC\ADS1118.h
 .\objects\main.o: ..\Src\Motors\ExtADC\SPI_HW.h
 .\objects\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h

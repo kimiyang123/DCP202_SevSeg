@@ -1,7 +1,7 @@
 /*
  * @Date: 
  * @LastEditors: kimiyang
- * @LastEditTime: 2022-06-07 22:23:50
+ * @LastEditTime: 2022-06-08 16:11:25
  * @FilePath: \DCP202_SevSeg\Src\Motors\LocSensor\Sensor_ExtADC.h
  * @Description: ADC 距离读取传感器
  * 
@@ -20,10 +20,11 @@
 
 
     // 以下三个define 选择一个使用
-    #define xUSE_ADS1118
-    #define xUSE_ADS7950
-    #define USE_RADNTEST        //随机数测试
+    #define USE_ADS1118
+    // #define USE_ADS7950
+    // #define USE_RADNTEST        //随机数测试
 
+    // ADC值与距离的比例关系
     #define EXT_ADCDIS_RATE     0.34    // [0.34mm / ADC]
 
     #if defined(USE_ADS1118)

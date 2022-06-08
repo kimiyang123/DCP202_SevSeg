@@ -10,6 +10,7 @@
 #include "Motor_HPWM.h"
 #include "Motor_Step.h"
 
+#include "Sensor_ExtADC.h"
 
 #include "ADS1118.h"
 #include "math.h"
@@ -18,24 +19,24 @@ int main()
 {
 
     BSP_Configuration();
-    TimTask_Init();
+    TimTask_Init();         // 定时器任务框架初始化
 
     DBG_Uart_Init(115200);
-    //DBG_Uart_printf("system run...\n");
 
-    //Motor_PortInit();
     Beep_On(10);
 
     //MotorStep_Init(NULL);       //初始化电机并绑定传感器，NULL为不绑定
     
-    Motor_X_Init(&SenEncoder_X);
-    Motor_Y_Init(&SenEncoder_Y);
+    Motor_X_Init(&SenExtADC);
+    // Motor_Y_Init(&SenEncoder_Y);
+    MotorStep_Init(&SenEncoder_Y);
 		
 
-	uint8_t speed = 50;
+	int8_t speed = 50;
     while (1)
     {
-        MotorY_SigRun(speed);
+        MotorStep_SigRun(speed);
+        // MotorY_SigRun(speed);
 
         MotorX_Run(1,20);
         delay_ticks(3000);
@@ -43,7 +44,7 @@ int main()
         delay_ticks(1000);
 
         MotorX_Run(0,20);
-        delay_ticks(3000);
+        delay_ticks(2000);
         MotorX_Stop();
         delay_ticks(1000);
 
@@ -52,14 +53,6 @@ int main()
     }
     
 
-    while (1)
-    {
-        // ADC_val = sin((float)i/255)*100;
-        // DBG_Uart_printf("$%d %d;",ADC_val,i);
-        // i++;
-        // delay_ticks(100);
-    }
-    
     while (1)
     {
 

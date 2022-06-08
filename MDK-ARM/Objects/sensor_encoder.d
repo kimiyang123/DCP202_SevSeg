@@ -24,3 +24,8 @@
 .\objects\sensor_encoder.o: ..\Src\Motors\MotorClass.h
 .\objects\sensor_encoder.o: ..\Src\Motors\Motor_LocSensor.h
 .\objects\sensor_encoder.o: ..\Src\Motors\LocSensor\Sensor_Encoder.h
+.\objects\sensor_encoder.o: ..\Src\Motors\LocSensor\Sensor_byTicks.h
+.\objects\sensor_encoder.o: ..\Src\Motors\Motor_LocSensor.h
+.\objects\sensor_encoder.o: ..\Src\BSP.h
+.\objects\sensor_encoder.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\sensor_encoder.o: ..\Src\TimTask.h

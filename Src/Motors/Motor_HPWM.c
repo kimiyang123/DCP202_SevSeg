@@ -4,6 +4,7 @@
 motorInfo_def sMotor_X, sMotor_Y;
 
 // 双路电机驱动需要用到TIM1 的4路PWM信号
+// 废弃函数，后面不再使用 2022-06-08
 void TIM1_PWM_Init(void)
 {
     GPIO_InitTypeDef sGPIO_Init;
@@ -42,16 +43,6 @@ void TIM1_PWM_Init(void)
     TIM_OC1Init(TIM1, &sTimOCInit);
     TIM_OC2Init(TIM1, &sTimOCInit);
     TIM_OC3Init(TIM1, &sTimOCInit);
-
-    // 在没有
-    // TIM_BDTRInitStructure.TIM_OSSRState = TIM_OSSRState_Disable;            //运行模式下输出
-    // TIM_BDTRInitStructure.TIM_OSSIState = TIM_OSSIState_Disable;            //空闲模式下输出选择
-    // TIM_BDTRInitStructure.TIM_LOCKLevel = TIM_LOCKLevel_OFF;                //锁定设置
-    // TIM_BDTRInitStructure.TIM_DeadTime = 0x90;                              //死区时间设置
-    // TIM_BDTRInitStructure.TIM_Break = TIM_Break_Disable;                    //刹车功能使能
-    // TIM_BDTRInitStructure.TIM_BreakPolarity = TIM_BreakPolarity_High;       //刹车输入极性
-    // TIM_BDTRInitStructure.TIM_AutomaticOutput = TIM_AutomaticOutput_Enable; //自动输出使能
-    // TIM_BDTRConfig(TIM1, &TIM_BDTRInitStructure);
 
     // 单独修改某个OCx输出的极性
     // TIM_OC1PolarityConfig(TIM1,TIM_OCPolarity_High);
@@ -93,7 +84,7 @@ void TIM1_PWM_COM_Init(void)
 
 /**
  * @brief :  电机GPIO及涉及到的TIM定时器等初始化
- * @description:
+ * @description: 废弃函数，后面不再使用 2022-06-08
  * @return {void}
  */
 void Motor_PortInit(void)

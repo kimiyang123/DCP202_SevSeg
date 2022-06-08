@@ -1,7 +1,7 @@
 /*
  * @Date: 2022-05-20 09:21:18
  * @LastEditors: kimiyang
- * @LastEditTime: 2022-05-30 16:52:08
+ * @LastEditTime: 2022-06-08 15:52:05
  * @FilePath: \DCP202_SevSeg\Src\appSMG_UI.h
  * @Description: 用户操作人机接口界面程序
  * 
@@ -16,6 +16,7 @@
 
 #include "ctype.h"
 
+// 注意!: 以下2个显示驱动文件二选一
 #include "LCD12864_Driver.h"
 // #include "Bsp_sevseg.h"
 

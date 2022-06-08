@@ -12,7 +12,6 @@ void MotorStep_Init(MotorSensor_typedef *_mSensor)
     // Tim和GPIO外设时钟初始化
     MSTEP_TIMx_RCC_EN();
     MSTEP_GPIOx_RCC_EN();
-
     // 步进电机 方向 和 使能 管脚初始化
     sGPIOx.GPIO_Pin = MSTEP_DIR_PINx;
     sGPIOx.GPIO_Mode = GPIO_Mode_Out_PP;
@@ -44,6 +43,8 @@ void MotorStep_Init(MotorSensor_typedef *_mSensor)
         sTimeOC.TIM_OCMode = TIM_OCMode_PWM1;
         sTimeOC.TIM_OutputNState = TIM_OutputNState_Disable;
         sTimeOC.TIM_OCNIdleState = TIM_OCNIdleState_Reset;
+        
+        // 防止其它通道CCR被 tim_oc3init()函数覆盖
         Tim_ccer = MSTEP_TIMx->CCER;
         TIM_OC3Init(MSTEP_TIMx, &sTimeOC);
         TIM1->CCER |= Tim_ccer;
@@ -58,7 +59,7 @@ void MotorStep_Init(MotorSensor_typedef *_mSensor)
     {
         _mSensor->psMotor_Obj = &sMotor_Step;   // 将传感器和电机绑定
         _mSensor->InitFunc();                   // 执行传感器初始化
-
+        // 对sensor数据复位
         sMotor_Step.pFunc_SensorReset = _mSensor->senReset;
     }
 

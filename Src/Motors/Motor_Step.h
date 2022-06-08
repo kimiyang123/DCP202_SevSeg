@@ -1,7 +1,7 @@
 /*
  * @Date:
  * @LastEditors: kimiyang
- * @LastEditTime: 2022-06-07 22:34:17
+ * @LastEditTime: 2022-06-08 13:15:26
  * @FilePath: \DCP202_SevSeg\Src\Motors\Motor_Step.h
  * @Description: 步进电机驱动代码
  *                  
@@ -83,7 +83,7 @@
     void MotorStep_Stop(void);
 
     /**
-     * @brief : 步进电机复位方法，回将绑定传感器的距离值复位清零
+     * @brief : 步进电机复位方法，会将绑定的绝对值传感器的距离值复位清零
      * @description: 
      * @return {*}
      */    

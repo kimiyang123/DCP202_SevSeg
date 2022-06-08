@@ -23,3 +23,4 @@
 .\objects\ads1118.o: ..\Src\BSP.h
 .\objects\ads1118.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\ads1118.o: ..\Src\Motors\ExtADC\SPI_HW.h
+.\objects\ads1118.o: ..\Src\Motors\ExtADC\Filters.h

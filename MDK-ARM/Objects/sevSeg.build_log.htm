@@ -22,22 +22,30 @@ Dialog DLL:      TCM.DLL V1.53.0.0
  
 <h2>Project:</h2>
 F:\QSGX_Work\DCP202_SevSeg\MDK-ARM\sevSeg.uvprojx
-Project File Date:  06/06/2022
+Project File Date:  06/08/2022
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 7 (build 960)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'Target 1'
+compiling Motor_LocSensor.c...
+compiling Sensor_ExtADC.c...
+compiling Motor_Step.c...
 compiling main.c...
-..\Src\main.c(55): warning:  #128-D: loop is not reachable
+..\Src\main.c(56): warning:  #128-D: loop is not reachable
       while (1)
-..\Src\main.c(63): warning:  #128-D: loop is not reachable
+..\Src\main.c(72): warning:  #128-D: loop is not reachable
       while (1)
-..\Src\main.c(79): warning:  #128-D: loop is not reachable
-      while (1)
-..\Src\main.c: 3 warnings, 0 errors
+..\Src\main.c: 2 warnings, 0 errors
+compiling Sensor_Encoder.c...
+compiling Motor_HPWM.c...
+..\Src\Motors\Motor_HPWM.c(106): warning:  #223-D: function "locSensor_MorotX_Bind" declared implicitly
+       locSensor_MorotX_Bind(&sMotor_X);
+..\Src\Motors\Motor_HPWM.c(108): warning:  #223-D: function "locSensor_MorotY_Bind" declared implicitly
+      locSensor_MorotY_Bind(&sMotor_Y);
+..\Src\Motors\Motor_HPWM.c: 2 warnings, 0 errors
 linking...
-Program Size: Code=5920 RO-data=336 RW-data=80 ZI-data=1120  
-".\Objects\sevSeg.axf" - 0 Error(s), 3 Warning(s).
+Program Size: Code=6984 RO-data=336 RW-data=124 ZI-data=1140  
+".\Objects\sevSeg.axf" - 0 Error(s), 4 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -122,7 +130,7 @@ Package Vendor: Keil
    * Component: Keil::Device:StdPeriph Drivers:USART:3.6.0
       Source file:   Device\StdPeriph_Driver\src\stm32f10x_usart.c
       Include file:  Device\StdPeriph_Driver\inc\stm32f10x_usart.h
-Build Time Elapsed:  00:00:00
+Build Time Elapsed:  00:00:01
 </pre>
 </body>
 </html>

@@ -25,3 +25,7 @@
 .\objects\motor_hpwm.o: ..\Src\Motors\LocSensor\Sensor_Encoder.h
 .\objects\motor_hpwm.o: ..\Src\Motors\Motor_HPWM.h
 .\objects\motor_hpwm.o: ..\Src\Motors\Motor_LocSensor.h
+.\objects\motor_hpwm.o: ..\Src\Motors\LocSensor\Sensor_byTicks.h
+.\objects\motor_hpwm.o: ..\Src\BSP.h
+.\objects\motor_hpwm.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\motor_hpwm.o: ..\Src\TimTask.h

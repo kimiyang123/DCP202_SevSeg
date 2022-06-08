@@ -26,5 +26,10 @@
 .\objects\sensor_extadc.o: ..\Src\Motors\LocSensor\Sensor_Encoder.h
 .\objects\sensor_extadc.o: ..\Src\Motors\Motor_HPWM.h
 .\objects\sensor_extadc.o: ..\Src\Motors\Motor_LocSensor.h
+.\objects\sensor_extadc.o: ..\Src\Motors\LocSensor\Sensor_byTicks.h
+.\objects\sensor_extadc.o: ..\Src\BSP.h
+.\objects\sensor_extadc.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\sensor_extadc.o: ..\Src\TimTask.h
+.\objects\sensor_extadc.o: ..\Src\Motors\ExtADC\ADS1118.h
+.\objects\sensor_extadc.o: ..\Src\Motors\ExtADC\SPI_HW.h
 .\objects\sensor_extadc.o: ..\Src\utils.h

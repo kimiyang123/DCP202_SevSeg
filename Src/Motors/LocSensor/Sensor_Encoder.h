@@ -24,6 +24,8 @@
     void senEncoder_Init(motorInfo_def* motX,motorInfo_def* motY);
 
 
+    void senEncoderX_Init(void);
+
     /**
      * @brief : 将传感器原始数据RAW，转换为距离mm值
      * @description: 

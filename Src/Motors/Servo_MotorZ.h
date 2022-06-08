@@ -1,8 +1,8 @@
 /*
  * @Date: 2022-05-27 16:55:50
  * @LastEditors: kimiyang
- * @LastEditTime: 2022-05-31 14:10:28
- * @FilePath: \DCP202_SevSeg\Src\Motors\ServO_MotorZ.h
+ * @LastEditTime: 2022-06-08 14:24:27
+ * @FilePath: \DCP202_SevSeg\Src\Motors\Servo_MotorZ.h
  * @Description: 舵机及Z轴电机控制
  *             使用TIM4 定时器的2个PWM脉冲，分别控制Z轴电机和Servo舵机
  */
@@ -47,6 +47,13 @@
      * @return {*}
      */    
     void ServoWrite(uint8_t SerVol);
+
+    /**
+     * @brief : 获取舵机当前开合度
+     * @description: 
+     * @return {*}
+     */
+    uint8_t Get_Servo(void);
 
     /**
      * @brief : Z 轴电机带方向参数控制方法

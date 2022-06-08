@@ -1,7 +1,7 @@
 /*
  * @Date: 2022-05-22 14:29:03
  * @LastEditors: kimiyang
- * @LastEditTime: 2022-06-07 22:21:59
+ * @LastEditTime: 2022-06-08 14:48:59
  * @FilePath: \DCP202_SevSeg\Src\Motors\Motor_LocSensor.h
  * @Description: motor Location sensor
  *        电机位置获取函数封装
@@ -30,6 +30,7 @@
 		
     
     #include "Sensor_Encoder.h"     // 编码器传感器
+    #include "Sensor_byTicks.h"
     // #include "Sensor_ExtADC.h"
 
 
@@ -39,10 +40,7 @@
 
     #define MOTOR_POSLOC_MAX        0xFFFF
 
-    
-    void locSensor_MorotX_Bind(motorInfo_def* pMotx);
-		
-    void locSensor_MorotY_Bind(motorInfo_def* pMoty);
+
     
 
 #endif

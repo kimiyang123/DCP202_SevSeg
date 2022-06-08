@@ -457,6 +457,11 @@
               <FilePath>..\Src\Motors\Motor_LocSensor.c</FilePath>
             </File>
             <File>
+              <FileName>Motor_Step.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\Motors\Motor_Step.c</FilePath>
+            </File>
+            <File>
               <FileName>Sensor_Encoder.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Src\Motors\LocSensor\Sensor_Encoder.c</FilePath>
@@ -465,11 +470,6 @@
               <FileName>Sensor_ExtADC.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Src\Motors\LocSensor\Sensor_ExtADC.c</FilePath>
-            </File>
-            <File>
-              <FileName>Motor_Step.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Src\Motors\Motor_Step.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -490,6 +490,11 @@
               <FileName>ADS7950.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Src\Motors\ExtADC\ADS7950.c</FilePath>
+            </File>
+            <File>
+              <FileName>Filters.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\Motors\ExtADC\Filters.c</FilePath>
             </File>
           </Files>
         </Group>

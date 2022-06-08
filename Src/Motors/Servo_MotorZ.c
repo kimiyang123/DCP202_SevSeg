@@ -66,6 +66,15 @@ void ServoWrite(uint8_t SerVol)
     TIM4->CCR4 = serPWM;
 }
 
+
+
+uint8_t Get_Servo(void)
+{
+    return _SerVol;
+}
+
+
+
 motorZ_Info_def sMotorZ;
 
 void MotorZ_Run(uint8_t dir, uint8_t zspeed)

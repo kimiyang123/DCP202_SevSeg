@@ -1,7 +1,7 @@
 /*
  * @Date: 
  * @LastEditors: kimiyang
- * @LastEditTime: 2022-06-08 21:26:27
+ * @LastEditTime: 2022-06-08 21:49:16
  * @FilePath: \DCP202_SevSeg\Src\Motors\Motor_BLDC.h
  * @Description: 带驱动功能的无刷电机驱动程序
  *              需要有2个IO口，1个PWM调速，1个GPIO方向
@@ -11,7 +11,6 @@
 #define __MOTOR_BLDC_H__
 
     #include <stm32f10x_conf.h>
-
     #include "MotorClass.h"
     #include "Motor_LocSensor.h"
 

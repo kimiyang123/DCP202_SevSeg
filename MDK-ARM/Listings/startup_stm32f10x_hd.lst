@@ -248,9 +248,9 @@ ARM Macro Assembler    Page 4
 ]
   151 00000000                 IMPORT           __main
   152 00000000                 IMPORT           SystemInit
-  153 00000000 4809            LDR              R0, =SystemInit
+  153 00000000 4806            LDR              R0, =SystemInit
   154 00000002 4780            BLX              R0
-  155 00000004 4809            LDR              R0, =__main
+  155 00000004 4806            LDR              R0, =__main
   156 00000006 4700            BX               R0
   157 00000008                 ENDP
   158 00000008         
@@ -538,38 +538,26 @@ ARM Macro Assembler    Page 9
   334 0000001C         ;*******************************************************
                        ************************
   335 0000001C                 IF               :DEF:__MICROLIB
-  342 0000001C         
-  343 0000001C                 IMPORT           __use_two_region_memory
-  344 0000001C                 EXPORT           __user_initial_stackheap
-  345 0000001C         
-  346 0000001C         __user_initial_stackheap
-  347 0000001C         
-  348 0000001C 4804            LDR              R0, =  Heap_Mem
-  349 0000001E 4905            LDR              R1, =(Stack_Mem + Stack_Size)
-  350 00000020 4A05            LDR              R2, = (Heap_Mem +  Heap_Size)
-  351 00000022 4B06            LDR              R3, = Stack_Mem
-  352 00000024 4770            BX               LR
-  353 00000026         
-  354 00000026 00 00           ALIGN
-  355 00000028         
-  356 00000028                 ENDIF
-  357 00000028         
-  358 00000028                 END
+  336 0000001C         
+  337 0000001C                 EXPORT           __initial_sp
+  338 0000001C                 EXPORT           __heap_base
+  339 0000001C                 EXPORT           __heap_limit
+  340 0000001C         
+  341 0000001C                 ELSE
+  356                          ENDIF
+  357 0000001C         
+  358 0000001C                 END
               00000000 
-              00000000 
-              00000000 
-              00000400 
-              00000200 
               00000000 
 Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M3 --apcs=interw
 ork --depend=.\objects\startup_stm32f10x_hd.d -o.\objects\startup_stm32f10x_hd.
 o -I.\RTE\Device\STM32F103ZE -I.\RTE\_Target_1 -IC:\Users\DELL\AppData\Local\Ar
 m\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include -IC:\Users\DELL\AppData\Local\Arm\Pa
 cks\Keil\STM32F1xx_DFP\2.4.0\Device\Include -IC:\Users\DELL\AppData\Local\Arm\P
-acks\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc --predefine="__UVISIO
-N_VERSION SETA 525" --predefine="_RTE_ SETA 1" --predefine="STM32F10X_HD SETA 1
-" --list=.\listings\startup_stm32f10x_hd.lst RTE\Device\STM32F103ZE\startup_stm
-32f10x_hd.s
+acks\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc --predefine="__MICROL
+IB SETA 1" --predefine="__UVISION_VERSION SETA 525" --predefine="_RTE_ SETA 1" 
+--predefine="STM32F10X_HD SETA 1" --list=.\listings\startup_stm32f10x_hd.lst RT
+E\Device\STM32F103ZE\startup_stm32f10x_hd.s
 
 
 
@@ -590,9 +578,8 @@ Symbol: Stack_Mem
    Definitions
       At line 40 in file RTE\Device\STM32F103ZE\startup_stm32f10x_hd.s
    Uses
-      At line 349 in file RTE\Device\STM32F103ZE\startup_stm32f10x_hd.s
-      At line 351 in file RTE\Device\STM32F103ZE\startup_stm32f10x_hd.s
-
+      None
+Comment: Stack_Mem unused
 __initial_sp 00000400
 
 Symbol: __initial_sp
@@ -600,7 +587,8 @@ Symbol: __initial_sp
       At line 41 in file RTE\Device\STM32F103ZE\startup_stm32f10x_hd.s
    Uses
       At line 64 in file RTE\Device\STM32F103ZE\startup_stm32f10x_hd.s
-Comment: __initial_sp used once
+      At line 337 in file RTE\Device\STM32F103ZE\startup_stm32f10x_hd.s
+
 3 symbols
 
 
@@ -622,25 +610,24 @@ Symbol: Heap_Mem
    Definitions
       At line 51 in file RTE\Device\STM32F103ZE\startup_stm32f10x_hd.s
    Uses
-      At line 348 in file RTE\Device\STM32F103ZE\startup_stm32f10x_hd.s
-      At line 350 in file RTE\Device\STM32F103ZE\startup_stm32f10x_hd.s
-
+      None
+Comment: Heap_Mem unused
 __heap_base 00000000
 
 Symbol: __heap_base
    Definitions
       At line 50 in file RTE\Device\STM32F103ZE\startup_stm32f10x_hd.s
    Uses
-      None
-Comment: __heap_base unused
+      At line 338 in file RTE\Device\STM32F103ZE\startup_stm32f10x_hd.s
+Comment: __heap_base used once
 __heap_limit 00000200
 
 Symbol: __heap_limit
    Definitions
       At line 52 in file RTE\Device\STM32F103ZE\startup_stm32f10x_hd.s
    Uses
-      None
-Comment: __heap_limit unused
+      At line 339 in file RTE\Device\STM32F103ZE\startup_stm32f10x_hd.s
+Comment: __heap_limit used once
 4 symbols
 
 
@@ -1387,21 +1374,7 @@ Symbol: WWDG_IRQHandler
       At line 82 in file RTE\Device\STM32F103ZE\startup_stm32f10x_hd.s
       At line 205 in file RTE\Device\STM32F103ZE\startup_stm32f10x_hd.s
 
-__user_initial_stackheap 0000001C
-
-Symbol: __user_initial_stackheap
-
-
-
-ARM Macro Assembler    Page 12 Alphabetic symbol ordering
-Relocatable symbols
-
-   Definitions
-      At line 346 in file RTE\Device\STM32F103ZE\startup_stm32f10x_hd.s
-   Uses
-      At line 344 in file RTE\Device\STM32F103ZE\startup_stm32f10x_hd.s
-Comment: __user_initial_stackheap used once
-73 symbols
+72 symbols
 
 
 
@@ -1415,8 +1388,7 @@ Symbol: Heap_Size
       At line 47 in file RTE\Device\STM32F103ZE\startup_stm32f10x_hd.s
    Uses
       At line 51 in file RTE\Device\STM32F103ZE\startup_stm32f10x_hd.s
-      At line 350 in file RTE\Device\STM32F103ZE\startup_stm32f10x_hd.s
-
+Comment: Heap_Size used once
 Stack_Size 00000400
 
 Symbol: Stack_Size
@@ -1424,8 +1396,7 @@ Symbol: Stack_Size
       At line 37 in file RTE\Device\STM32F103ZE\startup_stm32f10x_hd.s
    Uses
       At line 40 in file RTE\Device\STM32F103ZE\startup_stm32f10x_hd.s
-      At line 349 in file RTE\Device\STM32F103ZE\startup_stm32f10x_hd.s
-
+Comment: Stack_Size used once
 __Vectors_Size 00000130
 
 Symbol: __Vectors_Size
@@ -1457,13 +1428,5 @@ Symbol: __main
    Uses
       At line 155 in file RTE\Device\STM32F103ZE\startup_stm32f10x_hd.s
 Comment: __main used once
-__use_two_region_memory 00000000
-
-Symbol: __use_two_region_memory
-   Definitions
-      At line 343 in file RTE\Device\STM32F103ZE\startup_stm32f10x_hd.s
-   Uses
-      None
-Comment: __use_two_region_memory unused
-3 symbols
-426 symbols in table
+2 symbols
+423 symbols in table

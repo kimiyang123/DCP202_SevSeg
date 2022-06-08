@@ -4,10 +4,15 @@
     #include "Motor_HPWM.h"
     #include "Motor_LocSensor.h"
 
+    
     #define NULL 0
-
-    // 定义传感器RAW 值与距离 mm直接的比例关系
+    // 定义编码器RAW 值与距离 mm直接的比例关系
     #define RAW_DIS_RATE        0.025           //0.025mm/脉冲
+
+
+    extern MotorSensor_typedef SenEncoder_X;        // 默认对应 GPIOB_0
+    extern MotorSensor_typedef SenEncoder_Y;        // 默认对应 GPIOB_1
+
 
     /**
      * @brief : 用于将距离测量传感器与电机轴的绑定。

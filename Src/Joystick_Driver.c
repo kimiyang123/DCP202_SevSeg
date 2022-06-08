@@ -74,13 +74,7 @@ void Joystick_Init(void)
 }
 
 
-/**
- * @brief : 获取 摇杆(Joystick) X 或 Y轴通道的ADC值 
- * @description: 
- * @param axisID : [uint8_t] 摇杆通道ID, 0\1 or can be a enum typed 
- *                  like as  AXIS_X、AXIS_Y
- * @return {*}
- */
+
 uint16_t Joystick_getAxisADC(uint8_t axisID)
 {
     if(axisID < 2)
@@ -91,12 +85,7 @@ uint16_t Joystick_getAxisADC(uint8_t axisID)
 }
 
 
-/**
- * @brief : 获取机械手抓压力值
- * @description: 
- * @param type : {uint8_t} type获取数据类型，0：ADC，1：电压值mV
- * @return {*}
- */
+
 uint16_t getHandGrasp_Push(uint8_t type)
 {
     if(type == 0)

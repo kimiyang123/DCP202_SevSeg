@@ -22,14 +22,14 @@ typedef union
     struct
     {
         uint16_t CNV_RDY_FL : 1;
-        uint16_t NOP : 2;
-        uint16_t PullUP : 1;
-        uint16_t TS_Mode : 1;
-        uint16_t datarate : 3;
-        uint16_t mode : 1;
-        uint16_t pga : 3;
-        uint16_t mux : 3;
-        uint16_t os : 1;
+        uint16_t NOP        : 2;
+        uint16_t PullUP     : 1;
+        uint16_t TS_Mode    : 1;
+        uint16_t datarate   : 3;
+        uint16_t mode       : 1;
+        uint16_t pga        : 3;
+        uint16_t mux        : 3;
+        uint16_t os         : 1;
     } REG_bits;
 
     uint16_t REG_Int16;

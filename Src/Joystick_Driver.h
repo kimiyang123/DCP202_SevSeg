@@ -1,7 +1,7 @@
 /*
  * @Date: 2022-05-26 10:20:12
  * @LastEditors: kimiyang
- * @LastEditTime: 2022-05-31 11:08:55
+ * @LastEditTime: 2022-06-06 09:43:35
  * @FilePath: \DCP202_SevSeg\Src\Joystick_Driver.h
  * @Description: Joystick 摇杆手柄驱动
  *          本驱动需要依赖于 STM32的ADC 及 GPIO 模块
@@ -53,7 +53,21 @@
      */    
     void Joystick_Init(void);
 
+    /**
+     * @brief : 获取 摇杆(Joystick) X 或 Y轴通道的ADC值 
+     * @description: 
+     * @param axisID : [uint8_t] 摇杆通道ID, 0\1 or can be a enum typed 
+     *                  like as  AXIS_X、AXIS_Y
+     * @return {*}
+     */
     uint16_t Joystick_getAxisADC(uint8_t axisID);
+
+    /**
+     * @brief : 获取机械手抓压力值
+     * @description: 
+     * @param type : {uint8_t} type获取数据类型，0：ADC，1：电压值mV
+     * @return {*}
+     */
     uint16_t getHandGrasp_Push(uint8_t type);
 
     uint8_t Joystick_KeyScan(void);

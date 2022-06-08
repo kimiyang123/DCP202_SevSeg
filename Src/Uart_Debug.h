@@ -35,7 +35,7 @@
      */
     void DBG_Uart_printf(const char *fmt,...);
 
-
+#define DEBUG_ON
 #ifdef DEBUG_ON
     #define DBG_Info(str,args...)       DBG_Uart_printf("[INFO] "str"\n",##args)
     #define DBG_Warning(str,args...)    DBG_Uart_printf("[WARN] "str"\n",##args)

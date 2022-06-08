@@ -187,7 +187,7 @@
             <hadIRAM2>0</hadIRAM2>
             <hadIROM2>0</hadIROM2>
             <StupSel>8</StupSel>
-            <useUlib>0</useUlib>
+            <useUlib>1</useUlib>
             <EndSel>0</EndSel>
             <uLtcg>0</uLtcg>
             <nSecure>0</nSecure>
@@ -436,6 +436,11 @@
               <FileType>1</FileType>
               <FilePath>..\Src\Uart_Debug.c</FilePath>
             </File>
+            <File>
+              <FileName>utils.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\utils.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -456,6 +461,16 @@
               <FileType>1</FileType>
               <FilePath>..\Src\Motors\LocSensor\Sensor_Encoder.c</FilePath>
             </File>
+            <File>
+              <FileName>Sensor_ExtADC.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\Motors\LocSensor\Sensor_ExtADC.c</FilePath>
+            </File>
+            <File>
+              <FileName>Motor_Step.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\Motors\Motor_Step.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -465,6 +480,11 @@
               <FileName>SPI_HW.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Src\Motors\ExtADC\SPI_HW.c</FilePath>
+            </File>
+            <File>
+              <FileName>ADS1118.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\Motors\ExtADC\ADS1118.c</FilePath>
             </File>
             <File>
               <FileName>ADS7950.c</FileName>

@@ -10,10 +10,14 @@
 ".\objects\servo_motorz.o"
 ".\objects\lcd12864_driver.o"
 ".\objects\uart_debug.o"
+".\objects\utils.o"
 ".\objects\motor_hpwm.o"
 ".\objects\motor_locsensor.o"
 ".\objects\sensor_encoder.o"
+".\objects\sensor_extadc.o"
+".\objects\motor_step.o"
 ".\objects\spi_hw.o"
+".\objects\ads1118.o"
 ".\objects\ads7950.o"
 ".\objects\misc.o"
 ".\objects\stm32f10x_adc.o"
@@ -27,7 +31,7 @@
 ".\objects\stm32f10x_usart.o"
 ".\objects\startup_stm32f10x_hd.o"
 ".\objects\system_stm32f10x.o"
---strict --scatter ".\Objects\sevSeg.sct"
+--library_type=microlib --strict --scatter ".\Objects\sevSeg.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers
 --list ".\Listings\sevSeg.map" -o .\Objects\sevSeg.axf

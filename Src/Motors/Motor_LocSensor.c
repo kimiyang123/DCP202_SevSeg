@@ -29,14 +29,14 @@ void locSensor_MorotX_Bind(motorInfo_def* pMotx)
 {
    // todo... 根据传感器类型，#include 不通过的头文件 Sensor_xxx.h
    // 使用不同的绑定方法
-   senEncoder_Init(pMotx,NULL);
+   // senEncoder_Init(pMotx,NULL);
 }
 
 void locSensor_MorotY_Bind(motorInfo_def* pMoty)
 {
    // todo... 根据传感器类型，#include 不通过的头文件 Sensor_xxx.h
    // 使用不同的绑定方法
-   senEncoder_Init(NULL,pMoty);
+   // senEncoder_Init(NULL,pMoty);
 }
 
 

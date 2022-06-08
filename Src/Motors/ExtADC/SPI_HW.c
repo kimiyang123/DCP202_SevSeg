@@ -26,9 +26,9 @@ void HW_SPI_Init(void)
     SPI_StructInit(&sSPI_Init);
     sSPI_Init.SPI_Mode = SPI_Mode_Master;
     sSPI_Init.SPI_DataSize = SPI_DataSize_16b;
-    sSPI_Init.SPI_NSS = SPI_NSS_Soft; // 软件片选模式
+    sSPI_Init.SPI_NSS = SPI_NSS_Soft;               // CS软件片选模式
     sSPI_Init.SPI_CPOL = SPI_CPOL_Low;
-    sSPI_Init.SPI_CPHA = SPI_CPHA_1Edge;            // ADC7950 需要设置为1Edge
+    sSPI_Init.SPI_CPHA = SPI_CPHA_2Edge;            // ADS7950 需要设置为1Edge  ADS1118 - 2Edge
     sSPI_Init.SPI_FirstBit = SPI_FirstBit_MSB;
     sSPI_Init.SPI_BaudRatePrescaler = SPI_BaudRatePrescaler_64;
     SPI_Init(ADS_SPI, &sSPI_Init);

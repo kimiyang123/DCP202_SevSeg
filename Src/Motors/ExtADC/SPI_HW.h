@@ -1,7 +1,7 @@
 /*
  * @Date: 2022-06-04 12:56:36
  * @LastEditors: kimiyang
- * @LastEditTime: 2022-06-04 13:29:59
+ * @LastEditTime: 2022-06-07 14:08:42
  * @FilePath: \DCP202_SevSeg\Src\Motors\ExtADC\SPI_HW.h
  * @Description: STM32 SPI硬件初始化
  * 
@@ -14,6 +14,7 @@
 #define SPI_SCK         GPIO_Pin_5   //(PA5)
 #define SPI_MISO        GPIO_Pin_6  //(PA6)
 #define SPI_MOSI        GPIO_Pin_7  //(PA7)
+
 #define SPI_ADSCS       GPIO_Pin_0 //(PA0)
 #define SPI_GPIOx       GPIOA
 
@@ -23,7 +24,7 @@
 #define DummyValue      0x00
 
 /**
- * @brief : 硬件SPI初始化
+ * @brief : STM32硬件SPI初始化
  * @description: 
  * @return {*}
  */

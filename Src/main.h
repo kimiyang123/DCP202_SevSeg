@@ -2,9 +2,7 @@
 #define __MAIN_H__
 
 	#include <stdio.h>
-
-	#include "appSMG_UI.h"
-	#include "operateSetArea.h"
+	#include "BSP.h"
 
 	// 类Arduino的常用操作宏
 	#define PI 			3.1415926535897932384626433832795

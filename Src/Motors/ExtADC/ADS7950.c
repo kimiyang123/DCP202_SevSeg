@@ -25,11 +25,11 @@ void ADS79xx_Init(void)
     // 初始化CS引脚
     GPIO_InitTypeDef    sGPIO;
     RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);
-    GPIO_WriteBit(SPI_CS_GPIOx,SPI_CS_Pin,1);
     sGPIO.GPIO_Pin = SPI_CS_Pin;
     sGPIO.GPIO_Mode = GPIO_Mode_Out_PP;
     sGPIO.GPIO_Speed = GPIO_Speed_50MHz;
     GPIO_Init(SPI_CS_GPIOx,&sGPIO);
+    GPIO_WriteBit(SPI_CS_GPIOx,SPI_CS_Pin,1);
 
     // SPI 硬件初始化
     HW_SPI_Init();

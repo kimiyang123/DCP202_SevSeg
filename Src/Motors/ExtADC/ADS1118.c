@@ -101,6 +101,7 @@ void ADS1118_Init(ADS_Cnf_typedef *confInit)
 {
     // 初始化CS引脚
     GPIO_InitTypeDef    sGPIO;
+    RCC_APB2PeriphClockCmd( RCC_APB2Periph_GPIOA, ENABLE);      // 开启芯片CS引脚RCC使能
     sGPIO.GPIO_Pin = SPI_CS_Pin;
     sGPIO.GPIO_Mode = GPIO_Mode_Out_PP;
     sGPIO.GPIO_Speed = GPIO_Speed_50MHz;
